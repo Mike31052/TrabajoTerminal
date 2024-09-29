@@ -1,0 +1,156 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.header, footer{
+  background-color: #3f51b5;
+  height: 6rem;
+}
+
+.content-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5;
+  padding: 2rem;
+}
+
+.login-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0; /* Elimina el margen superior */
+}
+
+.divider {
+  width: 1px; /* Ancho de la línea */
+  background-color: rgb(20, 30, 150); /* Color de la línea */
+  height: 60vh; /* Ajusta la altura según sea necesario */
+}
+
+.login-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  text-align: center;
+  color: #3f51b5;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1.2rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3f51b5;
+  box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #303f9f;
+}
+
+button:disabled {
+  background-color: #9fa8da;
+  cursor: not-allowed;
+}
+
+.additional-links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.forgot-password {
+  color: #3f51b5;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.create-account {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.create-account a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.forgot-password:hover, .create-account a:hover {
+  text-decoration: underline;
+}
+ 
+
+.login-icon {
+  text-align: center;
+  margin-top: -6rem;
+  margin-bottom: 1rem;
+}
+
+.login-icon i {
+  font-size: 7rem; /* Tamaño del ícono */
+  color: #6c63ff;  /* Cambia el color del ícono */
+}
+
+
+mat-error {
+  color: red; /* Color del texto */
+  font-size: 12px; /* Tamaño del texto */
+}
+

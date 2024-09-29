@@ -1,0 +1,61 @@
+<div class="page-container">
+  <!-- <header class="header"></header> -->
+
+  <main class="content-container">
+    
+    <!-- Sección de la imagen -->
+    <!-- <div class="image-section">
+      <img src="assets/imagenes/impuestos2-login.png" alt="Login Image">
+    </div> -->
+
+    <!-- Línea vertical -->
+    <!-- <div class="divider"></div> -->
+
+    <!-- Sección del formulario de inicio de sesión -->
+    <div class="login-section">
+      <form [formGroup]="loginForm.loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="login-icon">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        
+        <h2>Iniciar sesión</h2>
+        
+        <!-- Campo de Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-with-icon">
+            <i class="material-icons">email</i>
+            <input type="email" id="email" formControlName="email" placeholder="Ingresa tu correo" required>
+          </div>
+          <!-- Mensaje de error para el campo Email -->
+          <mat-error *ngIf="loginForm.email?.invalid && loginForm.email?.touched">
+            <ng-container *ngIf="loginForm.email?.hasError('required')">El correo es requerido.</ng-container>
+            <ng-container *ngIf="loginForm.email?.hasError('email')">Formato de correo inválido.</ng-container>
+          </mat-error>
+        </div>
+
+        <!-- Campo de Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <i class="material-icons">lock</i>
+            <input type="password" id="password" formControlName="password" placeholder="Ingresa tu contraseña" required>
+          </div>
+          <!-- Mensaje de error para el campo Password -->
+          <mat-error *ngIf="loginForm.password?.invalid && loginForm.password?.touched">
+            <ng-container *ngIf="loginForm.password?.hasError('required')">La contraseña es requerida.</ng-container>
+            <ng-container *ngIf="loginForm.password?.hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</ng-container>
+          </mat-error>
+        </div>
+
+        <button type="submit" [disabled]="!loginForm.loginForm.valid">Entrar</button>
+        <div class="additional-links">
+          <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          <p class="create-account">¿No tienes una cuenta? <a [routerLink]="['/sign-up']">Crear una</a></p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- <footer class="footer"></footer> -->
+</div>
