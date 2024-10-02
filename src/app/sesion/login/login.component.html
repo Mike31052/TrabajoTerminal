@@ -2,7 +2,6 @@
   <!-- <header class="header"></header> -->
 
   <main class="content-container">
-    
     <!-- Sección de la imagen -->
     <!-- <div class="image-section">
       <img src="assets/imagenes/impuestos2-login.png" alt="Login Image">
@@ -13,18 +12,20 @@
 
     <!-- Sección del formulario de inicio de sesión -->
     <div class="login-section">
+      <!-- Formulario de inicio de sesión -->
       <form [formGroup]="loginForm.loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Icono de usuario -->
         <div class="login-icon">
           <i class="fas fa-user-circle"></i>
         </div>
-        
+
         <h2>Iniciar sesión</h2>
-        
+
         <!-- Campo de Email -->
         <div class="form-group">
           <label for="email">Email</label>
           <div class="input-with-icon">
-            <i class="material-icons">email</i>
+            <i class="material-icons correo">email</i>
             <input type="email" id="email" formControlName="email" placeholder="Ingresa tu correo" required>
           </div>
           <!-- Mensaje de error para el campo Email -->
@@ -38,8 +39,11 @@
         <div class="form-group">
           <label for="password">Password</label>
           <div class="input-with-icon">
-            <i class="material-icons">lock</i>
-            <input type="password" id="password" formControlName="password" placeholder="Ingresa tu contraseña" required>
+            <i class="material-icons password">lock</i>
+            <input [type]="passwordVisible ? 'text' : 'password'" id="password" formControlName="password" placeholder="Ingresa tu contraseña" required>
+            <i class="material-icons toggle-password" (click)="togglePasswordVisibility()">
+              {{ passwordVisible ? 'visibility_off' : 'visibility' }}
+            </i>
           </div>
           <!-- Mensaje de error para el campo Password -->
           <mat-error *ngIf="loginForm.password?.invalid && loginForm.password?.touched">
@@ -48,7 +52,15 @@
           </mat-error>
         </div>
 
+        <!-- Botón de Enviar -->
         <button type="submit" [disabled]="!loginForm.loginForm.valid">Entrar</button>
+
+        <!-- Mensaje de error si las credenciales son incorrectas -->
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Enlaces adicionales -->
         <div class="additional-links">
           <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
           <p class="create-account">¿No tienes una cuenta? <a [routerLink]="['/sign-up']">Crear una</a></p>

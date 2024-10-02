@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { SesionFormGroup } from '../../shared/models/SesionFormGroup.model';
+import { UserHttpService } from '../../core/services/user-http-service.service'; // Importar el servicio de autenticación
+import { Router } from '@angular/router'; // Importar Router para la redirección
+import * as CryptoJS from 'crypto-js'; // Importar CryptoJS
 
 @Component({
   selector: 'app-login',
@@ -8,23 +11,56 @@ import { SesionFormGroup } from '../../shared/models/SesionFormGroup.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: SesionFormGroup; // Usamos la clase LoginForm
+  loginForm: SesionFormGroup;
   loading = false;
+  errorMessage: string | null = null; // Variable para almacenar el mensaje de error
+  passwordVisible = false; // Propiedad para controlar la visibilidad de la contraseña
 
-  constructor(private fb: FormBuilder) {
-    this.loginForm = new SesionFormGroup(this.fb); // Instanciamos la clase
+  constructor(
+    private fb: FormBuilder,
+    private userHttpService: UserHttpService,
+    private router: Router // Inyectar Router para redirigir
+  ) {
+    this.loginForm = new SesionFormGroup(this.fb); // Instanciamos el formulario
   }
 
   onSubmit() {
     if (this.loginForm.loginForm.valid) {
       this.loading = true;
-      console.log(this.loginForm.loginForm.value);
-      
-      // Simulando proceso de inicio de sesión
-      setTimeout(() => {
-        this.loading = false;
-        // Aquí va la lógica de inicio de sesión
-      }, 2000);
+      this.errorMessage = null; // Resetear mensaje de error si ya se había mostrado
+  
+      const { email, password } = this.loginForm.loginForm.value;
+
+      // Generar el hash MD5 de la contraseña
+      const hashedPassword = CryptoJS.MD5(password).toString(); 
+
+      this.userHttpService.getUser(email, hashedPassword).subscribe(
+        (response) => {
+          this.loading = false;
+  
+          // Verifica si la autenticación fue exitosa
+          if (response.success) {
+            this.errorMessage = 'Credenciales correctas.';
+            // Redireccionar o realizar otras acciones en caso de éxito
+          } else {
+            // Mostrar un mensaje de error si la autenticación falla
+            this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';
+          }
+        },
+        (error) => {
+          this.loading = false;
+          if (error.status === 401) {
+            this.errorMessage = 'Correo o contraseña inválidos.'; // Mensaje más claro para error 401
+          } else {
+            this.errorMessage = 'Error de servidor. Intenta nuevamente.'; // En caso de error en la solicitud
+          }
+        }
+      );
     }
+  }
+
+  // Método para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
   }
 }
