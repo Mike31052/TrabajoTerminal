@@ -14,7 +14,6 @@ export class LoginComponent {
   loginForm: SesionFormGroup;
   loading = false;
   errorMessage: string | null = null; // Variable para almacenar el mensaje de error
-  passwordVisible = false; // Propiedad para controlar la visibilidad de la contraseña
 
   constructor(
     private fb: FormBuilder,
@@ -44,7 +43,7 @@ export class LoginComponent {
             // Redireccionar o realizar otras acciones en caso de éxito
           } else {
             // Mostrar un mensaje de error si la autenticación falla
-            this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';
+            this.errorMessage = 'Credenciales incorrectas.';
           }
         },
         (error) => {
@@ -52,15 +51,10 @@ export class LoginComponent {
           if (error.status === 401) {
             this.errorMessage = 'Correo o contraseña inválidos.'; // Mensaje más claro para error 401
           } else {
-            this.errorMessage = 'Error de servidor. Intenta nuevamente.'; // En caso de error en la solicitud
+            this.errorMessage = 'Error de servidor.'; // En caso de error en la solicitud
           }
         }
       );
     }
-  }
-
-  // Método para alternar la visibilidad de la contraseña
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
   }
 }
