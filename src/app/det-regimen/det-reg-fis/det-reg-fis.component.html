@@ -1,2 +1,70 @@
-<p>det-reg-fis works!</p>
-<mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+<!--<p>det-reg-fis works!</p>
+<mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxes</title>
+    <link rel="stylesheet" href="det-reg-fis.component.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Régimen</a></li>
+                    <li><a href="#">Ejercicios</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="income-selection">
+                <h3>Selecciona el régimen al que perteneces</h3>
+                <p>Es necesario que conozcas las caracteristicas de cada régimen fiscal para saber a cúal perteneces</p>
+                <br>
+                <form>
+                    <label>
+                        <input type="radio" name="income" value="sueldos">
+                        Regimen simplificado de confianza (RESICO)
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="plataformas">
+                        Sueldos y salarios e ingresos asimilados a salarios
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="premio">
+                        Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="otros">
+                        Régimen de Actividad Empresarial y Profesional
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="otros">
+                         Régimen de los Ingresos por la obtención de premios
+                    </label>
+                </form>
+            </section>
+
+            <section class="fiscal-regime">
+                <h3>Caracteristicas de tu régimen</h3>
+                <p>Las caracteristicas del Regimen simplificado de confianza (RESICO) son:</p>
+                <article class="regime-info">
+                    <p>
+                        El Régimen de Sueldos y Salarios, conocido como el Régimen 605, es un sistema de tributación para trabajadores asalariados. Se aplica a personas que reciben un sueldo o salario y el patrón es quien realiza las retenciones de impuestos al trabajador y las declara ante el SAT. El Régimen de Sueldos y Salarios ofrece beneficios como seguridad social, Infonavit y Afore.
+                    </p>
+                </article>
+                <button class="confirm-button">Confirmar mi régimen</button>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
