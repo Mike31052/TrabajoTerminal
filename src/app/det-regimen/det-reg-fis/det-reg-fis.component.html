@@ -1,2 +1,58 @@
-<p>det-reg-fis works!</p>
-<mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+<!--<p>det-reg-fis works!</p>
+<mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>-->
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Régimen</a></li>
+                    <li><a href="#">Ejercicios</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="income-selection">
+                <h3>Selecciona el régimen al que perteneces</h3>
+                <p>Es necesario que conozcas las caracteristicas de cada régimen fiscal para saber a cúal perteneces</p>
+                <br>
+                <form>
+                    <label>
+                        <input type="radio" name="income" value="confianza" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Regimen simplificado de confianza (RESICO)
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="sueldos" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Sueldos y salarios e ingresos asimilados a salarios
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="plataformas" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="empresarial" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Régimen de Actividad Empresarial y Profesional
+                    </label><br>
+
+                    <label>
+                        <input type="radio" name="income" value="premio" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                         Régimen de los Ingresos por la obtención de premios
+                    </label>
+                </form>
+            </section>
+
+            <section class="fiscal-regime">
+                <h3>Caracteristicas de tu régimen</h3>
+                <p>{{titulo}}</p>
+                <article class="regime-info">
+                    <p>
+                        {{contenido}}
+                    </p>
+                </article>
+                <button class="confirm-button">Confirmar mi régimen</button>
+            </section>
+        </main>
+    </div>
