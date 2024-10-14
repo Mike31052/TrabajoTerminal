@@ -1,15 +1,5 @@
 <!--<p>det-reg-fis works!</p>
 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>-->
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxes</title>
-    <link rel="stylesheet" href="det-reg-fis.component.css">
-</head>
-<body>
     <div class="container">
         <header>
             <nav>
@@ -28,27 +18,27 @@
                 <br>
                 <form>
                     <label>
-                        <input type="radio" name="income" value="sueldos">
+                        <input type="radio" name="income" value="confianza" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Regimen simplificado de confianza (RESICO)
                     </label><br>
 
                     <label>
-                        <input type="radio" name="income" value="plataformas">
+                        <input type="radio" name="income" value="sueldos" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Sueldos y salarios e ingresos asimilados a salarios
                     </label><br>
 
                     <label>
-                        <input type="radio" name="income" value="premio">
+                        <input type="radio" name="income" value="plataformas" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
                     </label><br>
 
                     <label>
-                        <input type="radio" name="income" value="otros">
+                        <input type="radio" name="income" value="empresarial" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Régimen de Actividad Empresarial y Profesional
                     </label><br>
 
                     <label>
-                        <input type="radio" name="income" value="otros">
+                        <input type="radio" name="income" value="premio" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                          Régimen de los Ingresos por la obtención de premios
                     </label>
                 </form>
@@ -56,15 +46,13 @@
 
             <section class="fiscal-regime">
                 <h3>Caracteristicas de tu régimen</h3>
-                <p>Las caracteristicas del Regimen simplificado de confianza (RESICO) son:</p>
+                <p>{{titulo}}</p>
                 <article class="regime-info">
                     <p>
-                        El Régimen de Sueldos y Salarios, conocido como el Régimen 605, es un sistema de tributación para trabajadores asalariados. Se aplica a personas que reciben un sueldo o salario y el patrón es quien realiza las retenciones de impuestos al trabajador y las declara ante el SAT. El Régimen de Sueldos y Salarios ofrece beneficios como seguridad social, Infonavit y Afore.
+                        {{contenido}}
                     </p>
                 </article>
                 <button class="confirm-button">Confirmar mi régimen</button>
             </section>
         </main>
     </div>
-</body>
-</html>
