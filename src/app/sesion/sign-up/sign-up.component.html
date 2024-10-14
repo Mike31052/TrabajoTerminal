@@ -74,8 +74,13 @@
         </div>
 
         <!-- Alerta de error -->
-        <div *ngIf="emailAlreadyExists" class="alert alert-danger" role="alert">
-          El correo ya existe.
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Alerta de exito -->
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
+          {{ successMessage }}
         </div>
 
         <!-- Botón para Crear Cuenta -->

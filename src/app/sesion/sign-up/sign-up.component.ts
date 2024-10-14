@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { SignUpFormGroup } from '../../shared/models/SignUpFormGroup.model'; 
+import { SignUpFormGroup } from '../../shared/formGroup/SignUpFormGroup.model'; 
 import { UserHttpService } from '../../core/services/user-http-service.service'; // Servicio para crear el usuario
 import { Router } from '@angular/router'; // Para redirigir después del registro
 import { MD5 } from 'crypto-js';
@@ -13,7 +13,8 @@ import { MD5 } from 'crypto-js';
 export class SignUpComponent implements OnInit {
 
   signUpForm: SignUpFormGroup;
-  emailAlreadyExists: boolean = false; 
+  errorMessage: String = '';
+  successMessage: String = '';
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +29,10 @@ export class SignUpComponent implements OnInit {
 
   onSignUpSubmit() {
     if (this.signUpForm.signUpForm.valid) {
+
+      this.errorMessage = '';
+      this.successMessage = '';
+
       const { nombre, email, password, edad } = this.signUpForm.signUpForm.value;
 
       // Convertir la contraseña en hash MD5
@@ -45,18 +50,11 @@ export class SignUpComponent implements OnInit {
       this.userHttpService.createUser(user).subscribe(
         (response) => {
           console.log('Usuario creado con éxito:', response);
-          // Redirigir a la página de inicio de sesión o donde se requiera
-          this.router.navigate(['/']);
+          this.successMessage = response.message;
         },
         (error) => {
           console.error('Error al crear el usuario:', error);
-          // Manejar el error y actualizar el estado de la alerta
-          if (error.status === 500) {
-            this.emailAlreadyExists = true; // Establecer a true si el correo ya existe
-          } else {
-            // Manejar otros errores si es necesario
-            this.emailAlreadyExists = false; // Restablecer si hay otro error
-          }
+          this.errorMessage = error.error.message;
         }
       );
     }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environments';  
 
@@ -22,4 +22,26 @@ export class UserHttpService {
     return this.http.post<any>(`${this.apiUrl}/user/getUser`, body);
   }
   
+  verifyToken(token: string): Observable<any> {
+    return this.http.get<boolean>(`${this.apiUrl}/user/verify?token=${token}`);
+  }
+
+  verifyToken2(token: string): Observable<any> {
+    return this.http.get<boolean>(`${this.apiUrl}/user/verify-token?token=${token}`);
+  }
+
+  forgotPassword(correo: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/user/searchEmail`, correo);
+  }
+
+  changePassword(token: string, password: string): Observable<any> {
+    const payload = {
+        token: token,
+        password: password
+    };
+    return this.http.post(`${this.apiUrl}/user/updatePassword`, payload);
+}
+
+
+
 }

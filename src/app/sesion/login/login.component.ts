@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { SesionFormGroup } from '../../shared/models/SesionFormGroup.model';
+import { SesionFormGroup } from '../../shared/formGroup/SesionFormGroup.model';
 import { UserHttpService } from '../../core/services/user-http-service.service'; // Importar el servicio de autenticación
 import { Router } from '@angular/router'; // Importar Router para la redirección
 import * as CryptoJS from 'crypto-js'; // Importar CryptoJS
@@ -13,7 +13,8 @@ import * as CryptoJS from 'crypto-js'; // Importar CryptoJS
 export class LoginComponent {
   loginForm: SesionFormGroup;
   loading = false;
-  errorMessage: string | null = null; // Variable para almacenar el mensaje de error
+  errorMessage: String = '';
+  successMessage: String = '';
 
   constructor(
     private fb: FormBuilder,
@@ -26,8 +27,9 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.loginForm.valid) {
       this.loading = true;
-      this.errorMessage = null; // Resetear mensaje de error si ya se había mostrado
-  
+      this.errorMessage = '';
+      this.successMessage = '';
+       
       const { email, password } = this.loginForm.loginForm.value;
 
       // Generar el hash MD5 de la contraseña
@@ -36,23 +38,13 @@ export class LoginComponent {
       this.userHttpService.getUser(email, hashedPassword).subscribe(
         (response) => {
           this.loading = false;
-  
-          // Verifica si la autenticación fue exitosa
-          if (response.success) {
-            this.errorMessage = 'Credenciales correctas.';
-            // Redireccionar o realizar otras acciones en caso de éxito
-          } else {
-            // Mostrar un mensaje de error si la autenticación falla
-            this.errorMessage = 'Credenciales incorrectas.';
-          }
+          this.successMessage = "Credenciales correctas";
+          console.log(response);
         },
         (error) => {
           this.loading = false;
-          if (error.status === 401) {
-            this.errorMessage = 'Correo o contraseña inválidos.'; // Mensaje más claro para error 401
-          } else {
-            this.errorMessage = 'Error de servidor.'; // En caso de error en la solicitud
-          }
+          this.errorMessage = error.error.message;
+          console.log(error);
         }
       );
     }
