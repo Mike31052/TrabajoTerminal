@@ -34,4 +34,14 @@ export class DetRegFisComponent {
     }
   }
 
+  verVideo(opcion: string) {
+    console.log(`Reproduciendo video para la opción: ${opcion}`);
+    // Aquí puedes implementar la lógica para abrir un modal con el video o redirigir a otra página
+    // Ejemplo: this.router.navigate(['/video', opcion]);
+  }
+
+  confirmarRegimen(){
+    console.log(`Hola`);
+  }
+
 }

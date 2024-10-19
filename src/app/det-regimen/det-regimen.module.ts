@@ -5,7 +5,8 @@ import { DetRegFisComponent } from './det-reg-fis/det-reg-fis.component';
 import { DetRegimenRoutingModule } from './det-regimen-routing.module';
 import { FormsModule } from '@angular/forms';
 import { InfoRegComponent } from './info-reg/info-reg.component';
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { InfoRegComponent } from './info-reg/info-reg.component';
     CommonModule,
     DetRegimenRoutingModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule, 
+    MatButtonModule
   ]
 })
 export class DetRegimenModule { }
