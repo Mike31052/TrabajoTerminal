@@ -4,6 +4,7 @@ import { SesionFormGroup } from '../../shared/formGroup/SesionFormGroup.model';
 import { UserHttpService } from '../../core/services/user-http-service.service'; // Importar el servicio de autenticación
 import { Router } from '@angular/router'; // Importar Router para la redirección
 import * as CryptoJS from 'crypto-js'; // Importar CryptoJS
+import { Usuario } from '../../shared/models/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
   loading = false;
   errorMessage: String = '';
   successMessage: String = '';
+  userTO?: Usuario;
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +42,11 @@ export class LoginComponent {
           this.loading = false;
           this.successMessage = "Credenciales correctas";
           console.log(response);
+          this.userTO = response.user;
+          if(this.userTO?.regimen == null || this.userTO.regimen == ''){
+            this.router.navigate(['/info-reg'], { state: { data: this.userTO } });
+          }
+          
         },
         (error) => {
           this.loading = false;
