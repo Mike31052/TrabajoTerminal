@@ -1,0 +1,43 @@
+<div class="page-container">
+    <header class="header">
+        <h1>Consulta de Opinión de Cumplimiento</h1>
+    </header>
+    <div class="content-container">
+        <section class="inicio-section">
+            <div class="columns">
+                <div class="column">
+                    <h2>Paso 1: Accede al Portal del SAT</h2>
+                    <p>Ingresa al <a href="https://www.sat.gob.mx/consultas/20777/consulta-tu-opinion-de-cumplimiento-de-obligaciones-fiscales" target="_blank">sitio oficial del SAT</a> y dirígete a la sección de "Consulta tu opinión del cumplimiento de obligaciones fiscales".</p>
+                    <img src="assets/imagenes/O1.png" alt="Acceso al portal SAT" class="image" (click)="openModal('assets/imagenes/O1.png', 'Acceso al portal SAT')">
+                </div>
+                <div class="column">
+                    <h2>Paso 2: Inicia Sesión con tu e.firma</h2>
+                    <p>Selecciona la opción para iniciar sesión con tu e.firma. Si no la tienes a la mano, asegúrate de contar con el archivo .cer, .key y la contraseña correspondiente.</p>
+                    <p>Accede a través de este <a href="https://login.mat.sat.gob.mx/nidp/app/login?id=contr-dual-eFirma-totp&sid=0&option=credential" target="_blank">enlace de inicio de sesión con e.firma</a>.</p>
+                    <img src="assets/imagenes/O2.png" alt="Inicio de sesión con e.firma" class="image" (click)="openModal('assets/imagenes/O2.png', 'Inicio de sesión con e.firma')">
+                </div>
+                <div class="column">
+                    <h2>Paso 3: Consulta la Opinión</h2>
+                    <p>Una vez dentro, podrás generar y descargar la Opinión del Cumplimiento en formato PDF. Verifica que toda la información esté correcta antes de proceder.</p>
+                    <div class="aviso">
+                        <p>Importante: La Opinión del Cumplimiento es válida por 30 días. Asegúrate de descargarla y mantenerla actualizada.</p>
+                    </div>
+                    <img src="assets/imagenes/O3.png" alt="Consulta de Opinión" class="image" (click)="openModal('assets/imagenes/O3.png', 'Consulta de Opinión')">
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="boton-inicio">
+        <button class="custom-button inicio-button" (click)="goToInicio()">Ir a Inicio</button>
+    </div>
+    <footer>
+        <p>&copy; 2024 Consulta SAT. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Modal para zoom de imágenes -->
+    <div id="imageModal" class="modal" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" id="modalImage">
+        <div id="caption">{{ modalCaption }}</div>
+    </div>
+</div>

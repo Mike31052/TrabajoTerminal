@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+
+
+
+import { EfirmaComponent } from './efirma/efirma.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { InicioComponent } from './inicio/inicio.component';
 
-
-
-
 @NgModule({
   declarations: [
-    InicioComponent
+    InicioComponent,
+    EfirmaComponent
   ],
   imports: [
-    CommonModule,
-    HomeRoutingModule,
+    HomeRoutingModule // Esto está correcto
   ]
 })
 export class HomeModule { }
