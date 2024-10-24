@@ -1,3 +1,4 @@
+
 <div class="container">
     <mat-toolbar class="text-white menu">
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
@@ -14,40 +15,67 @@
     </mat-toolbar>
 
     <main>
-        <section class="income-selection">
-            <h3>Selecciona el régimen al que perteneces</h3>
-            <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces</p>
-            <br>
-            <form (ngSubmit)="confirmarRegimen()">
-                <label class="radio-option" [class.selected]="selectedOption === 'confianza'">
-                    <input type="radio" name="income" value="confianza" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                    Régimen simplificado de confianza (RESICO)
-                </label>
+        <div class="row">
+            <section class="income-selection left-section">
+                <h3>Selecciona el régimen al que perteneces</h3>
+                <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces</p>
+                <br>
+                <form (ngSubmit)="confirmarRegimen()">
+                    <label class="radio-option" [class.selected]="selectedOption === 'confianza'">
+                        <input type="radio" name="income" value="confianza" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Régimen simplificado de confianza (RESICO)
+                    </label>
 
-                <label class="radio-option" [class.selected]="selectedOption === 'sueldos'">
-                    <input type="radio" name="income" value="sueldos" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                    Sueldos y salarios e ingresos asimilados a salarios
-                </label>
+                    <label class="radio-option" [class.selected]="selectedOption === 'sueldos'">
+                        <input type="radio" name="income" value="sueldos" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Sueldos y salarios e ingresos asimilados a salarios
+                    </label>
 
-                <label class="radio-option" [class.selected]="selectedOption === 'plataformas'">
-                    <input type="radio" name="income" value="plataformas" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                    Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
-                </label>
+                    <label class="radio-option" [class.selected]="selectedOption === 'plataformas'">
+                        <input type="radio" name="income" value="plataformas" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
+                    </label>
 
-                <label class="radio-option" [class.selected]="selectedOption === 'empresarial'">
-                    <input type="radio" name="income" value="empresarial" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                    Régimen de Actividad Empresarial y Profesional
-                </label>
+                    <label class="radio-option" [class.selected]="selectedOption === 'empresarial'">
+                        <input type="radio" name="income" value="empresarial" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Régimen de Actividad Empresarial y Profesional
+                    </label>
 
-                <label class="radio-option" [class.selected]="selectedOption === 'premio'">
-                    <input type="radio" name="income" value="premio" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                    Régimen de los Ingresos por la obtención de premios
-                </label>
+                    <label class="radio-option" [class.selected]="selectedOption === 'premio'">
+                        <input type="radio" name="income" value="premio" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        Régimen de los Ingresos por la obtención de premios
+                    </label>
 
-                <!-- Botón dentro del formulario que ejecuta la función confirmarRegimen -->
-                <button type="submit" class="confirm-button">Confirmar mi régimen</button>
-            </form>
-        </section>
+                    <!-- Botón dentro del formulario que ejecuta la función confirmarRegimen -->
+                    <button type="submit" class="confirm-button">Confirmar mi régimen</button>
+                </form>
+            </section>
+
+            <section class="slideshow right-section">
+                <div class="slideshow-container">
+                    <div class="slide">
+                        <h4>Régimen simplificado de confianza (RESICO)</h4>
+                    </div>
+                    <div class="slide">
+                        <h4>Sueldos y salarios e ingresos asimilados a salarios</h4>
+                    </div>
+                    <div class="slide">
+                        <h4>Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</h4>
+                    </div>
+                    <div class="slide">
+                        <h4>Régimen de Actividad Empresarial y Profesional</h4>
+                    </div>
+                    <div class="slide">
+                        <h4>Régimen de los Ingresos por la obtención de premios</h4>
+                    </div>
+                </div>
+                <!--
+                Flechas de navegación, movidas fuera del contenedor de las diapositivas
+                <a class="prev" (click)="prevSlide()">&#10094;</a>
+                <a class="next" (click)="nextSlide()">&#10095;</a>
+                 -->
+            </section>
+        </div>
 
         <section class="fiscal-regime">
             <h3>Características de tu régimen</h3>

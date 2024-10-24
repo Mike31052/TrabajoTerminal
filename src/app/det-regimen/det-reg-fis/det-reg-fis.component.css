@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -72,14 +73,13 @@ input[type="radio"] {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .confirm-button:hover {
+}
+
+.confirm-button:hover {
     background-color: #303f9f;
-  }
+}
 
 /* Estilos previos */
-
 .radio-option {
     display: flex;
     margin-bottom: 15px;
@@ -89,7 +89,7 @@ input[type="radio"] {
     transition: all 0.3s ease;
 }
 
-.video-button{
+.video-button {
     margin-right: 3%;
 }
 
@@ -107,3 +107,127 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
+/* Layout and slideshow styles */
+.row {
+    display: flex;
+}
+
+.left-section {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.right-section {
+    width: 50%;
+    position: relative; /* Ensure the arrows are positioned relative to this section */
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.slide {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+/* Different background colors for each slide */
+.slide:nth-child(1) {
+    background-color: #ff6347; /* Tomato */
+}
+
+.slide:nth-child(2) {
+    background-color: #4682b4; /* Steel Blue */
+}
+
+.slide:nth-child(3) {
+    background-color: #32cd32; /* Lime Green */
+}
+
+.slide:nth-child(4) {
+    background-color: #4682b4; /* Steel Blue */
+}
+
+.slide:nth-child(5) {
+    background-color: #32cd32; /* Lime Green */
+}
+
+/* Animation for sliding (simultaneous) */
+.slide-enter {
+    animation: slideIn 1s forwards;
+}
+
+.slide-exit {
+    animation: slideOut 1s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/*
+Flechas de navegación
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+*/
+
+.next {
+    right: 10px; /* Move closer to the slides */
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 10px; /* Move closer to the slides */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Ensure the arrows are always visible */
+.slideshow-container:hover .prev, 
+.slideshow-container:hover .next {
+    visibility: visible;
+}
+
+.prev, .next {
+    visibility: visible;
+}

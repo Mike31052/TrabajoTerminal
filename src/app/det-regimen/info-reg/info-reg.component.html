@@ -30,7 +30,7 @@
         </ul>
       </li>
     </ul>
-    <button class="video-btn">Ver video</button>
+    <button class="video-btn" (click)="openModal(1)">Ver video 1</button>
   </div>
 
   <div class="regimen-section">
@@ -59,7 +59,7 @@
         </ul>
       </li>
     </ul>
-    <button class="video-btn">Ver video</button>
+    <button class="video-btn" (click)="openModal(2)">Ver video 2</button>
   </div>
 
   <div class="regimen-section">
@@ -87,7 +87,7 @@
         </ul>
       </li>
     </ul>
-    <button class="video-btn">Ver video</button>
+    <button class="video-btn" (click)="openModal(3)">Ver video 3</button>
   </div>
 
   <div class="regimen-section">
@@ -115,7 +115,7 @@
         </ul>
       </li>
     </ul>
-    <button class="video-btn">Ver video</button>
+    <button class="video-btn" (click)="openModal(4)">Ver video 4</button>
   </div>
 
   <div class="regimen-section">
@@ -142,10 +142,19 @@
         </ul>
       </li>
     </ul>
-    <button class="video-btn">Ver video</button>
+    <button class="video-btn" (click)="openModal(5)">Ver video 5</button>
   </div>
 
   <div class="determine-regimen-btn-container">
     <button class="determine-regimen-btn">Determinar mi régimen</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="videoModal" class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ modalTitle }}</h2>
+    <iframe [src]="videoSrc | safeUrl" width="100%" height="700px" frameborder="0" allowfullscreen></iframe>
   </div>
 </div>
