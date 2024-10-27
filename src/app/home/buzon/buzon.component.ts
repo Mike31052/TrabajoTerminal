@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class BuzonComponent {
   constructor(private router: Router) { }
 
-  goToInicio() {
-    this.router.navigate(['/Inicio']);
+  goToVerificaciones() {
+    this.router.navigate(['/Verificaciones']);
   }
 }

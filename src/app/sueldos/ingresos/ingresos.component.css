@@ -1,0 +1,16 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  h2 {
+    font-weight: 600;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  

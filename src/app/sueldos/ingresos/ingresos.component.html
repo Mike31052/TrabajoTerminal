@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Sueldo, salarios y asimilados</h2>
+
+  <div class="mb-3 row">
+    <label for="ingresoAnual" class="col-sm-2 col-form-label">Ingreso anual</label>
+    <div class="col-sm-8">
+      <input type="number" id="ingresoAnual" class="form-control" [(ngModel)]="ingresoAnual"
+        matTooltip="Ingreso anual bruto">
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-info btn-sm w-100" 
+        (click)="openDialog('Incluye todos los ingresos que una persona recibe a lo largo del año por su trabajo subordinado.
+        Estos ingresos incluyen el salario base mensual, prestaciones (como aguinaldo, prima vacacional), bonos, comisiones, horas extras, vales de despensa, y cualquier otra percepción laboral, sin importar si están exentos de ISR o no.
+        El ingreso anual es la suma total de lo que recibes, independientemente de las exenciones fiscales aplicables.')">
+        Info
+      </button>
+    </div>
+  </div>
+
+  <button class="btn btn-primary mb-3" (click)="agregarIngreso()">Agregar</button>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">RFC del retenedor</th>
+        <th scope="col">Nombre, denominación o razón social</th>
+        <th scope="col">Ingreso anual</th>
+        <th scope="col">Ingreso exento</th>
+        <th scope="col">Subsidio empleo</th>
+        <th scope="col">Retenciones ISR</th>
+        <th scope="col">¿Aceptas y reconoces la información precargada?</th>
+        <th scope="col">Validar/Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingreso of ingresos">
+        <td>{{ ingreso.rfc }}</td>
+        <td>{{ ingreso.empresa }}</td>
+        <td>{{ ingreso.ingresoAnual }}</td>
+        <td>{{ ingreso.ingresoExento }}</td>
+        <td>{{ ingreso.subsidioEmpleo }}</td>
+        <td>{{ ingreso.retencionISR }}</td>
+        <td class="text-center">Agregado</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-warning me-1" (click)="validarIngreso(ingreso)">Validar</button>
+          <button class="btn btn-sm btn-danger" (click)="eliminarIngreso(ingreso)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mb-3 row">
+    <label for="ingresosExentos" class="col-sm-2 col-form-label">Ingresos exentos</label>
+    <div class="col-sm-8">
+      <input type="number" id="ingresosExentos" class="form-control" [(ngModel)]="ingresosExentos"
+        matTooltip="Ingresos exentos">
+    </div>    
+    <div class="col-sm-2">
+      <button class="btn btn-info btn-sm w-100" (click)="openDialog('Son aquellos ingresos que la Ley del ISR permite recibir sin pagar impuestos, hasta ciertos límites establecidos.
+      Estos ingresos son parte del ingreso anual, pero no forman parte de los ingresos acumulables que se consideran para calcular el ISR.
+      Algunos ejemplos de ingresos exentos en sueldos y salarios incluyen:
+      Aguinaldo: Está exento hasta 30 UMAs (Unidades de Medida y Actualización), aproximadamente $3,112 en 2024. Cualquier monto superior a este límite se considera ingreso acumulable.
+      Prima vacacional: Exenta hasta 15 UMAs (aproximadamente $1,556 en 2024). El excedente se suma a los ingresos acumulables.
+      Horas extras: Las primeras dos horas extras diarias, hasta tres veces por semana, están exentas de ISR.
+      Vales de despensa: Están exentos hasta un monto equivalente al 10% del salario mensual del trabajador, si se entregan mediante un monedero electrónico autorizado por el SAT.
+      Prima de antigüedad y otras indemnizaciones: Estas pueden tener una parte exenta, dependiendo de las circunstancias y la legislación aplicable.
+      Importancia de los ingresos exentos: Reducen la base sobre la cual se calcula el ISR, permitiendo al trabajador obtener ciertas prestaciones sin impacto fiscal.')">Info</button>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label for="ingresosAcumulables" class="col-sm-2 col-form-label">Ingresos acumulables</label>
+    <div class="col-sm-8">
+      <input type="number" id="ingresosAcumulables" class="form-control" [(ngModel)]="ingresosAcumulables" matTooltip="Ingreso acumulables">
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-info btn-sm w-100" (click)="openDialog('Son los ingresos que, después de aplicar las exenciones fiscales, se consideran para el cálculo del ISR.
+      Es decir, solo los montos que no están exentos de ISR se consideran ingresos acumulables. Por ejemplo, si tienes un aguinaldo de $20,000 pesos y el límite exento es de 30 UMAs (aproximadamente $3,112 pesos en 2024), solo los $16,888 restantes serán ingresos acumulables.
+      Los ingresos acumulables son, entonces, aquellos que efectivamente se suman para determinar la base gravable del ISR.')">Info</button>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label for="impuestoRetenido" class="col-sm-2 col-form-label">Impuesto retenido</label>
+    <div class="col-sm-8">
+      <input type="number" id="impuestoRetenido" class="form-control" [(ngModel)]="impuestoRetenido" matTooltip="impuesto retenido">
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el ISR que el empleador retiene de manera mensual de los ingresos gravables del trabajador y lo paga directamente al SAT.
+      La retención se realiza de acuerdo con las tablas de ISR mensuales proporcionadas por el SAT, que varían en función del nivel de ingreso.
+      A lo largo del año, el empleador acumula estos montos de ISR retenido y los reporta en la declaración anual del trabajador, cumpliendo con la obligación fiscal de retener el impuesto.
+      Función del impuesto retenido: Permite a los trabajadores pagar el ISR de manera gradual, mes a mes, evitando que tengan que hacer un pago grande al final del año.')">Info</button>
+    </div>
+  </div>
+</div>

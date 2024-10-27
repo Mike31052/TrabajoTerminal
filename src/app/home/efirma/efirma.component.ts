@@ -12,8 +12,8 @@ export class EfirmaComponent {
 
   constructor(private router: Router) {}
 
-  goToInicio() {
-    this.router.navigate(['/Inicio']);
+  goToVerificaciones() {
+    this.router.navigate(['/Verificaciones']);
   }
 
   openModal(imageSrc: string, caption: string) {
