@@ -7,18 +7,24 @@ import { FormsModule } from '@angular/forms';
 import { InfoRegComponent } from './info-reg/info-reg.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
+
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 @NgModule({
   declarations: [
     DetRegFisComponent,
-    InfoRegComponent
+    InfoRegComponent,
+    SafeUrlPipe,
   ],
   imports: [
     CommonModule,
     DetRegimenRoutingModule,
     MatIconModule,
     FormsModule,
+    MatMenuModule,
     MatToolbarModule, 
     MatButtonModule
   ]
