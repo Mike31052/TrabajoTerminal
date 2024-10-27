@@ -1,7 +1,3 @@
-.container {
-    max-width: 1200px;
-  }
-  
   h2 {
     font-weight: 600;
   }
@@ -13,4 +9,3 @@
   button {
     cursor: pointer;
   }
-  

@@ -8,11 +8,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { InicioComponent } from './inicio/inicio.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    InicioComponent
+    InicioComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +26,10 @@ import { InicioComponent } from './inicio/inicio.component';
     MatMenuModule,
     MatToolbarModule, 
     MatButtonModule
+  ],
+  exports: [ 
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class PrincipalModule { }

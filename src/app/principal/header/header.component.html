@@ -1,0 +1,25 @@
+<div class="container">
+    <mat-toolbar class="d-flex justify-content-between align-items-center text-white menu">
+        <div class="d-flex">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
+                <mat-icon class="text-white">menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/inicio']">
+                    <mat-icon class="menu-icon">home</mat-icon>
+                    <span>Inicio</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/verificaciones']">
+                    <mat-icon class="menu-icon">checklist</mat-icon>
+                    <span>Verificaciones</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/impuestos']">
+                    <mat-icon class="menu-icon">account_balance</mat-icon>
+                    <span>Impuestos</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <h1 class="title mx-auto">{{ title }}</h1>
+    </mat-toolbar>
+</div>

@@ -11,6 +11,7 @@ import { DeduccionesComponent } from './deducciones/deducciones.component';
 import { DeterminacionComponent } from './determinacion/determinacion.component';
 import { FormsModule } from '@angular/forms';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
+import { PrincipalModule } from '../principal/principal.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { InfoDialogComponent } from './info-dialog/info-dialog.component';
     MatTabsModule,
     FormsModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    PrincipalModule
   ]
 })
 export class SueldosModule { }
