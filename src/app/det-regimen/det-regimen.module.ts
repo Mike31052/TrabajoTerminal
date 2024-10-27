@@ -9,6 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
 
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
     DetRegimenRoutingModule,
     MatIconModule,
     FormsModule,
+    MatMenuModule,
     MatToolbarModule, 
     MatButtonModule
   ]

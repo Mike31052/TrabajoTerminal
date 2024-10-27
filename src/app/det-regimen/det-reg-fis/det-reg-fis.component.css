@@ -125,8 +125,8 @@ input[type="radio"] {
 .slideshow-container {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    height: 500px;
+    max-width: 540px;
+    height: 540px;
     margin: auto;
     overflow: hidden;
     background-color: #f1f1f1;
@@ -134,7 +134,7 @@ input[type="radio"] {
 
 .slide {
     display: none;
-    padding: 20px;
+    padding: 0px;
     text-align: center;
     color: white;
     height: 100%;
@@ -231,3 +231,5 @@ Flechas de navegación
 .prev, .next {
     visibility: visible;
 }
+
+

@@ -62,7 +62,7 @@ export class DetRegFisComponent implements OnInit {
       if (!this.isPaused) {
         this.showSlide(this.currentSlideIndex + 1);
       }
-    }, 4000); // Cambia de diapositiva cada 5 segundos
+    }, 5000); // Cambia de diapositiva cada 5 segundos
 
     const slideshowContainer = this.renderer.selectRootElement('.slideshow-container', true);
 
