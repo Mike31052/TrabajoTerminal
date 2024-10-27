@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importar Router para la redirección
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -9,24 +7,28 @@ import { Router } from '@angular/router'; // Importar Router para la redirecció
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
+  modalImage: string = '';
+  modalCaption: string = '';
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) {}
 
-  goToEfirma(){
-    this.router.navigate(['/Efirma']);
+  goToVerificaciones() {
+    this.router.navigate(['/Verificaciones']);
   }
 
-  goToRyo(){
-    this.router.navigate(['/RyO']);
+  openModal(imageSrc: string, caption: string) {
+    this.modalImage = imageSrc;
+    this.modalCaption = caption;
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+      modal.style.display = 'block'; // Mostrar el modal
+    }
   }
 
-  goToBuzon(){
-    this.router.navigate(['/Buzon']);
-  }
-
-  goToListado(){
-    this.router.navigate(['/Listado']);
+  closeModal() {
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+      modal.style.display = 'none'; // Ocultar el modal
+    }
   }
 }

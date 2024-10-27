@@ -1,23 +1,107 @@
-<div class="page-container">
-    <main class="content-container">
-      <div class="inicio-section">
-        <div class="columns">
-          <!-- Primera columna -->
-          <div class="column">
-            <h2>Verificaciones</h2>
-            <button class="custom-button" (click)="goToEfirma()">Comprobar vigencia de la E-Firma</button>
-            <button class="custom-button" (click)="goToRyo()">Obtén tu Opinión del cumplimiento de obligaciones fiscales</button>
-            <button class="custom-button" (click)="goToBuzon()">Verificación de buzón tributario</button>
-            <button class="custom-button" (click)="goToListado()">Consulta la relación de contribuyentes con operaciones presuntamente inexistentes</button>
+<div class="container">
+  <header class="header">
+    <h1>BIBLIOTECA VIRTUAL</h1>
+  </header>
+
+  <main class="content-container">
+    <div class="inicio-section">
+      <div class="grid-container">
+        <!-- Primera fila -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es un RFC?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/RFC.jpg" alt="Imagen RFC" class="responsive-image"
+                   (click)="openModal('assets/imagenes/RFC.jpg', 'Ejemplo de RFC')">
+            </div>
           </div>
-          <!-- Segunda columna -->
-          <div class="column">
-            <h2>Impuestos</h2>
-            <button class="custom-button">IVA</button>
-            <button class="custom-button">ISR</button>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es la E-firma?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/Eim.png" alt="Imagen Firma E" class="responsive-image"
+                   (click)="openModal('assets/imagenes/Eim.png', 'Ejemplo de E-firma')">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es el IVA?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/IVA.png" alt="Imagen IVA" class="responsive-image"
+                   (click)="openModal('assets/imagenes/IVA.png', 'IVA')">
+            </div>
+          </div>
+        </div>
+        <!-- Segunda fila -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es el ISR?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/ISR.png" alt="Imagen ISR" class="responsive-image"
+                   (click)="openModal('assets/imagenes/ISR.png', 'ISR')">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen simplificado de confianza</button>
+            <div class="image-space">
+              <img src="assets/imagenes/RESICO.png" alt="Imagen RESICO" class="responsive-image"
+                   (click)="openModal('assets/imagenes/RESICO.png', 'RESICO')">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Sueldos y Salarios e Ingresos Asimilados a Salarios</button>
+            <div class="image-space">
+              <img src="assets/imagenes/SUELDOS.png" alt="Imagen SUELDOS" class="responsive-image"
+                   (click)="openModal('assets/imagenes/SUELDOS.png', 'SUELDOS')">
+            </div>
+          </div>
+        </div>
+        <!-- Tercera fila -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</button>
+            <div class="image-space">
+              <img src="assets/imagenes/TECNOLOGICAS.png" alt="Imagen TECNOLOGICAS" class="responsive-image"
+                   (click)="openModal('assets/imagenes/TECNOLOGICAS.png', 'TECNOLOGICAS')">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen de Actividad Empresarial y Profesional</button>
+            <div class="image-space">
+              <img src="assets/imagenes/PROFESIONAL.png" alt="Imagen PROFESIONAL" class="responsive-image"
+                   (click)="openModal('assets/imagenes/PROFESIONAL.png', 'PROFESIONAL')">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen de los Ingresos por la obtención de premios</button>
+            <div class="image-space">
+              <img src="assets/imagenes/PREMIOS.png" alt="Imagen PREMIOS" class="responsive-image"
+                   (click)="openModal('assets/imagenes/PREMIOS.png', 'PREMIOS')">
+            </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
+
+  <!-- Modal para zoom de imágenes -->
+  <div id="imageModal" class="modal" (click)="closeModal()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+    <div id="caption">{{ modalCaption }}</div>
   </div>
-  
+
+  <footer>
+    <p>© 2024 SAT - Todos los derechos reservados.</p>
+  </footer>
+</div>

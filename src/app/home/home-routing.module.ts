@@ -6,13 +6,15 @@ import { EfirmaComponent } from './efirma/efirma.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ListadoComponent } from './listado/listado.component';
 import { RyoComponent } from './ryo/ryo.component';
+import { VerificacionesComponent } from './verificaciones/verificaciones.component';
 
 const routes: Routes = [
   { path: 'Inicio', component: InicioComponent },
   { path: 'Efirma', component: EfirmaComponent },
   { path: 'RyO', component: RyoComponent},
   { path: 'Buzon', component: BuzonComponent},
-  { path: 'Listado', component: ListadoComponent}
+  { path: 'Listado', component: ListadoComponent},
+  { path: 'Verificaciones', component: VerificacionesComponent}
 ];
 
 @NgModule({

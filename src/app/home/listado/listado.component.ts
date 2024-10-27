@@ -11,7 +11,7 @@ export class ListadoComponent {
     private router: Router
   ) { }
 
-  goToInicio() {
-    this.router.navigate(['/Inicio']);
+  goToVerificaciones() {
+    this.router.navigate(['/Verificaciones']);
   }
 }
