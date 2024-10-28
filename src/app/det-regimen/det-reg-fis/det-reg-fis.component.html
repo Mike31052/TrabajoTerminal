@@ -18,8 +18,8 @@
                 <span>Impuestos</span>
             </button>
         </mat-menu>
-        <span>Menu</span>
-        <span class="example-spacer"></span>
+        <span class="toolbar-title">Determinación de régimen fiscal </span>
+        <span></span>
        <!--
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon class="text-white">favorite</mat-icon>
@@ -35,7 +35,7 @@
         <div class="row">
             <section class="income-selection left-section">
                 <h3>Selecciona el régimen al que perteneces</h3>
-                <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces</p>
+                <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces. El régimen de obtención de obtencion de premios se explicara más adelante</p>
                 <br>
                 <form (ngSubmit)="confirmarRegimen()">
                     <label class="radio-option" [class.selected]="selectedOption === 'confianza'">
@@ -58,10 +58,14 @@
                         Régimen de Actividad Empresarial y Profesional
                     </label>
 
+
+                    <!--
                     <label class="radio-option" [class.selected]="selectedOption === 'premio'">
                         <input type="radio" name="income" value="premio" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Régimen de los Ingresos por la obtención de premios
                     </label>
+                    -->
+
 
                     <!-- Botón dentro del formulario que ejecuta la función confirmarRegimen -->
                     <button type="submit" class="confirm-button">Confirmar mi régimen</button>
@@ -72,23 +76,23 @@
                 <div class="slideshow-container">
                     <div class="slide">
                         <!-- <h4>Régimen simplificado de confianza (RESICO)</h4> -->
-                        <img src="assets/imagenes/RESICO.png">
+                        <img src="assets/imagenes/F_RESICO.png">
                     </div>
                     <div class="slide">
                         <!-- <h4>Sueldos y salarios e ingresos asimilados a salarios</h4> -->
-                         <img src="assets/imagenes/Sueldos_salario.png">
+                         <img src="assets/imagenes/F_sueldos_salario.png">
                     </div>
                     <div class="slide">
                         <!-- <h4>Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</h4> -->
-                        <img src="assets/imagenes/Tecnologicas.png">
+                        <img src="assets/imagenes/F_tecnologicas.png">
                     </div>
                     <div class="slide">
                         <!-- <h4>Régimen de Actividad Empresarial y Profesional</h4> -->
-                        <img src="assets/imagenes/Profesional.png">
+                        <img src="assets/imagenes/F_profesional.png">
                     </div>
                     <div class="slide">
                         <!-- <h4>Régimen de los Ingresos por la obtención de premios</h4> -->
-                        <img src="assets/imagenes/Premios.png">
+                        <img src="assets/imagenes/F_premios.png">
                     </div>
                 </div>
                 <!--
