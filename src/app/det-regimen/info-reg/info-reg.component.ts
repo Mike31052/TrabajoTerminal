@@ -14,17 +14,26 @@ export class InfoRegComponent {
 
   // URLs de videos de YouTube usando el formato de incrustación
   videoPaths: string[] = [
-    'https://www.youtube.com/embed/Dr3TxFQlT9Y?si=_Qt8lnX-PDPkpDBs&amp;controls=0',
-    'https://www.youtube.com/embed/PXUrAiKl4Bs?si=rZZK9gE1Ut6LYOfi',
-    'https://www.youtube.com/embed/jg3jeQ299JU?si=DJuf4rLoC5FQXrHP',
-    'https://www.youtube.com/embed/ql7r0MhWLXw?si=_I5ifz-WRGpSq9gw',
-    'https://www.youtube.com/embed/HeiyxokbjqU?si=Rvti_b2zzH3YIZa8'
+    'https://www.youtube.com/embed/Z6FR5j0zAvQ?si=IMAsWQ8UbqwPNqn3',
+    'https://www.youtube.com/embed/FsKRT_9zkL4?si=O4zuWCyhc5aMdG54',
+    'https://www.youtube.com/embed/1GEtu6KWAlc?si=VkIJPEMJAMRH8nVy',
+    'https://www.youtube.com/embed/0o7cLU0GLs8?si=IVBb4scPF6SmH3qH',
+    'https://www.youtube.com/embed/IqyBPeBKAX0?si=hRCckup9hh0yupgv'
+  ];
+
+  // Títulos específicos para cada video
+  videoTitles: string[] = [
+    'Estás viendo el video sobre el Régimen simplificado de confianza (RESICO)',
+    'Estás viendo el video sobre el Régimen Sueldos y salarios e ingresos asimilados a salarios',
+    'Estás viendo el video sobre el Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas',
+    'Estás viendo el video sobre el Régimen de Actividad Empresarial y Profesional',
+    'Estás viendo el video sobre el Régimen de los Ingresos por la obtención de premios'
   ];
 
   openModal(videoNumber: number) {
     this.showModal = true;
     this.videoNumber = videoNumber; // Asignar el número del video
-    this.modalTitle = `Estás viendo el video ${videoNumber}`;
+    this.modalTitle = this.videoTitles[videoNumber - 1]; // Asignar el título correspondiente
     this.videoSrc = this.videoPaths[videoNumber - 1]; // Obtener la URL del video
   }
 
