@@ -1,129 +1,113 @@
 <div class="container">
-  
-    <mat-toolbar class="text-white menu">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
-          <mat-icon class="text-white">menu</mat-icon>
+  <mat-toolbar class="text-white menu">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
+      <mat-icon class="text-white">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/inicio']">
+        <mat-icon class="menu-icon">home</mat-icon>
+        <span>Inicio</span>
       </button>
-      <mat-menu #menu="matMenu">
-          <button mat-menu-item [routerLink]="['/inicio']">
-              <mat-icon class="menu-icon">home</mat-icon>
-              <span>Inicio</span>
-          </button>
-          <button mat-menu-item [routerLink]="['/verificaciones']">
-              <mat-icon class="menu-icon">checklist</mat-icon>
-              <span>Verificaciones</span>
-          </button>
-          <button mat-menu-item [routerLink]="['/impuestos']">
-              <mat-icon class="menu-icon">account_balance</mat-icon>
-              <span>Impuestos</span>
-          </button>
-      </mat-menu>
-      <span class="example-spacer"></span>
-      <h1 class="title">BIBLIOTECA VIRTUAL</h1>
-      </mat-toolbar>
+      <button mat-menu-item [routerLink]="['/verificaciones']">
+        <mat-icon class="menu-icon">checklist</mat-icon>
+        <span>Verificaciones</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/impuestos']">
+        <mat-icon class="menu-icon">account_balance</mat-icon>
+        <span>Impuestos</span>
+      </button>
+    </mat-menu>
+    <span class="example-spacer"></span>
+    <h1 class="title">BIBLIOTECA VIRTUAL</h1>
+  </mat-toolbar>
 
-  
-    <main class="content-container">
-      <div class="inicio-section">
-        
-        <div class="grid-container">
-          <!-- Primera fila -->
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">¿Qué es un RFC?</button>
-              <div class="image-space">
-                <img src="assets/imagenes/RFC.jpg" alt="Imagen RFC" class="responsive-image"
-                     (click)="openModal('assets/imagenes/RFC.jpg', 'Ejemplo de RFC')">
-              </div>
+  <main class="content-container">
+    <div class="inicio-section">
+      <div class="grid-container">
+        <!-- Primera fila de tres -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es un RFC?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelRFC.jpg" alt="Imagen RFC" class="responsive-image" (click)="openModal('assets/imagenes/AngelRFC.jpg', 'Ejemplo de RFC')">
             </div>
           </div>
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">¿Qué es la E-firma?</button>
-              <div class="image-space">
-                <img src="assets/imagenes/Eim.png" alt="Imagen Firma E" class="responsive-image"
-                     (click)="openModal('assets/imagenes/Eim.png', 'Ejemplo de E-firma')">
-              </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es la E-firma?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelEim.png" alt="Imagen Firma E" class="responsive-image" (click)="openModal('assets/imagenes/AngelEim.png', 'Ejemplo de E-firma')">
             </div>
           </div>
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">¿Qué es el IVA?</button>
-              <div class="image-space">
-                <img src="assets/imagenes/IVA.png" alt="Imagen IVA" class="responsive-image"
-                     (click)="openModal('assets/imagenes/IVA.png', 'IVA')">
-              </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es el IVA?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelIVA.png" alt="Imagen IVA" class="responsive-image" (click)="openModal('assets/imagenes/AngelIVA.png', 'IVA')">
             </div>
           </div>
-          <!-- Segunda fila -->
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">¿Qué es el ISR?</button>
-              <div class="image-space">
-                <img src="assets/imagenes/ISR.png" alt="Imagen ISR" class="responsive-image"
-                     (click)="openModal('assets/imagenes/ISR.png', 'ISR')">
-              </div>
+        </div>
+
+        <!-- Segunda fila de tres -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">¿Qué es el ISR?</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelISR.png" alt="Imagen ISR" class="responsive-image" (click)="openModal('assets/imagenes/AngelISR.png', 'ISR')">
             </div>
           </div>
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">Régimen simplificado de confianza</button>
-              <div class="image-space">
-                <img src="assets/imagenes/R2.jpg" alt="Imagen RESICO" class="responsive-image"
-                     (click)="openModal('assets/imagenes/RESICO.png', 'RESICO')">
-              </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen simplificado de confianza</button>
+            <div class="image-space">
+              <img src="assets/imagenes/R2.png" alt="Imagen RESICO" class="responsive-image" (click)="openModal('assets/imagenes/R2.png', 'RESICO')">
             </div>
           </div>
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">Sueldos y Salarios e Ingresos Asimilados a Salarios</button>
-              <div class="image-space">
-                <img src="assets/imagenes/SUELDOS.png" alt="Imagen SUELDOS" class="responsive-image"
-                     (click)="openModal('assets/imagenes/SUELDOS.png', 'SUELDOS')">
-              </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Sueldos y Salarios e Ingresos Asimilados a Salarios</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelSUELDOS.png" alt="Imagen SUELDOS" class="responsive-image" (click)="openModal('assets/imagenes/AngelSUELDOS.png', 'SUELDOS')">
             </div>
           </div>
-          <!-- Tercera fila -->
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</button>
-              <div class="image-space">
-                <img src="assets/imagenes/TECNOLOGICAS.png" alt="Imagen TECNOLOGICAS" class="responsive-image"
-                     (click)="openModal('assets/imagenes/TECNOLOGICAS.png', 'TECNOLOGICAS')">
-              </div>
+        </div>
+
+        <!-- Tercera fila de tres -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelTecnologicas.png" alt="Imagen TECNOLOGICAS" class="responsive-image" (click)="openModal('assets/imagenes/AngelTecnologicas.png', 'TECNOLOGICAS')">
             </div>
           </div>
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">Régimen de Actividad Empresarial y Profesional</button>
-              <div class="image-space">
-                <img src="assets/imagenes/PROFESIONAL.png" alt="Imagen PROFESIONAL" class="responsive-image"
-                     (click)="openModal('assets/imagenes/PROFESIONAL.png', 'PROFESIONAL')">
-              </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen de Actividad Empresarial y Profesional</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelProfesional.png" alt="Imagen PROFESIONAL" class="responsive-image" (click)="openModal('assets/imagenes/AngelProfesional.png', 'PROFESIONAL')">
             </div>
           </div>
-          <div class="grid-item">
-            <div class="card">
-              <button class="custom-button">Régimen de los Ingresos por la obtención de premios</button>
-              <div class="image-space">
-                <img src="assets/imagenes/PREMIOS.png" alt="Imagen PREMIOS" class="responsive-image"
-                     (click)="openModal('assets/imagenes/PREMIOS.png', 'PREMIOS')">
-              </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button">Régimen de los Ingresos por la obtención de premios</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelPremios.png" alt="Imagen PREMIOS" class="responsive-image" (click)="openModal('assets/imagenes/AngelPremios.png', 'PREMIOS')">
             </div>
           </div>
         </div>
       </div>
-    </main>
-  
-    <!-- Modal para zoom de imágenes -->
-    <div id="imageModal" class="modal" (click)="closeModal()">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
-      <div id="caption">{{ modalCaption }}</div>
+
+      
     </div>
-  
-    <footer>
-      <p>© 2024 SAT - Todos los derechos reservados.</p>
-    </footer>
-  </div>
-  
+  </main>
+
+  <footer>
+    <p>© 2024 SAT - Todos los derechos reservados.</p>
+  </footer>
+</div>

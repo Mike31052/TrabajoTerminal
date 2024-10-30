@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'; // Importar Router para la redirección
 
-
-
-
-
 @Component({
   selector: 'app-verificaciones',
-  standalone: true,
-  imports: [],
   templateUrl: './verificaciones.component.html',
-  styleUrl: './verificaciones.component.css'
+  styleUrls: ['./verificaciones.component.css'] // Corrige "styleUrl" a "styleUrls"
 })
 export class VerificacionesComponent {
 
@@ -18,21 +12,19 @@ export class VerificacionesComponent {
     private router: Router
   ) { }
 
-  goToEfirma(){
+  goToEfirma() {
     this.router.navigate(['/Efirma']);
   }
 
-  goToRyo(){
+  goToRyo() {
     this.router.navigate(['/RyO']);
   }
 
-  goToBuzon(){
+  goToBuzon() {
     this.router.navigate(['/Buzon']);
   }
 
-  goToListado(){
+  goToListado() {
     this.router.navigate(['/Listado']);
   }
 }
-
-

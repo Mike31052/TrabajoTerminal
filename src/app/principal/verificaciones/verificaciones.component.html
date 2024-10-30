@@ -1,0 +1,48 @@
+<!-- Incluye el componente de Header -->
+<app-header [title]="'Verificaciones'"></app-header>
+
+<div class="container">
+  <main class="content-container">
+    <div class="inicio-section">
+      <div class="grid-container">
+        <!-- Primer par de botones -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button" (click)="goToEfirma()">Comprobar vigencia de la E-Firma</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelVigencia.png" alt="Imagen E-Firma" class="responsive-image">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button" (click)="goToRyo()">Obtén tu Opinión del cumplimiento de obligaciones fiscales</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelCumplimiento.png" alt="Imagen Opinión" class="responsive-image">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Segundo par de botones -->
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button" (click)="goToBuzon()">Verificación de buzón tributario</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelBuzon.png" alt="Imagen Buzón" class="responsive-image">
+            </div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <div class="card">
+            <button class="custom-button" (click)="goToListado()">Consulta la relación de contribuyentes con operaciones presuntamente inexistentes</button>
+            <div class="image-space">
+              <img src="assets/imagenes/AngelConsulta.png" alt="Imagen Listado" class="responsive-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<app-footer></app-footer>
