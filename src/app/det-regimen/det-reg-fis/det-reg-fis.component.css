@@ -42,6 +42,12 @@ footer {
     font-size: 1.5rem;
 }
 
+.toolbar-title {
+    flex: 1;
+    text-align: center;
+    font-size: 40px;
+  }  
+
 .income-selection h3, .fiscal-regime h3 {
     color: #6c63ff;
     margin-bottom: 10px;
