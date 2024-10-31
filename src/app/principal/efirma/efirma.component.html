@@ -1,0 +1,77 @@
+<!-- Incluye el componente de Header -->
+<app-header [title]="'Validación de Vigencia de la E-Firma'"></app-header>
+<div class="container">
+  
+    <div class="content-container">
+      <section class="inicio-section">
+        <div class="columns">
+          <div class="column">
+            <h2>Paso 1: Ingresar al Portal del SAT</h2>
+            <p>Visita el sitio web del SAT y accede a la sección correspondiente para validar la vigencia de tu e.firma.</p>
+            <a href="https://www.sat.gob.mx/tramites/19941/valida-la-vigencia-de-tu-e.firma-(antes-firma-electronica)" target="_blank">
+              <button class="custom-button">Ir al sitio del SAT</button>
+            </a>
+          </div>
+  
+          <div class="column">
+            <h2>Paso 2: Cargar los archivos requeridos</h2>
+            <p>Sube el archivo .cer y .key de tu e.firma, junto con la contraseña correspondiente, en el formulario proporcionado.</p>
+            <img src="assets/imagenes/Efirma.png" alt="Ejemplo de Carga de Archivos" class="efirma-image" 
+                 (click)="openModal('assets/imagenes/Efirma.png', 'Ejemplo de Carga de Archivos')">
+          </div>
+  
+          <div class="column">
+            <h2>Paso 3: Verificar el resultado</h2>
+            <p>El sistema te mostrará si tu e.firma es vigente o si ha caducado, así como la fecha de expiración en caso de estar vigente.</p>
+            <img src="assets/imagenes/EjemploVigente.png" alt="Ejemplo de Carga de Archivos" class="efirma-image" 
+                 (click)="openModal('assets/imagenes/EjemploVigente.png', 'Ejemplo de e.firma Vigente')">
+          </div>
+        </div>
+  
+        <div class="extra-info">
+          <div class="aviso">
+            <p><strong>Aviso:</strong> La e.firma es independiente de cada persona y, por razones de seguridad, no se muestra ninguna información personal en este proceso.</p>
+          </div>
+  
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <button class="custom-button" (click)="goToVerificaciones()">Regresar</button>
+        </div>
+      </section>
+    </div>
+    <!-- Modal para zoom de imágenes -->
+    <div id="imageModal" class="modal" (click)="closeModal()">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+      <div id="caption">{{ modalCaption }}</div>
+    </div>
+  </div>
+
+  
+<app-footer></app-footer>
+  
+  

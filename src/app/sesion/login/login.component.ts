@@ -47,8 +47,9 @@ export class LoginComponent {
           if(this.userTO?.regimen == null || this.userTO.regimen == ''){
             this.userSesionService.setUsuario(this.userTO);
             this.router.navigate(['/info-reg']);
+          }else{
+            this.router.navigate(['/Inicio']);
           }
-          
         },
         (error) => {
           this.loading = false;
