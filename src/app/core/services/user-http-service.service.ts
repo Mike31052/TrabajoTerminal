@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environments';  
+import { Usuario } from '../../shared/models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,6 @@ export class UserHttpService {
 
   getUser(correo: string, contraseña: string): Observable<any> {
     const body = { correo, contraseña };
-    console.log('Enviando datos:', body); 
     return this.http.post<any>(`${this.apiUrl}/user/getUser`, body);
   }
   
@@ -40,8 +40,10 @@ export class UserHttpService {
         password: password
     };
     return this.http.post(`${this.apiUrl}/user/updatePassword`, payload);
-}
+  }
 
-
+  updateRegimen(usuario: Usuario): Observable<Usuario> {
+    return this.http.put(`${this.apiUrl}/user/updateRegimen`, usuario);
+  }
 
 }

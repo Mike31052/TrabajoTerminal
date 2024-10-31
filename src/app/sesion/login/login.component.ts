@@ -5,6 +5,7 @@ import { UserHttpService } from '../../core/services/user-http-service.service';
 import { Router } from '@angular/router'; // Importar Router para la redirección
 import * as CryptoJS from 'crypto-js'; // Importar CryptoJS
 import { Usuario } from '../../shared/models/usuario.model';
+import { UserSesionService } from '../../core/services/user-sesion.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private userHttpService: UserHttpService,
-    private router: Router // Inyectar Router para redirigir
+    private router: Router, // Inyectar Router para redirigir
+    private userSesionService: UserSesionService
   ) {
     this.loginForm = new SesionFormGroup(this.fb); // Instanciamos el formulario
   }
@@ -41,10 +43,10 @@ export class LoginComponent {
         (response) => {
           this.loading = false;
           this.successMessage = "Credenciales correctas";
-          console.log(response);
           this.userTO = response.user;
           if(this.userTO?.regimen == null || this.userTO.regimen == ''){
-            this.router.navigate(['/info-reg'], { state: { data: this.userTO } });
+            this.userSesionService.setUsuario(this.userTO);
+            this.router.navigate(['/info-reg']);
           }
           
         },

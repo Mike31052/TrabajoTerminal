@@ -10,6 +10,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
 
 import { MatMenuModule } from '@angular/material/menu';
+import { UserHttpService } from '../core/services/user-http-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -26,7 +28,11 @@ import { MatMenuModule } from '@angular/material/menu';
     FormsModule,
     MatMenuModule,
     MatToolbarModule, 
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
+  ],
+  providers: [
+    UserHttpService
   ]
 })
 export class DetRegimenModule { }

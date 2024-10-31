@@ -1,5 +1,8 @@
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Usuario } from '../../shared/models/usuario.model';
+import { UserSesionService } from '../../core/services/user-sesion.service';
 
 @Component({
   selector: 'app-info-reg',
@@ -11,6 +14,7 @@ export class InfoRegComponent {
   modalTitle = '';
   videoSrc = '';
   videoNumber: number = 0;
+  userTO?: Usuario;
 
   // URLs de videos de YouTube usando el formato de incrustación
   videoPaths: string[] = [
@@ -30,6 +34,14 @@ export class InfoRegComponent {
     'Estás viendo el video sobre el Régimen de los Ingresos por la obtención de premios'
   ];
 
+  constructor(private router: Router,
+              private userSesionService: UserSesionService
+  ){}
+
+  ngOnInit(): void {
+    this.userTO = this.userSesionService.getUsuario();
+    }
+
   openModal(videoNumber: number) {
     this.showModal = true;
     this.videoNumber = videoNumber; // Asignar el número del video
@@ -43,5 +55,9 @@ export class InfoRegComponent {
   
   onBackdropClick(event: MouseEvent) {
     this.closeModal();
+  }
+
+  goToDetReg(){
+    this.router.navigate(['/det-reg-fis']);
   }
 }
