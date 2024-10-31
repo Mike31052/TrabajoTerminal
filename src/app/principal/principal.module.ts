@@ -1,22 +1,34 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { PrincipalRoutingModule } from './principal-routing.module';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { InicioComponent } from './inicio/inicio.component';
-import { HeaderComponent } from './header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BuzonComponent } from './buzon/buzon.component';
+import { EfirmaComponent } from './efirma/efirma.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { ListadoComponent } from './listado/listado.component';
+import { PrincipalRoutingModule } from './principal-routing.module';
+import { RyoComponent } from './ryo/ryo.component';
+import { VerificacionesComponent } from './verificaciones/verificaciones.component';
+
+
 
 
 @NgModule({
   declarations: [
     InicioComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    VerificacionesComponent,
+    EfirmaComponent,
+    ListadoComponent,
+    RyoComponent,
+    BuzonComponent
   ],
   imports: [
     CommonModule,

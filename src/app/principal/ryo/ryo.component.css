@@ -3,43 +3,48 @@
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
-}
+  }
 
-.header, footer {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .header, footer {
     background-color: #3f51b5;
     height: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 0.5rem;
-}
-
-.content-container {
+    font-size: 1.5rem;
+  }
+  
+  .content-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f0f2f5;
     padding: 2rem;
-}
-
-.inicio-section {
+  }
+  
+  .inicio-section {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     margin-top: 0;
-}
-
-.columns {
+  }
+  
+  .columns {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.column {
+  }
+  
+  .column {
     background-color: white;
     padding: 2rem;
     border-radius: 8px;
@@ -47,29 +52,29 @@
     width: 100%;
     max-width: 400px;
     transition: transform 0.2s, box-shadow 0.3s;
-}
-
-.column:hover {
+  }
+  
+  .column:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-h2 {
+  }
+  
+  h2 {
     text-align: center;
     color: #3f51b5;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
-}
-
-p, ul {
+  }
+  
+  p {
     font-size: 1rem;
     line-height: 1.6;
     color: #555;
     margin-bottom: 1.5rem;
-}
-
-.custom-button {
-    width: 100%;
+  }
+  
+  .custom-button {
+    width: 50%;
     padding: 1rem;
     background-color: #3f51b5;
     color: white;
@@ -77,16 +82,28 @@ p, ul {
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
-    margin-top: 1.5rem;
+    margin-bottom: 1rem;
     transition: background-color 0.3s ease, transform 0.2s;
-}
+  }
 
-.custom-button:hover {
+  .boton-inicio {
+    display: flex;
+    justify-content: center; /* Centrar el contenido */
+    margin: 2rem 0; /* Espaciado superior e inferior */
+}
+  
+  .custom-button:hover {
     background-color: #303030;
     transform: scale(1.05);
-}
-
-.aviso {
+  }
+  
+  footer {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .aviso {
     background-color: #fff3cd;
     color: #856404;
     border: 1px solid #ffeeba;
@@ -96,16 +113,47 @@ p, ul {
     text-align: center;
     max-width: 800px;
     width: 100%;
-}
-
-.aviso p {
+  }
+  
+  .aviso p {
     margin: 0;
     font-size: 1rem;
-}
-
-.titulo-principal {
-    font-size: 2.5rem; /* Ajusta este tamaño según sea necesario */
+  }
+  
+  .image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Agregar cursor pointer para indicar clickeable */
+  }
+  
+  #imageModal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+  }
+  
+  #imageModal img {
+    margin: auto;
+    display: block;
+    width: 80%; /* Ajusta el tamaño de la imagen */
+    max-width: 700px; /* Ancho máximo */
+    border-radius: 8px; /* Bordes redondeados */
+  }
+  
+  #modal-caption {
     text-align: center;
-    margin: 0; /* Quita márgenes innecesarios */
-    padding: 0 1rem; /* Añade padding para evitar que se corte el texto */
-}
+    color: white;
+    margin-top: 10px;
+  }
+  

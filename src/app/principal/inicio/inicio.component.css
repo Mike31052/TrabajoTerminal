@@ -79,8 +79,8 @@
   }
   
   .responsive-image {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain; /* Ajusta la imagen para que se contenga dentro del espacio */
   }
   
@@ -182,4 +182,35 @@
   .container {
     width: 80%;
     margin: 0 auto;
+  }
+ 
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 1cm; /* Espacio entre las cartas */
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .last-item {
+    display: flex;
+    justify-content: center; /* Centra el botón de premios */
+    margin-top: 20px;
+  }
+  
+  .card {
+    background: #C70039; /* Color vino claro */
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+  }
+  
+  .custom-button {
+    margin-bottom: 10px;
   }

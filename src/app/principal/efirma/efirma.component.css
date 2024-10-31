@@ -91,7 +91,6 @@
     font-size: 1rem;
     padding: 1rem;
   }
-  
   .aviso {
     background-color: #fff3cd;
     color: #856404;
@@ -108,4 +107,44 @@
     margin: 0;
     font-size: 1rem;
   }
+  .efirma-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
   
+  
+  #imageModal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+  }
+  
+  #imageModal img {
+    margin: auto;
+    display: block;
+    width: 80%; /* Ajusta el tamaño de la imagen */
+    max-width: 700px; /* Ancho máximo */
+    border-radius: 8px; /* Bordes redondeados */
+  }
+  
+  #modal-caption {
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }

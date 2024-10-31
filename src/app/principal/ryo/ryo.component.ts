@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  selector: 'app-ryo',
+  templateUrl: './ryo.component.html',
+  styleUrls: ['./ryo.component.css'] // Asegúrate de que sea 'styleUrls'
 })
-export class InicioComponent {
+export class RyoComponent {
   modalImage: string = '';
   modalCaption: string = '';
 
@@ -21,14 +21,14 @@ export class InicioComponent {
     this.modalCaption = caption;
     const modal = document.getElementById('imageModal');
     if (modal) {
-      modal.style.display = 'block'; // Mostrar el modal
+      modal.style.display = 'block';
     }
   }
 
   closeModal() {
     const modal = document.getElementById('imageModal');
     if (modal) {
-      modal.style.display = 'none'; // Ocultar el modal
+      modal.style.display = 'none';
     }
   }
 }
