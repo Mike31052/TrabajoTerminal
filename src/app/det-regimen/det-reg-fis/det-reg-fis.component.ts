@@ -3,6 +3,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { UserSesionService } from '../../core/services/user-sesion.service';
 import { Usuario } from '../../shared/models/usuario.model';
 import { UserHttpService } from '../../core/services/user-http-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-det-reg-fis',
@@ -21,6 +22,7 @@ export class DetRegFisComponent implements OnInit {
   constructor(private renderer: Renderer2,
               private userSesionService: UserSesionService,
               private userHttpService: UserHttpService,
+              private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,13 +44,14 @@ export class DetRegFisComponent implements OnInit {
   confirmarRegimen() {
         this.userTO!.regimen = this.selectedOption;
         this.userHttpService.updateRegimen(this.userTO!).subscribe(
-          (response: Usuario) => {
+          (response) => {
             console.log("Éxito:", response);
           },
           (error) => {
             console.error("Error al actualizar régimen:", error);
           }
         );
+        this.router.navigate(['/Inicio']);
   }
 
 
