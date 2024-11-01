@@ -1,0 +1,42 @@
+<app-header [title]="'IVA'"></app-header> <!-- Encabezado de Verificaciones -->
+<div class="container">
+
+    <h2>¿Qué es el IVA?</h2>
+    <p>El Impuesto al Valor Agregado (IVA) es un impuesto indirecto que se aplica en México a la venta de bienes, prestación de servicios y en algunas importaciones. Se calcula como un porcentaje del precio de venta, y es pagado por el consumidor final en cada transacción.</p>
+
+    <div class="image-space">
+      <img src="assets/imagenes/AngelIVA.png" alt="Ejemplo de Factura con IVA" class="responsive-image">
+    </div>
+
+    <div class="info-box">
+      <h3>¿Por qué es importante el IVA?</h3>
+      <p>El IVA es una fuente significativa de ingresos para el gobierno mexicano, contribuyendo al financiamiento de servicios públicos y programas de desarrollo. Además, permite que el SAT monitoree las transacciones comerciales y fomente el cumplimiento fiscal en el país.</p>
+    </div>
+
+    <h3>¿Para qué sirve el IVA?</h3>
+    <ul>
+      <li>Financiar proyectos de infraestructura y servicios públicos.</li>
+      <li>Contribuir al gasto público en educación, salud y seguridad.</li>
+      <li>Incentivar el cumplimiento fiscal a través de la transparencia en transacciones.</li>
+      <li>Facilitar el registro y monitoreo de actividades comerciales en México.</li>
+    </ul>
+
+    <div class="image-space">
+      <img src="assets/imagenes/AngelPago.png" alt="Pago de IVA en México" class="responsive-image">
+    </div>
+
+    <!-- Contenedor centrado para el botón -->
+    <div class="button-container">
+        <a href="http://omawww.sat.gob.mx/informacion_fiscal/obligaciones_fiscales/personas_morales/no_lucrativas/Paginas/concepto_iva.aspx" target="_blank">
+          <button>Conoce más sobre el IVA</button>
+        </a>
+    </div>
+
+    <!-- Contenedor centrado para el botón -->
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+</div>
+
+<app-footer></app-footer> <!-- Pie de página de Verificaciones -->

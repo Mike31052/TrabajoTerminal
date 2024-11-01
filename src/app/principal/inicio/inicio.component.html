@@ -27,7 +27,7 @@
         <!-- Primera fila de tres -->
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">¿Qué es un RFC?</button>
+            <button class="custom-button" (click)="goTobrfc()">¿Qué es un RFC?</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelRFC.jpg" alt="Imagen RFC" class="responsive-image" (click)="openModal('assets/imagenes/AngelRFC.jpg', 'Ejemplo de RFC')">
             </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">¿Qué es la E-firma?</button>
+            <button class="custom-button" (click)="goTobefirma()">¿Qué es la E-firma?</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelEim.png" alt="Imagen Firma E" class="responsive-image" (click)="openModal('assets/imagenes/AngelEim.png', 'Ejemplo de E-firma')">
             </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">¿Qué es el IVA?</button>
+            <button class="custom-button"   (click)="goTobiva()">¿Qué es el IVA?</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelIVA.png" alt="Imagen IVA" class="responsive-image" (click)="openModal('assets/imagenes/AngelIVA.png', 'IVA')">
             </div>
@@ -53,7 +53,7 @@
         <!-- Segunda fila de tres -->
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">¿Qué es el ISR?</button>
+            <button class="custom-button"   (click)="goTobisr()">¿Qué es el ISR?</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelISR.png" alt="Imagen ISR" class="responsive-image" (click)="openModal('assets/imagenes/AngelISR.png', 'ISR')">
             </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">Régimen simplificado de confianza</button>
+            <button class="custom-button"   (click)="goTobresico()">Régimen simplificado de confianza</button>
             <div class="image-space">
               <img src="assets/imagenes/R2.png" alt="Imagen RESICO" class="responsive-image" (click)="openModal('assets/imagenes/R2.png', 'RESICO')">
             </div>
@@ -69,7 +69,7 @@
         </div>
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">Sueldos y Salarios e Ingresos Asimilados a Salarios</button>
+            <button class="custom-button"   (click)="goTobsalarios()">Sueldos y Salarios e Ingresos Asimilados a Salarios</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelSUELDOS.png" alt="Imagen SUELDOS" class="responsive-image" (click)="openModal('assets/imagenes/AngelSUELDOS.png', 'SUELDOS')">
             </div>
@@ -79,7 +79,7 @@
         <!-- Tercera fila de tres -->
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</button>
+            <button class="custom-button"    (click)="goTobtecnologicas()">Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelTecnologicas.png" alt="Imagen TECNOLOGICAS" class="responsive-image" (click)="openModal('assets/imagenes/AngelTecnologicas.png', 'TECNOLOGICAS')">
             </div>
@@ -87,7 +87,7 @@
         </div>
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">Régimen de Actividad Empresarial y Profesional</button>
+            <button class="custom-button"   (click)="goTobeyp()">Régimen de Actividad Empresarial y Profesional</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelProfesional.png" alt="Imagen PROFESIONAL" class="responsive-image" (click)="openModal('assets/imagenes/AngelProfesional.png', 'PROFESIONAL')">
             </div>
@@ -95,7 +95,7 @@
         </div>
         <div class="grid-item">
           <div class="card">
-            <button class="custom-button">Régimen de los Ingresos por la obtención de premios</button>
+            <button class="custom-button"    (click)="goTobpremios()">Régimen de los Ingresos por la obtención de premios</button>
             <div class="image-space">
               <img src="assets/imagenes/AngelPremios.png" alt="Imagen PREMIOS" class="responsive-image" (click)="openModal('assets/imagenes/AngelPremios.png', 'PREMIOS')">
             </div>

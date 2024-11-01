@@ -1,0 +1,27 @@
+<app-header [title]="'Ingresos por la Obtención de Premios'"></app-header> <!-- Encabezado del Régimen de Ingresos por Premios -->
+<div class="container">
+
+    <h2>Régimen de Ingresos por la Obtención de Premios</h2>
+
+    <p>Si obtienes ingresos por premios, debes informarlo en tu declaración anual, ya que están sujetos al impuesto sobre la renta.</p>
+
+    <h3>Obligaciones fiscales</h3>
+    <ul>
+        <li>Declarar los ingresos obtenidos por premios en la declaración anual.</li>
+        <li>Conservar los comprobantes de los premios obtenidos.</li>
+    </ul>
+
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+    <!-- Modal para zoom de imágenes -->
+    <div id="imageModal" class="modal" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+        <div id="caption">{{ modalCaption }}</div>
+      </div>
+
+</div>
+
+<app-footer></app-footer> <!-- Pie de página del Régimen de Ingresos por Premios -->

@@ -1,0 +1,116 @@
+<app-header [title]="'Actividad Empresarial y Profesional'"></app-header> <!-- Encabezado del Régimen de Actividad Empresarial -->
+<div class="container">
+
+    <h2>Régimen de Actividad Empresarial y Profesional</h2>
+
+    <h3>IVA</h3>
+    <p>A los ingresos del mes se le restan los gastos o deducciones correspondientes al mismo mes y a esa diferencia se le aplica una tarifa que está establecida en la ley del impuesto sobre la renta. A los ingresos que se determinó se le saca el IVA.
+        Para calcular el IVA que se debe pagar queda de la siguiente forma.
+        (Ingresos * 16%) - (Gastos * 16%)
+    </p>
+
+    <h3>Impuestos sobre la renta</h3>
+    <p>Las personas físicas las tasas son variables con un límite inferior del 1.92% y un límite superior del 35% dependiendo del monto de los ingresos que sean gravables.
+        Para determinar el ingreso gravable se calcula de la siguiente forma:
+        Ingresos acumulables – deducciones del mes (gastos).
+        Calculo para determinar el impuesto sería:
+        ((Ingreso gravable – límite inferior) * Porcentaje sobre excedente del límite inferior) + Cuota fija
+        Calculo para determinar el impuesto a pagar sería:
+        ((Ingreso gravable – límite inferior) * Porcentaje sobre excedente del límite inferior) + Cuota fija
+    </p>
+
+    <div class="image-container">
+        <img src="assets/imagenes/Angel5.png" alt="Tasa2" class="Tasa" 
+             (click)="openModal('assets/imagenes/Angel5.png', 'Ejemplo de tasa2')">
+    </div>
+
+    <p>Para determinar el impuesto anual definitivo se hace de la siguiente forma:
+        Para determinar los ingresos gravables anuales se calcula de la siguiente forma:
+        Ingresos acumulables de todos los meses – deducciones del año (gastos).
+        (((Ingreso gravable anual – límite inferior anual) * Porcentaje sobre excedente del límite inferior anual) + Cuota fija anual) - (Pagos mensuales realizados durante el año) 
+    </p>
+
+    <div class="image-container">
+        <img src="assets/imagenes/Angel6.png" alt="Tasa2" class="Tasa" 
+             (click)="openModal('assets/imagenes/Angel6.png', 'Ejemplo de tasa2')">
+    </div>
+
+    <h3>Obligaciones fiscales</h3>
+    <ul>
+        <li>Inscribirte en el RFC.</li>
+        <li>Expedir tus facturas electrónicas.</li>
+        <li>Presentar tus Declaraciones Mensuales y Anuales.</li>
+    </ul>
+
+    <h3>Deducciones que se pueden hacer</h3>
+    <ul>
+        <li>Deducciones Personales
+            <ul>
+                <li>Salud:
+                    <ul>
+                        <li>Honorarios médicos, dentales y por servicios profesionales en materia de psicología y nutrición.</li>
+                        <li>Gastos hospitalarios y medicinas incluidas en facturas de hospitales.</li>
+                        <li>Análisis y estudios clínicos tanto para ti como los de tus familiares directos.</li>
+                        <li>Compra o alquiler de aparatos para el restablecimiento o rehabilitación del paciente.</li>
+                        <li>Compra de lentes ópticos graduados para corregir efectos visuales de hasta 2,500 pesos.</li>
+                        <li>Primas por seguros de gastos médicos o gastos médicos mayores.</li>
+                    </ul>
+                </li>
+                <li>Educación:
+                    <ul>
+                        <li>Colegiaturas en instituciones educativas privadas con validez oficial de estudios, desde preescolar hasta bachillerato. Los montos anuales límite son:
+                            <ul>
+                                <li>Preescolar: 14,200 pesos.</li>
+                                <li>Primaria: 12,900 pesos.</li>
+                                <li>Secundaria: 19,900 pesos.</li>
+                                <li>Profesional técnico: 17,100 pesos.</li>
+                                <li>Bachillerato o su equivalente: 24,500 pesos.</li>
+                            </ul>
+                        </li>
+                        <li>Transporte escolar, sólo si es obligatorio.</li>
+                        <li>Nota: Si el alumno recibe una beca, este gasto ya no puede ser deducible.</li>
+                    </ul>
+                </li>
+                <li>Otros gastos:
+                    <ul>
+                        <li>Gastos funerarios de familiares directos.</li>
+                        <li>Intereses pagados por créditos hipotecarios.</li>
+                        <li>Donativos otorgados a instituciones autorizadas.</li>
+                        <li>Aportaciones complementarias de retiro realizadas en la subcuenta de aportaciones voluntarias de tus planes personales de retiro (Afore).</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Deducciones Profesionales de las personas físicas con actividad empresarial:
+            <ul>
+                <li>Empresariales:
+                    <ul>
+                        <li>Pago de sueldos y salarios.</li>
+                        <li>Cuotas que hayas pagado como patrón al IMSS.</li>
+                        <li>Arrendamiento del local que utilices para la prestación de tus servicios.</li>
+                        <li>Luz y teléfono del local para tus actividades.</li>
+                        <li>Papelería y artículos de escritorio.</li>
+                        <li>Inversiones en activo fijo, como equipo de cómputo o transporte.</li>
+                        <li>Las mercancías, materias primas, productos terminados o semiterminados, que utilices para producir tus bienes o servicios.</li>
+                        <li>Gastos imprescindibles para la realización de la actividad.</li>
+                        <li>Intereses pagados derivados de la realización de actividad empresarial o servicio.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+    <!-- Modal para zoom de imágenes -->
+    <div id="imageModal" class="modal" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+        <div id="caption">{{ modalCaption }}</div>
+    </div>
+
+</div>
+
+<app-footer></app-footer> <!-- Pie de página del Régimen de Actividad Empresarial -->

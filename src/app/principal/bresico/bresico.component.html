@@ -1,0 +1,54 @@
+<app-header [title]="'Régimen Simplificado de Confianza'"></app-header> <!-- Encabezado del Régimen Simplificado de Confianza -->
+<div class="container">
+
+    <h2>Régimen Simplificado de Confianza</h2>
+
+    <h3>Definición</h3>
+    <p>Es una simplificación administrativa para el pago de impuesto sobre la renta (ISR). La propuesta está orientada a contribuyentes personas físicas que perciben ingresos anuales menores a 3.5 millones de pesos facturados conforme a su actividad económica.</p>
+
+    <h3>Regímenes que lo Conforman</h3>
+    <ul>
+        <li><strong>Actividades empresariales y profesionales:</strong> Pertenecen a este régimen quienes realizan únicamente actividades empresariales o prestan servicios profesionales, siempre que sus ingresos no excedan 3.5 millones de pesos.</li>
+        <li><strong>Régimen de incorporación fiscal:</strong> Pertenecen a este régimen las personas físicas con ingresos anuales que no exceden de dos millones de pesos.</li>
+        <li><strong>Uso o goce de inmuebles:</strong> Pertenecen a este régimen los dueños de un bien inmueble que autorizan a otras personas para su uso a cambio de una cantidad periódica de dinero (renta).</li>
+        <li><strong>Actividades agrícolas, ganaderas, pesqueras o silvícolas:</strong> Pertenecen a este régimen quienes realizan actividades del sector primario.</li>
+    </ul>
+
+    <h3>Beneficios de tributar en este régimen</h3>
+    <ul>
+        <li>Tasas progresivas para el pago del impuesto sobre la renta, sobre ingresos efectivamente facturados y cobrados.</li>
+        <img src="assets/imagenes/Angel1.png" alt="Tasas" class="Tasas" 
+                 (click)="openModal('assets/imagenes/Angel1.png', 'Ejemplo de tasas')">
+        <li>Declaraciones prellenadas con pago ágil.</li>
+        <li>Mayor límite de ingresos permitidos (hasta 3.5 millones de pesos anuales).</li>
+    </ul>
+
+    <h3>Requisitos y obligaciones</h3>
+    <ul>
+        <li>Estar inscrito y activo en el RFC.</li>
+        <li>Contar con e.firma vigente.</li>
+        <li>Contar con el buzón tributario activo.</li>
+        <li>Ingresos anuales de hasta 3.5 millones de pesos.</li>
+        <li>Emitir facturas electrónicas por ingresos cobrados.</li>
+        <li>Cumplir con las obligaciones fiscales.</li>
+        <li>No encontrarse en el listado de contribuyentes del SAT.</li>
+        <li>Realizar el pago provisional mensual de ISR.</li>
+        <li>Presentar declaración anual de ISR.</li>
+    </ul>
+
+    <h3>Información adicional</h3>
+    <p>Los pagos provisionales mensuales de ISR y los definitivos de IVA se presentan a más tardar el día 17 del mes inmediato posterior al pago. Debido a las tasas de ISR, los contribuyentes no podrán deducir ningún tipo de gasto.</p>
+
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+    <div id="imageModal" class="modal" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+        <div id="caption">{{ modalCaption }}</div>
+      </div>
+
+</div>
+
+<app-footer></app-footer> <!-- Pie de página del Régimen Simplificado de Confianza -->
