@@ -1,0 +1,64 @@
+<app-header [title]="'Actividades Empresariales con Ingresos a través de Plataformas Tecnológicas'"></app-header> <!-- Encabezado del Régimen de Actividades Empresariales -->
+<div class="container">
+
+    <h2>Régimen de Actividades Empresariales con Ingresos a través de Plataformas Tecnológicas</h2>
+
+    <h3>Definición</h3>
+    <p>Este régimen se implementó para aumentar la recaudación de impuestos de personas que generan ingresos a través de plataformas digitales.</p>
+
+    <h3>Pagos definitivos y provisionales</h3>
+
+    <h4>Pagos Definitivos</h4>
+    <p>El SAT considera las retenciones que hacen las plataformas digitales como pago único para las personas físicas que eligen esta opción. Por lo que no se tienen que pagar impuestos extras.</p>
+    <p>Este beneficio fiscal es para aquellos que tengan ingresos anuales que no superen los <strong>$300,000.00 pesos</strong>.</p>
+    
+    <ul>
+        <li><strong>Sin deducciones</strong>: No se pueden hacer deducciones en este esquema.</li>
+        <li><strong>Declaraciones</strong>: Se deben presentar declaraciones mensuales y anuales.</li>
+    </ul>
+
+    <h4>Pagos Provisionales</h4>
+    <p>Esta alternativa permite realizar deducciones relacionadas con la actividad, lo que puede reducir el pago de impuestos.</p>
+    <p>El cálculo de estos se basa en una tabla que puede llegar hasta el <strong>35%</strong>.</p>
+    
+    <div class="image-container">
+    <img src="assets/imagenes/Angel3.png" alt="Tasa2" class="Tasa" 
+                 (click)="openModal('assets/imagenes/Angel3.png', 'Ejemplo de tasa2')">
+
+                </div>
+    <ul>
+        <li><strong>Deducciones permitidas</strong>: Se pueden deducir gastos relacionados con la actividad económica.</li>
+        <li><strong>Declaraciones</strong>: También se requiere la presentación de declaraciones mensuales y la declaración anual.</li>
+    </ul>
+
+    <h3>Retención de ISR e IVA</h3>
+    <p>Tratándose de IVA, Se debe calcular por cada mes el impuesto al valor agregado (IVA) correspondiente, aplicando la tasa de 16 % a las contraprestaciones efectivamente cobradas en dicho mes y pagarlo mediante declaración electrónica que debe presentarse a más tardar el día 17 del mes siguiente de que se trate.
+En el caso de que la persona física efectúe cobros directos a sus clientes y opte por calcular su IVA, aplicando la tasa de 8 %, deberá cumplir con algunos requisitos
+</p>
+
+<div class="image-container">
+    <img src="assets/imagenes/Angel4.png" alt="Tasa2" class="Tasa" 
+                 (click)="openModal('assets/imagenes/Angel4.png', 'Ejemplo de tasa2')">
+
+                </div>
+
+    <h3>Obligaciones fiscales</h3>
+    <ul>
+        <li>Especificar el precio de servicios y el monto correspondiente al IVA.</li>
+        <li>Presentar declaraciones de impuestos mensuales y anuales.</li>
+        <li>Expedir el CFDI correspondiente a sus clientes.</li>
+    </ul>
+
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+    <!-- Modal para zoom de imágenes -->
+    <div id="imageModal" class="modal" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+        <div id="caption">{{ modalCaption }}</div>
+    </div>
+</div>
+
+<app-footer></app-footer> <!-- Pie de página del Régimen de Actividades Empresariales -->

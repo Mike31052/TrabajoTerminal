@@ -31,4 +31,51 @@ export class InicioComponent {
       modal.style.display = 'none'; // Ocultar el modal
     }
   }
+
+  goTobrfc() {
+    this.router.navigate(['/brfc']);
+  }
+
+  goTobefirma() {
+    this.router.navigate(['/befirma']);
+  }
+
+
+  goTobiva() {
+    this.router.navigate(['/biva']);
+  }
+
+  goTobeyp() {
+    this.router.navigate(['/beyp']);
+  }
+
+
+  goTobisr() {
+    this.router.navigate(['/bisr']);
+  }
+
+
+
+  goTobpremios() {
+    this.router.navigate(['/bpremios']);
+  }
+
+
+
+  goTobresico() {
+    this.router.navigate(['/bresico']);
+  }
+
+
+
+  goTobsalarios() {
+    this.router.navigate(['/bsalarios']);
+  }
+
+
+
+
+  goTobtecnologicas() {
+    this.router.navigate(['/btecnologicas']);
+  }
 }
