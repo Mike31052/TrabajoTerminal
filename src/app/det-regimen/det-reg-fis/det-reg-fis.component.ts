@@ -46,12 +46,12 @@ export class DetRegFisComponent implements OnInit {
         this.userHttpService.updateRegimen(this.userTO!).subscribe(
           (response) => {
             console.log("Éxito:", response);
+            this.router.navigate(['/Inicio']);
           },
           (error) => {
             console.error("Error al actualizar régimen:", error);
           }
         );
-        this.router.navigate(['/Inicio']);
   }
 
 

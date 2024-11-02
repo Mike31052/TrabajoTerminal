@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component'; // Ajusta la ruta según sea necesario
 import { IngresosAsalariado } from '../../shared/models/ingresos-sueldos.model';
+import { AddIngresoComponent } from '../add-ingreso/add-ingreso.component';
+import { Usuario } from '../../shared/models/usuario.model';
 
 @Component({
   selector: 'app-ingresos',
@@ -14,19 +16,23 @@ export class IngresosComponent {
   ingresosAcumulables: number = 0;
   impuestoRetenido: number = 0;
   ingresos?: IngresosAsalariado [];
+  userTO?: Usuario;
 
   constructor(private dialog: MatDialog) {}
 
   agregarIngreso() {
-    this.ingresos?.push({
-      rfc: 'Nuevo RFC',
-      empresa: 'Nuevo Nombre',
-      ingresoAnual: this.ingresoAnual,
-      ingresoExento: this.ingresosExentos,
-      subsidioEmpleo: 0,
-      retencionISR: this.impuestoRetenido
+    const dialogRef = this.dialog.open(AddIngresoComponent, {
+      data: { userTO: this.userTO }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        console.log('Monto ingresado:', result);
+        // Aquí puedes manejar el resultado, como guardar el ingreso
+      }
     });
   }
+
 
   validarIngreso(ingreso: any) {
     alert('Validando ingreso de ' + ingreso.nombre);

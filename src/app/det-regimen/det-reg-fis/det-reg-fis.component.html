@@ -39,22 +39,22 @@
                 <br>
                 <form (ngSubmit)="confirmarRegimen()">
                     <label class="radio-option" [class.selected]="selectedOption === 'SC'">
-                        <input type="radio" name="income" value="confianza" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        <input type="radio" name="income" value="SC" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Régimen simplificado de confianza (RESICO)
                     </label>
 
                     <label class="radio-option" [class.selected]="selectedOption === 'SS'">
-                        <input type="radio" name="income" value="sueldos" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        <input type="radio" name="income" value="SS" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Sueldos y salarios e ingresos asimilados a salarios
                     </label>
 
                     <label class="radio-option" [class.selected]="selectedOption === 'PT'">
-                        <input type="radio" name="income" value="plataformas" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        <input type="radio" name="income" value="PT" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
                     </label>
 
                     <label class="radio-option" [class.selected]="selectedOption === 'EP'">
-                        <input type="radio" name="income" value="empresarial" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                        <input type="radio" name="income" value="EP" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
                         Régimen de Actividad Empresarial y Profesional
                     </label>
 
