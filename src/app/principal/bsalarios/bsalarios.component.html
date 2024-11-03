@@ -1,0 +1,45 @@
+<app-header [title]="'Sueldos y Salarios e Ingresos Asimilados a Salarios'"></app-header> <!-- Encabezado del Régimen de Sueldos y Salarios -->
+<div class="container">
+
+    <h2>Sueldos y Salarios e Ingresos Asimilados a Salarios</h2>
+
+    <h3>Definición</h3>
+    <p>Los asalariados son personas contratadas por uno o varios empleadores, quienes les asignan actividades durante su jornada laboral y les pagan periódicamente.</p>
+
+    <h3>Obligaciones fiscales</h3>
+    <ul>
+        <li>Inscribirse al Registro Federal de Contribuyentes (RFC).</li>
+        <li>Mantener la información actualizada.</li>
+        <li>Presentar Declaración Anual si se obtienen ingresos de dos o más patrones.</li>
+    </ul>
+
+    <h3>Deducciones que se pueden realizar</h3>
+    <ul>
+        <li>Gastos médicos, dentales y hospitalarios.</li>
+        <li>Pagos por primas de seguro de gastos médicos.</li>
+        <li>Intereses reales de créditos hipotecarios.</li>
+        <li>Colegiaturas y transporte escolar obligatorio.</li>
+    </ul>
+
+    <h3>Impuestos y cuotas que se retienen</h3>
+    <p>Se retiene el ISR y cuotas del IMSS, INFONAVIT y SAR.</p>
+    <p>Para realizar el cálculo de ISR se debe tomar en cuenta la tarifa del impuesto correspondiente al año en curso, la cual podemos encontrar en el anexo 8 de la miscelánea fiscal </p>
+
+    <img src="assets/imagenes/Angel2.png" alt="Tasa2" class="Tasa" 
+                 (click)="openModal('assets/imagenes/Angel2.png', 'Ejemplo de tasa2')">
+    
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+
+    <!-- Modal para zoom de imágenes -->
+    <div id="imageModal" class="modal" (click)="closeModal()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" id="modalImage" alt="Imagen ampliada">
+        <div id="caption">{{ modalCaption }}</div>
+      </div>
+
+</div>
+
+<app-footer></app-footer> <!-- Pie de página del Régimen de Sueldos y Salarios -->

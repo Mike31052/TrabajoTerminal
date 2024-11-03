@@ -6,6 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+
+
 import { BuzonComponent } from './buzon/buzon.component';
 import { EfirmaComponent } from './efirma/efirma.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,6 +18,17 @@ import { ListadoComponent } from './listado/listado.component';
 import { PrincipalRoutingModule } from './principal-routing.module';
 import { RyoComponent } from './ryo/ryo.component';
 import { VerificacionesComponent } from './verificaciones/verificaciones.component';
+
+
+import { BefirmaComponent } from './befirma/befirma.component';
+import { BeypComponent } from './beyp/beyp.component';
+import { BisrComponent } from './bisr/bisr.component';
+import { BivaComponent } from './biva/biva.component';
+import { BpremiosComponent } from './bpremios/bpremios.component';
+import { BresicoComponent } from './bresico/bresico.component';
+import { BrfcComponent } from './brfc/brfc.component';
+import { BsalariosComponent } from './bsalarios/bsalarios.component';
+import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component';
 
 
 
@@ -28,7 +42,17 @@ import { VerificacionesComponent } from './verificaciones/verificaciones.compone
     EfirmaComponent,
     ListadoComponent,
     RyoComponent,
-    BuzonComponent
+    BuzonComponent,
+    BrfcComponent,
+    BeypComponent,
+    BisrComponent,
+    BivaComponent,
+    BpremiosComponent,
+    BresicoComponent,
+    BsalariosComponent,
+    BtecnologicasComponent,
+    BefirmaComponent
+
   ],
   imports: [
     CommonModule,

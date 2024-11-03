@@ -1,0 +1,42 @@
+<app-header [title]="'ISR'"></app-header> <!-- Encabezado de Verificaciones -->
+<div class="container">
+
+    <h2>¿Qué es el ISR?</h2>
+    <p>El Impuesto sobre la Renta (ISR) es un impuesto directo que se aplica a las personas físicas y morales en México sobre los ingresos que obtienen. Este impuesto se calcula sobre la utilidad neta, que es la diferencia entre los ingresos y los gastos deducibles relacionados con la actividad económica.</p>
+
+    <div class="image-space">
+      <img src="assets/imagenes/AngelISR.png" alt="ISR" class="responsive-image">
+    </div>
+
+    <div class="info-box">
+      <h3>¿Por qué es importante el ISR?</h3>
+      <p>El ISR es una de las principales fuentes de ingresos para el gobierno mexicano. Estos recursos se utilizan para financiar servicios públicos esenciales, como salud, educación y seguridad, y para impulsar el desarrollo económico del país.</p>
+    </div>
+
+    <h3>¿Para qué sirve el ISR?</h3>
+    <ul>
+      <li>Financiar el gasto público y los servicios esenciales para la población.</li>
+      <li>Contribuir a la redistribución de la riqueza en el país.</li>
+      <li>Incentivar el cumplimiento fiscal y la formalización de actividades económicas.</li>
+      <li>Facilitar la inversión pública en infraestructura y programas sociales.</li>
+    </ul>
+
+    <div class="image-space">
+      <img src="assets/imagenes/AngelCISR.png" alt="Cálculo de ISR en México" class="responsive-image">
+    </div>
+
+    <!-- Contenedor centrado para el botón -->
+    <div class="button-container">
+        <a href="https://www.sat.gob.mx/consulta/06711/en-que-casos-debes-pagar-el-impuesto-sobre-la-renta" target="_blank">
+          <button>Conoce más sobre el ISR</button>
+        </a>
+    </div>
+
+    <!-- Contenedor centrado para el botón -->
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+
+</div>
+
+<app-footer></app-footer> <!-- Pie de página de Verificaciones -->
