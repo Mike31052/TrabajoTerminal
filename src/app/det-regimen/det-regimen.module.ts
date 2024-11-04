@@ -9,9 +9,10 @@ import { DetRegimenRoutingModule } from './det-regimen-routing.module';
 import { InfoRegComponent } from './info-reg/info-reg.component';
 import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
 
+import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { UserHttpService } from '../core/services/user-http-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { PrincipalModule } from "../principal/principal.module";
 
 
 
@@ -27,10 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     FormsModule,
     MatMenuModule,
-    MatToolbarModule, 
+    MatToolbarModule,
     MatButtonModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    PrincipalModule
+],
   providers: [
     UserHttpService
   ]

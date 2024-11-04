@@ -14,12 +14,9 @@
   
   /* Contenedor principal */
   .container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+    
   }
   
   /* Títulos y subtítulos */
@@ -76,6 +73,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
   }
   
   button {
