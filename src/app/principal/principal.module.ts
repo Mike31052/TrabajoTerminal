@@ -29,6 +29,7 @@ import { BresicoComponent } from './bresico/bresico.component';
 import { BrfcComponent } from './brfc/brfc.component';
 import { BsalariosComponent } from './bsalarios/bsalarios.component';
 import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component';
+import { BodyComponent } from './body/body.component';
 
 
 
@@ -37,6 +38,7 @@ import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component'
   declarations: [
     InicioComponent,
     HeaderComponent,
+    BodyComponent,
     FooterComponent,
     VerificacionesComponent,
     EfirmaComponent,
@@ -65,7 +67,8 @@ import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component'
   ],
   exports: [ 
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BodyComponent
   ]
 })
 export class PrincipalModule { }

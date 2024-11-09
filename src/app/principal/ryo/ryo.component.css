@@ -88,8 +88,8 @@
 
   .boton-inicio {
     display: flex;
-    justify-content: center; /* Centrar el contenido */
-    margin: 2rem 0; /* Espaciado superior e inferior */
+    justify-content: center;
+    margin: 3rem 0; /* Ajuste de margen para bajar el botón */
 }
   
   .custom-button:hover {
