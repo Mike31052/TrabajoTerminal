@@ -14,53 +14,25 @@
               <input type="text" class="form-control" id="nombre" placeholder="Nombre, denominación o razón social" />
             </div>
           </div>
-          <div class="form-group row mt-3">
-            <label for="informacion" class="col-sm-4 col-form-label">¿Aceptas y reconoces la información precargada?</label>
+
+          <div class="form-group row mt-4">
+            <label for="aceptacionInfo" class="col-sm-4 col-form-label">¿Aceptas y reconoces la información precargada?</label>
             <div class="col-sm-8">
-              <select class="form-control" id="informacion">
-                <option>Selecciona</option>
-                <option>Sí</option>
-                <option>No</option>
+              <select id="aceptacionInfo" class="form-control">
+                <option value="" selected>Seleccione</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
               </select>
             </div>
           </div>
   
           <div class="card mt-4">
-            <div class="card-header">
-              <h5>Salarios</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-group row">
-                <label for="ingresoAnual" class="col-sm-4 col-form-label">Ingreso anual</label>
-                <div class="col-sm-8">
-                  <input type="number" class="form-control" id="ingresoAnual" placeholder="0" />
-                </div>
-              </div>
-              <div class="form-group row mt-3">
-                <label for="subsidioEmpleo" class="col-sm-4 col-form-label">Subsidio para el empleo</label>
-                <div class="col-sm-8">
-                  <input type="number" class="form-control" id="subsidioEmpleo" placeholder="0" />
-                </div>
-              </div>
-              <div class="form-group row mt-3">
-                <label for="impuestoRetenido" class="col-sm-4 col-form-label">Impuesto retenido</label>
-                <div class="col-sm-8">
-                  <input type="number" class="form-control" id="impuestoRetenido" placeholder="0" />
-                </div>
-              </div>
-              <div class="form-group row mt-3">
-                <label for="ingresoExento" class="col-sm-4 col-form-label">Ingreso exento</label>
-                <div class="col-sm-8">
-                  <input type="number" class="form-control" id="ingresoExento" placeholder="0" />
-                </div>
-              </div>
-              <div class="form-group row mt-3">
-                <label for="subsidioRecibido" class="col-sm-4 col-form-label">Subsidio para el empleo recibido</label>
-                <div class="col-sm-8">
-                  <input type="number" class="form-control" id="subsidioRecibido" placeholder="0" />
-                </div>
-              </div>
-            </div>
+
+            <mat-tab-group>
+              <mat-tab label="Salarios"> <app-add-ingreso-sueldo></app-add-ingreso-sueldo> </mat-tab>
+              <mat-tab label="Asimilados a Salarios"> <app-add-ingreso-asimilado></app-add-ingreso-asimilado> </mat-tab>
+            </mat-tab-group>
+        
           </div>
           <div class="modal-footer mt-4">
             <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>

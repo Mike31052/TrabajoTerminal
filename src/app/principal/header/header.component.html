@@ -5,17 +5,25 @@
                 <mat-icon class="text-white">menu</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item [routerLink]="['/Inicio']">
+                <button mat-menu-item [routerLink]="['/Inicio']" class="menu-item">
                     <mat-icon class="menu-icon">home</mat-icon>
                     <span>Inicio</span>
                 </button>
-                <button mat-menu-item [routerLink]="['/Verificaciones']">
+                <button mat-menu-item [routerLink]="['/Verificaciones']" class="menu-item">
                     <mat-icon class="menu-icon">checklist</mat-icon>
                     <span>Verificaciones</span>
                 </button>
-                <button mat-menu-item [routerLink]="['/impuestos']">
+                <button mat-menu-item [routerLink]="['/impuestos']" class="menu-item">
                     <mat-icon class="menu-icon">account_balance</mat-icon>
                     <span>Impuestos</span>
+                </button>
+
+                <!-- Separador -->
+                <mat-divider></mat-divider>
+
+                <button mat-menu-item (click)="logout()" class="menu-item">
+                    <mat-icon class="menu-icon">logout</mat-icon>
+                    <span>Cerrar sesión</span>
                 </button>
             </mat-menu>
         </div>

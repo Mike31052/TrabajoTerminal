@@ -9,4 +9,7 @@ export class HeaderComponent {
 
   @Input() title: string = '';
 
+  logout(){
+    console.log("bye");
+  }
 }

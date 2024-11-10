@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component'; // Ajusta la ruta según sea necesario
 import { IngresosAsalariado } from '../../shared/models/ingresos-sueldos.model';
-import { AddIngresoComponent } from '../add-ingreso/add-ingreso.component';
 import { Usuario } from '../../shared/models/usuario.model';
+import { AddIngresoComponent } from '../add-ingreso/add-ingreso.component';
 
 @Component({
   selector: 'app-ingresos',

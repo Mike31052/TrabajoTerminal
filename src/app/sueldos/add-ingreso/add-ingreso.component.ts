@@ -4,8 +4,6 @@ import { Usuario } from '../../shared/models/usuario.model';
 
 @Component({
   selector: 'app-add-ingreso',
-  standalone: true,
-  imports: [],
   templateUrl: './add-ingreso.component.html',
   styleUrl: './add-ingreso.component.css'
 })

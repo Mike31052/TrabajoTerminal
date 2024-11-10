@@ -52,6 +52,9 @@
         <!-- Botón de Enviar -->
         <button type="submit" [disabled]="!loginForm.loginForm.valid">Entrar</button>
 
+        <!-- Entrar como invitado -->
+        <button (click)="iniciarInvitado()" style="margin-top: 10px;">Entrar como invitado</button>
+
         <!-- Mensaje de error -->
         <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
           {{ errorMessage }}

@@ -30,6 +30,8 @@ import { BrfcComponent } from './brfc/brfc.component';
 import { BsalariosComponent } from './bsalarios/bsalarios.component';
 import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component';
 import { BodyComponent } from './body/body.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -63,7 +65,9 @@ import { BodyComponent } from './body/body.component';
     FormsModule,
     MatMenuModule,
     MatToolbarModule, 
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatDividerModule
   ],
   exports: [ 
     HeaderComponent,

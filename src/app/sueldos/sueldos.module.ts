@@ -12,7 +12,13 @@ import { DeterminacionComponent } from './determinacion/determinacion.component'
 import { FormsModule } from '@angular/forms';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 import { PrincipalModule } from '../principal/principal.module';
-
+import { AddIngresoComponent } from './add-ingreso/add-ingreso.component';
+import { AddIngresoAsimiladoComponent } from './add-ingreso-asimilado/add-ingreso-asimilado.component';
+import { AddIngresoSueldoComponent } from './add-ingreso-sueldo/add-ingreso-sueldo.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { AddDeduccionComponent } from './add-deduccion/add-deduccion.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { PrincipalModule } from '../principal/principal.module';
     IngresosComponent,
     DeduccionesComponent,
     DeterminacionComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    AddIngresoComponent,
+    AddIngresoAsimiladoComponent,
+    AddIngresoSueldoComponent,
+    AddDeduccionComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +39,10 @@ import { PrincipalModule } from '../principal/principal.module';
     FormsModule,
     MatTooltipModule,
     MatDialogModule,
-    PrincipalModule
+    PrincipalModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class SueldosModule { }

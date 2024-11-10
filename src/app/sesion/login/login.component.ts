@@ -59,4 +59,8 @@ export class LoginComponent {
       );
     }
   }
+
+  iniciarInvitado(){
+    this.router.navigate(['/Inicio']);
+  }
 }
