@@ -1,0 +1,76 @@
+<app-header title="Datos de Declaracion"></app-header>
+
+<app-body>
+  <h2>Selecciona tu declaración</h2>
+
+  <form #declaracionForm="ngForm" novalidate>
+
+    <!-- Menú de selección de declaración -->
+    <div class="listas">
+      <label for="declaracion">Tipo de declaración:</label>
+      <select id="declaracion" class="espacio" required [(ngModel)]="tipoDeclaracion" name="declaracion" #declaracion="ngModel">
+        <option value="" disabled selected>Selecciona...</option>
+        <option value="mensual">Mensual</option>
+        <option value="anual">Anual</option>
+      </select>
+      <div *ngIf="declaracion.invalid && declaracion.touched" class="text-danger">Este campo es obligatorio.</div>
+    </div>
+
+    <!-- Selección de ejercicio -->
+    <div class="listas">
+      <label for="ejercicio">Ejercicio:</label>
+      <select id="ejercicio" class="espacio" required [(ngModel)]="ejercicio" name="ejercicio" #ejercicioSelect="ngModel">
+        <option value="" disabled selected>Selecciona...</option>
+        <option *ngFor="let year of [2024, 2025, 2026, 2027, 2028, 2029, 2030]" [value]="year">{{ year }}</option>
+      </select>
+      <div *ngIf="ejercicioSelect.invalid && ejercicioSelect.touched" class="text-danger">Este campo es obligatorio.</div>
+    </div>
+
+    <!-- Selección de periodo -->
+    <div class="listas">
+      <label for="periodo">Periodo:</label>
+      <select id="periodo" class="espacio" required [(ngModel)]="periodo" name="periodo" #periodoSelect="ngModel">
+        <option value="" disabled selected>Selecciona...</option>
+        <option *ngFor="let mes of ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']" [value]="mes">{{ mes }}</option>
+      </select>
+      <div *ngIf="periodoSelect.invalid && periodoSelect.touched" class="text-danger">Este campo es obligatorio.</div>
+    </div>
+
+    <!-- Botón Siguiente del primer paso -->
+    <div class="listas">
+      <button type="button" class="custom-button" (click)="validateStepOne()">Siguiente</button>
+    </div>
+
+    <!-- Segundo paso -->
+    <div *ngIf="stepTwo">
+      <h3>Selecciona los siguientes impuestos:</h3>
+      <div class="listas">
+        <label>
+          <input type="checkbox" class="espacio" [(ngModel)]="isr" name="isr" required #isrCheck="ngModel">
+          ISR personas físicas actividad empresarial y profesional
+        </label>
+      </div>
+      <div class="listas">
+        <label>
+          <input type="checkbox" class="espacio" [(ngModel)]="iva" name="iva" required #ivaCheck="ngModel">
+          Impuesto al valor agregado región fronteriza
+        </label>
+        <div *ngIf="isrCheck.invalid || ivaCheck.invalid" class="text-danger">Debes seleccionar ambos campos.</div>
+      </div>
+
+      <!-- Botón Siguiente del segundo paso -->
+      <div class="listas">
+        <button type="button" class="custom-button" (click)="validateStepTwo()">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- Tercer paso -->
+    <div *ngIf="stepThree">
+      <h3>Confirmación</h3>
+      <button type="button" class="custom-button" (click)="redirect()">Confirmar</button>
+    </div>
+
+  </form>
+</app-body>
+
+<app-footer></app-footer>

@@ -1,8 +1,9 @@
 <!-- Incluye el componente de Header -->
 <app-header [title]="'Consulta de Opinión de Cumplimiento'"></app-header>
 
-<div class="container">
-    <div class="content-container">
+
+<app-body>
+    
         <section class="inicio-section">
             <div class="columns">
                 <div class="column">
@@ -25,9 +26,13 @@
                     <img src="assets/imagenes/O3.png" alt="Consulta de Opinión" class="image" (click)="openModal('assets/imagenes/O3.png', 'Consulta de Opinión')">
                 </div>
             </div>
+           
+            
         </section>
-        <button class="custom-button inicio-button" (click)="goToVerificaciones()">Regresar</button>
-    </div>
+        <div class="boton-inicio">
+            <button class="custom-button inicio-button" (click)="goToVerificaciones()">Regresar</button>
+        </div>
+ 
 
     <!-- Modal para zoom de imágenes -->
     <div id="imageModal" class="modal" (click)="closeModal()">
@@ -35,6 +40,7 @@
         <img class="modal-content" [src]="modalImage" id="modalImage">
         <div id="caption">{{ modalCaption }}</div>
     </div>
-</div>
+
+</app-body>
 
 <app-footer></app-footer>

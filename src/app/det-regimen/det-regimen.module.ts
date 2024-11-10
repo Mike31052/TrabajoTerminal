@@ -11,8 +11,12 @@ import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
 
 import { MatMenuModule } from '@angular/material/menu';
 import { UserHttpService } from '../core/services/user-http-service.service';
+
+
+
 import { HttpClientModule } from '@angular/common/http';
 import { PrincipalModule } from '../principal/principal.module';
+
 
 
 
@@ -28,11 +32,11 @@ import { PrincipalModule } from '../principal/principal.module';
     MatIconModule,
     FormsModule,
     MatMenuModule,
-    MatToolbarModule, 
+    MatToolbarModule,
     MatButtonModule,
     HttpClientModule,
     PrincipalModule
-  ],
+],
   providers: [
     UserHttpService
   ]

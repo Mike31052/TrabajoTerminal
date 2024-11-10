@@ -5,4 +5,5 @@ export const routes: Routes = [
     { path: '', loadChildren: () => import('./det-regimen/det-regimen.module').then(m => m.DetRegimenModule) },
     { path: 'sueldos-y-salarios', loadChildren: () => import('./sueldos/sueldos.module').then(m => m.SueldosModule) },
     { path: '', loadChildren: () => import('./principal/principal.module').then(m => m.PrincipalModule) },
+    { path: '', loadChildren: () => import('./empresariales/empresariales.module').then(m => m.EmpresarialesModule)},
 ];

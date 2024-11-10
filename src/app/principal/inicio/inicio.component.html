@@ -1,25 +1,6 @@
-<div class="container">
-  <mat-toolbar class="text-white menu">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
-      <mat-icon class="text-white">menu</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['/Inicio']">
-        <mat-icon class="menu-icon">home</mat-icon>
-        <span>Inicio</span>
-      </button>
-      <button mat-menu-item [routerLink]="['/Verificaciones']">
-        <mat-icon class="menu-icon">checklist</mat-icon>
-        <span>Verificaciones</span>
-      </button>
-      <button mat-menu-item [routerLink]="['/impuestos']">
-        <mat-icon class="menu-icon">account_balance</mat-icon>
-        <span>Impuestos</span>
-      </button>
-    </mat-menu>
-    <span class="example-spacer"></span>
-    <h1 class="title">BIBLIOTECA VIRTUAL</h1>
-  </mat-toolbar>
+<app-header [title]="'Biblioteca Virtual'"></app-header>
+
+<app-body>
 
   <main class="content-container">
     <div class="inicio-section">
@@ -107,7 +88,6 @@
     </div>
   </main>
 
-  <footer>
-    <p>© 2024 SAT - Todos los derechos reservados.</p>
-  </footer>
-</div>
+</app-body>
+
+<app-footer></app-footer>
