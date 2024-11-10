@@ -78,4 +78,9 @@ export class InicioComponent {
   goTobtecnologicas() {
     this.router.navigate(['/btecnologicas']);
   }
+
+  goTointeres() {
+    this.router.navigate(['/interes']);
+  }
+
 }

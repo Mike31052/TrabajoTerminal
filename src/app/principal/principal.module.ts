@@ -31,6 +31,8 @@ import { BsalariosComponent } from './bsalarios/bsalarios.component';
 import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component';
 import { BodyComponent } from './body/body.component';
 
+import { InteresComponent } from './interes/interes.component'; 
+
 
 
 
@@ -53,7 +55,8 @@ import { BodyComponent } from './body/body.component';
     BresicoComponent,
     BsalariosComponent,
     BtecnologicasComponent,
-    BefirmaComponent
+    BefirmaComponent,
+    InteresComponent
 
   ],
   imports: [
