@@ -19,6 +19,8 @@ import { BrfcComponent } from './brfc/brfc.component';
 import { BsalariosComponent } from './bsalarios/bsalarios.component';
 import { BtecnologicasComponent } from './btecnologicas/btecnologicas.component';
 
+import { InteresComponent } from './interes/interes.component';
+
 const routes: Routes = [
   { path: 'Inicio', component: InicioComponent },
   { path: 'Efirma', component: EfirmaComponent },
@@ -34,7 +36,8 @@ const routes: Routes = [
   {path: 'bresico', component: BresicoComponent},
   {path: 'bsalarios', component: BsalariosComponent},
   {path:'btecnologicas', component: BtecnologicasComponent},
-  {path: 'befirma', component: BefirmaComponent}
+  {path: 'befirma', component: BefirmaComponent},
+  { path: 'interes', component: InteresComponent }
 ];
 
 @NgModule({

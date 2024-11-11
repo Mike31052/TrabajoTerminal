@@ -1,35 +1,9 @@
 
 <div class="regimenes-fiscales-container">
-  <mat-toolbar class="text-white menu">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
-        <mat-icon class="text-white">menu</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['/inicio']">
-            <mat-icon class="menu-icon">home</mat-icon>
-            <span>Inicio</span>
-        </button>
-        <button mat-menu-item [routerLink]="['/verificaciones']">
-            <mat-icon class="menu-icon">checklist</mat-icon>
-            <span>Verificaciones</span>
-        </button>
-        <button mat-menu-item [routerLink]="['/impuestos']">
-            <mat-icon class="menu-icon">account_balance</mat-icon>
-            <span>Impuestos</span>
-        </button>
-    </mat-menu>
-    <span class="toolbar-title">Regímenes fiscales</span>
-    <span class="example-spacer"></span>
-   <!--
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon class="text-white">favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon class="text-white">share</mat-icon>
-    </button>
-    -->
-</mat-toolbar>
-  <br>
+
+<app-header [title]="'Determinación de régimen fiscal'"></app-header>
+
+<app-body>
   <div class="regimenes-fiscales-container-1">
     <div class="regimen-section">
       <h4>Régimen simplificado de confianza</h4>
@@ -37,7 +11,6 @@
         Este régimen es una simplificación administrativa diseñada para facilitar el pago de impuestos a personas físicas con ingresos anuales menores a 3.5 millones de pesos. Está dirigido a aquellos que desarrollan actividades empresariales, profesionales, o que obtienen ingresos del arrendamiento de bienes inmuebles y actividades del sector primario como la agricultura, ganadería, pesca o silvicultura.
       </p>
       <br>
-      
       <div class="section-content">
         <div class="section-box">
           <h5>Características</h5>
@@ -240,19 +213,16 @@
       </div><br>
       <button class="video-btn" (click)="openModal(5)">Ver video</button>
     </div>
-    <br>
     <!-- Mantener otras secciones y elementos existentes en el archivo -->
   </div>
   <div class="determine-regimen-btn-container" >
     <button class="determine-regimen-btn" (click)="goToDetReg()">Determinar mi régimen</button>
   </div>
-  
 
-  <footer>
-    <p>© 2024 SAT - Todos los derechos reservados.</p>
-  </footer>
 
-</div>
+</app-body>
+
+<app-footer></app-footer>
 
 <!-- Modal -->
 <div id="videoModal" class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">

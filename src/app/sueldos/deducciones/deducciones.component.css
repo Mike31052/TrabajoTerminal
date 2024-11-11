@@ -1,25 +1,42 @@
+.deducciones-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
 
-  
-  .deducciones-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .deduccion-card {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 5px;
-  }
-  
-  .deduccion-card h6 {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .deduccion-card .badge {
-    font-size: 0.8rem;
-  }
-  
+.deduccion-card {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deduccion-card:hover {
+  background-color: #e9ecef;
+}
+
+.deduccion-card.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.deduccion-card h6 {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.deduccion-card .badge {
+  font-size: 0.8rem;
+}
+
+.deduccion-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.table {
+  margin-top: 20px;
+}

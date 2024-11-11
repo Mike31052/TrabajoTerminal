@@ -1,0 +1,72 @@
+<div class="container my-4 p-4 bg-light rounded border">
+    <h2 class="text-center mb-4">Proporciona los datos de la factura</h2>
+  
+    <form>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="tipoDeduccion" class="form-label">Tipo de Deducción</label>
+          <select id="tipoDeduccion" class="form-select">
+            <option>Honorarios médicos, dentales y gastos hospitalarios</option>
+            <!-- Agrega más opciones según sea necesario -->
+          </select>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <input id="descripcion" type="text" class="form-control">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="rfcEmisor" class="form-label">RFC del emisor</label>
+          <input id="rfcEmisor" type="text" class="form-control">
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="importeTotal" class="form-label">Importe total</label>
+          <input id="importeTotal" type="number" class="form-control">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nombreRazonSocial" class="form-label">Nombre, denominación o razón social</label>
+          <input id="nombreRazonSocial" type="text" class="form-control">
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="montoDeducible" class="form-label">Monto deducible</label>
+          <input id="montoDeducible" type="number" class="form-control">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="fechaEmision" class="form-label">Fecha de emisión</label>
+          <input id="fechaEmision" type="date" class="form-control">
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="cantidadRecuperada" class="form-label">Cantidad recuperada de los gastos efectuados</label>
+          <input id="cantidadRecuperada" type="number" class="form-control">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="formaPago" class="form-label">Forma de pago</label>
+          <select id="formaPago" class="form-select">
+            <option>Selecciona</option>
+            <!-- Agrega más opciones de forma de pago según sea necesario -->
+          </select>
+        </div>
+      </div>
+  
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary me-2">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+  

@@ -44,8 +44,8 @@ export class LoginComponent {
           this.loading = false;
           this.successMessage = "Credenciales correctas";
           this.userTO = response.user;
+          this.userSesionService.setUsuario(this.userTO);
           if(this.userTO?.regimen == null || this.userTO.regimen == ''){
-            this.userSesionService.setUsuario(this.userTO);
             this.router.navigate(['/info-reg']);
           }else{
             this.router.navigate(['/Inicio']);
@@ -58,5 +58,9 @@ export class LoginComponent {
         }
       );
     }
+  }
+
+  iniciarInvitado(){
+    this.router.navigate(['/Inicio']);
   }
 }
