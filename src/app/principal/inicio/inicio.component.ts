@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../../shared/models/usuario.model';
+import { UserSesionService } from '../../core/services/user-sesion.service';
 
 @Component({
   selector: 'app-inicio',
@@ -10,7 +12,9 @@ export class InicioComponent {
   modalImage: string = '';
   modalCaption: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router
+  ) {}
+
 
   goToVerificaciones() {
     this.router.navigate(['/Verificaciones']);

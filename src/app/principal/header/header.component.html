@@ -17,13 +17,21 @@
                     <mat-icon class="menu-icon">account_balance</mat-icon>
                     <span>Impuestos</span>
                 </button>
+                <button mat-menu-item [routerLink]="['/info-reg']" class="menu-item">
+                    <mat-icon class="menu-icon">gavel</mat-icon>
+                    <span>Regimenes Fiscales</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/det-reg-fis']" class="menu-item">
+                    <mat-icon class="menu-icon">request_quote</mat-icon>
+                    <span>Actualizar regimen</span>
+                </button>
 
                 <!-- Separador -->
                 <mat-divider></mat-divider>
 
                 <button mat-menu-item (click)="logout()" class="menu-item">
                     <mat-icon class="menu-icon">logout</mat-icon>
-                    <span>Cerrar sesión</span>
+                    <span>{{ (userTO != null) ? 'Cerrar sesión' : 'Inicio de sesión' }}</span>
                 </button>
             </mat-menu>
         </div>

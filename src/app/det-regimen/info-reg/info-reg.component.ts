@@ -40,6 +40,7 @@ export class InfoRegComponent {
 
   ngOnInit(): void {
     this.userTO = this.userSesionService.getUsuario();
+    console.log(this.userTO);
     }
 
   openModal(videoNumber: number) {

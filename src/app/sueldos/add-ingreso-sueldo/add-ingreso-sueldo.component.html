@@ -3,11 +3,11 @@
     <div class="row" style="padding: 10px;">
       <div class="col-md-6">
         <label for="ingresoAnual">Ingreso anual</label>
-        <input type="number" class="form-control" id="ingresoAnual" placeholder="0" />
+        <input type="number" class="form-control" id="ingresoAnual" [(ngModel)]="ingreso.ingresoAnual" name="ingresoAnual" />
       </div>
       <div class="col-md-6">
         <label for="ingresoExento">Ingreso exento</label>
-        <input type="number" class="form-control" id="ingresoExento" placeholder="0" />
+        <input type="number" class="form-control" id="ingresoExento" [(ngModel)]="ingreso.ingresoExento" name="ingresoExento" />
       </div>
       <div class="col-md-6">
         <label for="subsidioEmpleo">Subsidio para el empleo</label>
@@ -19,7 +19,7 @@
       </div>
       <div class="col-md-6">
         <label for="impuestoRetenido">Impuesto retenido</label>
-        <input type="number" class="form-control" id="impuestoRetenido" placeholder="0" />
+        <input type="number" class="form-control" id="impuestoRetenido" [(ngModel)]="ingreso.retencionISR" name="retencionISR" />
       </div>
     </div>
   
