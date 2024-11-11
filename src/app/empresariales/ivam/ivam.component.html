@@ -1,0 +1,75 @@
+<form [formGroup]="ivamForm" (ngSubmit)="calcularIVA()">
+    <div class="container mt-4">
+      <h2 class="mb-4">Formulario IVA</h2>
+  
+      <!-- Actividades grabadas a la tasa de 16% -->
+      <div class="mb-3 row">
+        <label for="actividades16" class="col-sm-2 col-form-label">Actividades grabadas a la tasa de 16%</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="actividades16" class="form-control" (input)="calcularIVA()" />
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el total de tu ingreso mensual')">Información</button>
+          </div>
+      </div>
+  
+      <!-- IVA cobrado del periodo a la tasa del 16% -->
+      <div class="mb-3 row">
+        <label for="ivaCobrado16" class="col-sm-2 col-form-label">IVA cobrado del periodo a la tasa del 16%</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="ivaCobrado16" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <!-- IVA acreditable del periodo (Deducciones) -->
+      <div class="mb-3 row">
+        <label for="ivaAcreditable" class="col-sm-2 col-form-label">IVA acreditable del periodo (Deducciones)</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="ivaAcreditable" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <!-- IVA retenido -->
+      <div class="mb-3 row">
+        <label for="ivaRetenido" class="col-sm-2 col-form-label">IVA retenido</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="ivaRetenido" class="form-control" (input)="calcularIVA()" />
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el total de la retención de IVA que se les hace a los proveedores')">Información</button>
+          </div>
+      </div>
+  
+      <!-- Cantidad a cargo -->
+      <div class="mb-3 row">
+        <label for="cantidadCargo" class="col-sm-2 col-form-label">Cantidad a cargo</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="cantidadCargo" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <!-- Otras cantidades a favor -->
+      <div class="mb-3 row">
+        <label for="otrasCantidadesFavor" class="col-sm-2 col-form-label">Otras cantidades a favor</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="otrasCantidadesFavor" class="form-control" (input)="calcularIVA()" />
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info btn-sm w-100" (click)="openDialog('Este campo es diferente a cero solo si tienes saldo a favor en declaraciones anteriores')">Información</button>
+          </div>
+      </div>
+  
+      <!-- IVA a cobrar -->
+      <div class="mb-3 row">
+        <label for="ivaCobrar" class="col-sm-2 col-form-label">IVA a cobrar</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="ivaCobrar" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-primary btn-sm">Calcular IVA</button>
+      </div>
+    </div>
+  </form>
+  

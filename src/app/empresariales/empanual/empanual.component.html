@@ -1,1 +1,11 @@
-<p>empanual works!</p>
+<app-header  [title]="'Simulador Declaración Mensual'"></app-header>
+
+<app-body>
+  <mat-tab-group>
+    <mat-tab label="ISR"><app-isra></app-isra></mat-tab>
+    <mat-tab label="IVA"><app-ivaa></app-ivaa></mat-tab>
+    <mat-tab label="Deducciones"><app-deduccionesa></app-deduccionesa></mat-tab>
+  </mat-tab-group>
+</app-body>
+
+<app-footer></app-footer>
