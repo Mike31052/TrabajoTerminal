@@ -1,0 +1,49 @@
+<app-header  [title]="'Régimen de ingresos por intereses'"></app-header>
+
+<app-body>
+    <div>
+
+        <p class="aclaracion"><b>Esta información está enfocada en inversiones en CETES (certificados de la tesorería de la federación) a plazo fijo de 28, 91, 182 y 364 dias.</b></p>
+        <h4>¿Para quién es este régimen?</h4>
+        <p>
+            Este régimen es para las personas físicas obtienen ingresos que les pagan las instituciones bancarias, de seguros y financieras, derivados de cuentas o inversiones bancarias, conocidos como intereses.
+        </p>
+        <p>
+            Si recibes pagos por concepto de intereses estás en este régimen. Este tipo de ingresos deben ser presentados en la declaración anual y deberás conservar la documentación relacionada con los intereses.
+        </p>
+        <p>
+            Las personas físicas que únicamente obtengan <b>ingresos acumulables</b> podrán optar por considerar la retención que se efectúe como pago definitivo, siempre que dichos ingresos correspondan al ejercicio de que se trate y no excedan de $100,000.00.
+        </p>
+        <p>La retención se muestra al hacer una simulación de una inversión de este tipo.</p>
+
+        <div class="image-container">
+            <h3>Ejemplo de retención</h3>
+            <img src="assets/imagenes/F_retencion.png" alt="Ejemplo de retención">
+        </div>
+
+        <h5>¿Qué impuesto pagan estas inversiones?</h5>
+        <p>Las ganancias generadas por las inversiones en CETES están sujetas a una tasa de retención de Impuesto Sobre la Renta (ISR) aplicable en el momento del rescate del título (venta).</p>
+
+        <h5>¿Qué documentación necesitas?</h5>
+        <p>Es importante que conserves los siguientes documentos para cualquier aclaración, la plataforma que se menciona en esta información (Cetes Directo) te proporciona dichos documentos y los puedes descargar directamente de tu cuenta.</p>
+        <ul>
+            <li>Estados de cuenta.</li>
+            <li>Constancia de retenfdciones.</li>
+        </ul>
+
+        <div class="image-container">
+            <h3>Ejemplo de Estados de Cuenta</h3>
+            <img src="assets/imagenes/F_estado.png" alt="Ejemplo de Estados de Cuenta">
+        </div>
+        <br>
+        <div class="image-container">
+            <h3>Ejemplo de Constancia de Retenciones</h3>
+            <img src="assets/imagenes/F_constancia.png" alt="Ejemplo de Constancia de Retenciones">
+        </div>
+    </div>
+    <div class="button-container">
+        <button class="custom-button" (click)="goToInicio()">Regresar</button>
+    </div>
+</app-body>
+
+<app-footer></app-footer>

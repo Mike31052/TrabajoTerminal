@@ -1,88 +1,77 @@
 
 <div class="container">
-   <app-header></app-header>
+    <app-header [title]="'Determinación de régimen fiscal'"></app-header>
+    <app-body>
+        <main>
+            <div class="row">
+                <section class="income-selection left-section">
+                    <h3>Selecciona el régimen al que perteneces</h3>
+                    <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces, ¿Necesitas volver a leer la información?, da <a href="">click aqui.</a> El régimen de obtención de obtencion de premios se explicara más adelante</p>
+                    <br>
+                    <form (ngSubmit)="confirmarRegimen()">
+                        <label class="radio-option" [class.selected]="selectedOption === 'SC'">
+                            <input type="radio" name="income" value="SC" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                            Régimen simplificado de confianza (RESICO)
+                        </label>
     
+                        <label class="radio-option" [class.selected]="selectedOption === 'SS'">
+                            <input type="radio" name="income" value="SS" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                            Sueldos y salarios e ingresos asimilados a salarios
+                        </label>
+    
+                        <label class="radio-option" [class.selected]="selectedOption === 'PT'">
+                            <input type="radio" name="income" value="PT" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                            Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
+                        </label>
+    
+                        <label class="radio-option" [class.selected]="selectedOption === 'EP'">
+                            <input type="radio" name="income" value="EP" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
+                            Régimen de Actividad Empresarial y Profesional
+                        </label>
 
-    <main>
-        <div class="row">
-            <section class="income-selection left-section">
-                <h3>Selecciona el régimen al que perteneces</h3>
-                <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces. El régimen de obtención de obtencion de premios se explicara más adelante</p>
-                <br>
-                <form (ngSubmit)="confirmarRegimen()">
-                    <label class="radio-option" [class.selected]="selectedOption === 'SC'">
-                        <input type="radio" name="income" value="SC" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                        Régimen simplificado de confianza (RESICO)
-                    </label>
+                        <!-- Botón dentro del formulario que ejecuta la función confirmarRegimen -->
+                        <button type="submit" class="confirm-button" [disabled]="!selectedOption">Confirmar mi régimen</button>
+                    </form>
+                </section>
+    
+                <section class="slideshow right-section">
+                    <div class="slideshow-container">
+                        <div class="slide">
+                            <!-- <h4>Régimen simplificado de confianza (RESICO)</h4> -->
+                            <img src="assets/imagenes/F_RESICO.png">
+                        </div>
+                        <div class="slide">
+                            <!-- <h4>Sueldos y salarios e ingresos asimilados a salarios</h4> -->
+                             <img src="assets/imagenes/F_sueldos_salario.png">
+                        </div>
+                        <div class="slide">
+                            <!-- <h4>Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</h4> -->
+                            <img src="assets/imagenes/F_tecnologicas.png">
+                        </div>
+                        <div class="slide">
+                            <!-- <h4>Régimen de Actividad Empresarial y Profesional</h4> -->
+                            <img src="assets/imagenes/F_profesional.png">
+                        </div>
+                        <div class="slide">
+                            <!-- <h4>Régimen de los Ingresos por la obtención de premios</h4> -->
+                            <img src="assets/imagenes/F_premios.png">
+                        </div>
+                    </div>
+                </section>
+            </div>
 
-                    <label class="radio-option" [class.selected]="selectedOption === 'SS'">
-                        <input type="radio" name="income" value="SS" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                        Sueldos y salarios e ingresos asimilados a salarios
-                    </label>
-
-                    <label class="radio-option" [class.selected]="selectedOption === 'PT'">
-                        <input type="radio" name="income" value="PT" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                        Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas
-                    </label>
-
-                    <label class="radio-option" [class.selected]="selectedOption === 'EP'">
-                        <input type="radio" name="income" value="EP" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                        Régimen de Actividad Empresarial y Profesional
-                    </label>
-
-
-                    <!--
-                    <label class="radio-option" [class.selected]="selectedOption === 'premio'">
-                        <input type="radio" name="income" value="premio" [(ngModel)]="selectedOption" (change)="mostrarMensaje()">
-                        Régimen de los Ingresos por la obtención de premios
-                    </label>
-                    -->
-
-
-                    <!-- Botón dentro del formulario que ejecuta la función confirmarRegimen -->
-                    <button type="submit" class="confirm-button" [disabled]="!selectedOption">Confirmar mi régimen</button>
-                </form>
+    
+            <section class="fiscal-regime">
+                <h3>Características de tu régimen</h3>
+                <p>{{titulo}}</p>
+                <article class="regime-info">
+                    <p>{{contenido}}</p>
+                </article>
             </section>
+            
 
-            <section class="slideshow right-section">
-                <div class="slideshow-container">
-                    <div class="slide">
-                        <!-- <h4>Régimen simplificado de confianza (RESICO)</h4> -->
-                        <img src="assets/imagenes/F_RESICO.png">
-                    </div>
-                    <div class="slide">
-                        <!-- <h4>Sueldos y salarios e ingresos asimilados a salarios</h4> -->
-                         <img src="assets/imagenes/F_sueldos_salario.png">
-                    </div>
-                    <div class="slide">
-                        <!-- <h4>Régimen de actividades empresariales con ingresos a través de plataformas tecnológicas</h4> -->
-                        <img src="assets/imagenes/F_tecnologicas.png">
-                    </div>
-                    <div class="slide">
-                        <!-- <h4>Régimen de Actividad Empresarial y Profesional</h4> -->
-                        <img src="assets/imagenes/F_profesional.png">
-                    </div>
-                    <div class="slide">
-                        <!-- <h4>Régimen de los Ingresos por la obtención de premios</h4> -->
-                        <img src="assets/imagenes/F_premios.png">
-                    </div>
-                </div>
-                <!--
-                Flechas de navegación, movidas fuera del contenedor de las diapositivas
-                <a class="prev" (click)="prevSlide()">&#10094;</a>
-                <a class="next" (click)="nextSlide()">&#10095;</a>
-                 -->
-            </section>
-        </div>
-
-        <section class="fiscal-regime">
-            <h3>Características de tu régimen</h3>
-            <p>{{titulo}}</p>
-            <article class="regime-info">
-                <p>{{contenido}}</p>
-            </article>
-        </section>
-    </main>
+        </main>
+    </app-body>
 
     <app-footer></app-footer>
 </div>

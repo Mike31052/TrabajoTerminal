@@ -33,6 +33,8 @@ import { BodyComponent } from './body/body.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 
+import { InteresComponent } from './interes/interes.component'; 
+
 
 
 
@@ -55,7 +57,8 @@ import { MatDividerModule } from '@angular/material/divider';
     BresicoComponent,
     BsalariosComponent,
     BtecnologicasComponent,
-    BefirmaComponent
+    BefirmaComponent,
+    InteresComponent
 
   ],
   imports: [
