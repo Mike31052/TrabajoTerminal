@@ -1,0 +1,156 @@
+<form [formGroup]="israForm" (ngSubmit)="calcularISR()">
+    <div class="container mt-4">
+      <h2 class="mb-4">Formulario ISR</h2>
+  
+      <!-- Ingresos en copropiedad o sociedad conyugal -->
+      <div class="mb-3 row">
+        <label for="copropiedadanual" class="col-sm-2 col-form-label">¿Tus ingresos fueron obtenidos en copropiedad o sociedad conyugal?</label>
+        <div class="col-sm-6">
+          <select formControlName="copropiedadanual" (change)="toggleCopropiedad($event)" class="form-control">
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+          </select>
+        </div>
+      </div>
+  
+      <div *ngIf="israForm.get('copropiedadanual')?.value === 'si'" class="mb-3 row">
+        <label for="ingresosCopropiedad" class="col-sm-2 col-form-label">Ingresos en copropiedad</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="ingresosCopropiedadanual" class="form-control" />
+        </div>
+      </div>
+  
+      <!-- Ingresos del periodo -->
+      <div class="mb-3 row">
+        <label for="ingresosPeriodoanual" class="col-sm-2 col-form-label">Ingresos del periodo</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="ingresosPeriodoanual" (input)="calcularISR()" class="form-control" />
+        </div>
+      </div>
+  
+      <!-- Total de ingresos -->
+      <div class="mb-3 row">
+        <label for="totalIngresosanual" class="col-sm-2 col-form-label">Total de ingresos</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="totalIngresosanual" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <!-- Total de ingresos acumulables -->
+      <div class="mb-3 row">
+        <label for="totalIngresosAcumulablesanual" class="col-sm-2 col-form-label">Total de ingresos acumulables</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="totalIngresosAcumulablesanual" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <!-- Deducciones autorizadas -->
+      <div class="mb-3 row">
+        <label for="comprasPeriodoanual" class="col-sm-2 col-form-label">Deducciones autorizadas</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="comprasPeriodoanual" (input)="calcularISR()" class="form-control" />
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-info btn-sm w-100" (click)="openDialog('Gastos médicos, dentales, de enfermeras y gastos hospitalarios, incluido el alquiler o compra de aparatos para rehabilitación, prótesis, análisis y estudios clínicos.
+Lentes ópticos graduados hasta por 2,500 pesos.
+Gastos funerarios.
+Pagos por primas de seguro de gastos médicos.
+Los intereses reales, efectivamente pagados en el ejercicio, por créditos hipotecarios para tu casa habitación.
+Donativos.
+Transporte escolar obligatorio.
+Aportaciones voluntarias al fondo de retiro.
+Impuestos locales por salarios.
+Colegiaturas (preescolar a preparatoria)')">Información</button>
+          </div>
+      </div>
+  
+      <!-- Deducciones autorizadas -->
+      <div class="mb-3 row">
+        <label for="totalComprasGastosanual" class="col-sm-2 col-form-label">Total de Deducciones autorizadas</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="totalComprasGastosanual" class="form-control" (input)="calcularISR()" />
+        </div>
+      </div>
+
+      <!-- Estimulos fiscales -->
+<div class="mb-3 row">
+  <label for="estimulosFiscales" class="col-sm-2 col-form-label">Estímulos fiscales que acreditar contra el impuesto causado</label>
+  <div class="col-sm-6">
+    <input type="number" step="0.01" formControlName="estimulosFiscales" class="form-control" />
+  </div>
+</div>
+
+<!--  Perdidas fiscales de ejercicios anteriores -->
+<div class="mb-3 row">
+  <label for="perdidasfiscales" class="col-sm-2 col-form-label">Perdidas fiscales</label>
+  <div class="col-sm-6">
+    <input type="number" step="0.01" formControlName="perdidasfiscales" class="form-control" />
+  </div>
+</div>
+  
+  
+  
+  
+     
+
+
+      <!-- Deducciones personales -->
+<div class="mb-3 row">
+  <label for="deduccionesPersonales" class="col-sm-2 col-form-label">Deducciones personales</label>
+  <div class="col-sm-6">
+    <input type="number" formControlName="deduccionesPersonales" class="form-control" readonly />
+  </div>
+</div>
+
+<!-- Base gravable -->
+<div class="mb-3 row">
+  <label for="baseGravable" class="col-sm-2 col-form-label">Base gravable</label>
+  <div class="col-sm-6">
+    <input type="number" formControlName="baseGravable" class="form-control" readonly />
+  </div>
+</div>
+  
+      <!-- ISR causado -->
+      <div class="mb-3 row">
+        <label for="isrCausadoanual" class="col-sm-2 col-form-label">ISR causado</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="isrCausadoanual" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <!-- Pagos provisionales de periodos anteriores -->
+      <div class="mb-3 row">
+        <label for="pagosAnterioresanual" class="col-sm-2 col-form-label">Pagos provisionales de periodos anteriores</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="pagosAnterioresanual" class="form-control" />
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Captura lo que has pagado de ISR de los periodos anteriores hasta el actual')">Información</button>
+        </div>
+      </div>
+  
+      <!-- ISR retenido del periodo -->
+      <div class="mb-3 row">
+        <label for="isrRetenidoPeriodoanual" class="col-sm-2 col-form-label">ISR retenido del periodo</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" formControlName="isrRetenidoPeriodoanual" class="form-control" />
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Este monto es el ISR retenido por personas morales')">Información</button>
+        </div>
+      </div>
+  
+      <!-- ISR a cargo -->
+      <div class="mb-3 row">
+        <label for="isrACargoanual" class="col-sm-2 col-form-label">ISR a cargo o a favor</label>
+        <div class="col-sm-6">
+          <input type="number" formControlName="isrACargoanual" class="form-control" readonly />
+        </div>
+      </div>
+  
+      <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-primary btn-sm">Calcular ISR</button>
+      </div>
+    </div>
+  </form>
+  
