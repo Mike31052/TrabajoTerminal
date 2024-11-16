@@ -1,0 +1,36 @@
+.form-group {
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+input[type="number"], select {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.value-display {
+    font-weight: bold;
+    padding: 8px;
+}
+.form-control-inline {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background-color: #3f51b5;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 20px;
+  }
