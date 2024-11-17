@@ -6,7 +6,12 @@
             <div class="row">
                 <section class="income-selection left-section">
                     <h3>Selecciona el régimen al que perteneces</h3>
-                    <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces, ¿Necesitas volver a leer la información?, da <a href="">click aqui.</a> El régimen de obtención de obtencion de premios se explicara más adelante</p>
+                    <p>Es necesario que conozcas las características de cada régimen fiscal para saber a cuál perteneces. El régimen de obtención de obtencion de premios se explicara más adelante.<br>¿Necesitas volver a leer la información?</p>
+                    
+                    <div class="button-container">
+                        <button class="custom-button" (click)="goToInicio()">Regresar a la información</button>
+                    </div>
+                    
                     <br>
                     <form (ngSubmit)="confirmarRegimen()">
                         <label class="radio-option" [class.selected]="selectedOption === 'SC'">

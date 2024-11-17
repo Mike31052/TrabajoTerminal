@@ -1,0 +1,61 @@
+<app-header [title]="'Declaraciones del RESICO'"></app-header>
+<app-body>
+    
+    <mat-accordion>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Presenta tu declaracion mensual</mat-panel-title>
+            </mat-expansion-panel-header>
+      
+              <div>
+                <form>
+                    <label class="texto_formulario">Selecciona el ejercicio</label><input type="number" value="2024" max="2025">
+                    <br>
+                    <label class="texto_formulario" for="opciones">Selecciona el periodo</label>
+            
+                    <select id="opciones" name="opciones">
+                      <option value="Enero">Enero</option>
+                      <option value="Febrero">Febrero</option>
+                      <option value="Marzo">Marzo</option>
+                      <option value="Abril">Abril</option>
+                      <option value="Mayo">Mayo</option>
+                      <option value="Junio">Junio</option>
+                      <option value="Julio">Julio</option>
+                      <option value="Agosto">Agosto</option>
+                      <option value="Septiembre">Septiembre</option>
+                      <option value="Octubre">Octubre</option>
+                      <option value="Noviembre">Noviembre</option>
+                      <option value="Diciembre">Diciembre</option>
+                    </select>
+                </form>
+            
+                <div class="button-container">
+                    <button class="custom-button">IRS simplificado de confianza</button>
+                    <button class="custom-button">IVA simplificado de confianza</button>
+                </div>
+            </div>
+            
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Presenta tu declaracion anual</mat-panel-title>
+            </mat-expansion-panel-header>
+      
+              <div>
+                <form>
+                    <label class="texto_formulario">Selecciona el ejercicio</label><input type="number" value="2023" max="2023">
+                </form>
+            
+                <div class="button-container">
+                    <button class="custom-button">Presenta tu declaracion anual</button>
+                </div>
+              </div>
+            
+          </mat-expansion-panel>
+
+    </mat-accordion>
+
+</app-body>
+<app-footer></app-footer>

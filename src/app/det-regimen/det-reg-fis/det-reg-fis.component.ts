@@ -127,4 +127,9 @@ export class DetRegFisComponent implements OnInit {
   nextSlide(): void {
     this.showSlide(this.currentSlideIndex + 1);
   }
+
+  goToInicio() {
+    this.router.navigate(['/info-reg']);
+  }
+
 }
