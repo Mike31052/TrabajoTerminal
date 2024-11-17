@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDeduccionComponent } from '../add-deduccion/add-deduccion.component';
 
 @Component({
   selector: 'app-deducciones',
@@ -7,7 +9,6 @@ import { Component } from '@angular/core';
 })
 export class DeduccionesComponent {
   montoPorDeducir: number = 310;
-
   deducciones = [
     { title: 'Honorarios médicos, dentales y gastos hospitalarios', iconClass: 'fas fa-stethoscope', count: 2, data: [] },
     { title: 'Gastos médicos por incapacidad o discapacidad', iconClass: 'fas fa-wheelchair', count: 0, data: [] },
@@ -22,10 +23,17 @@ export class DeduccionesComponent {
     { title: 'Deducciones personales eliminadas', iconClass: 'fas fa-trash-alt', count: 0, data: [] }
   ];
 
+  constructor(public dialog: MatDialog) {}
+
   selectedDeduccion: any = null;
 
   selectDeduccion(deduccion: any) {
     this.selectedDeduccion = deduccion;
     // Aquí puedes cargar datos específicos de la deducción si están disponibles
+  }
+
+  addDeduccion(){
+    const dialogRef = this.dialog.open(AddDeduccionComponent, {});
+
   }
 }

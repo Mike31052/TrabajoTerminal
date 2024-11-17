@@ -35,38 +35,9 @@
       Instrucciones: selecciona un tipo de deducción para visualizar tus deducciones precargadas, de lo contrario da clic en el botón agregar.
     </p>
 
-    <h5>Facturas identificadas como posibles deducciones personales</h5>
-    <p>
-      A continuación, se muestran las facturas que se tiene identificadas como posibles deducciones personales, 
-      favor de verificarlas antes de enviar tu declaración.
-    </p>
-
-    <!-- Campos de Facturado y Deducible -->
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="facturado" class="form-label">Facturado</label>
-        <input type="text" class="form-control" id="facturado" placeholder="Ingrese el monto facturado">
-      </div>
-      <div class="col-md-6">
-        <label for="deducible" class="form-label">Deducible</label>
-        <input type="text" class="form-control" id="deducible" placeholder="Ingrese el monto deducible">
-      </div>
-    </div>
-
-    <!-- Pregunta de reconocimiento y campo de selección -->
-    <p>¿Aceptas y reconoces la información precargada de tus deducciones personales por Honorarios médicos, dentales y gastos hospitalarios?</p>
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <select class="form-select" aria-label="Selecciona opción">
-          <option selected>Selecciona</option>
-          <option value="1">Sí</option>
-          <option value="2">No</option>
-        </select>
-      </div>
-    </div>
 
     <!-- Botón Agregar -->
-    <button class="btn btn-primary mb-4">Agregar</button>
+    <button class="btn btn-primary mb-4" (click)="addDeduccion()">Agregar</button>
 
     <!-- Tabla de detalles -->
     <div *ngIf="selectedDeduccion">
