@@ -163,6 +163,35 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Este monto es el ISR retenido por personas morales')">Información</button>
         </div>
       </div>
+
+      <!-- Ingresos por premios -->
+<div class="mb-3 row">
+  <label for="ingresosPremios" class="col-sm-2 col-form-label">¿Obtuviste ingresos por premios?</label>
+  <div class="col-sm-6">
+    <select formControlName="ingresosPremios" (change)="togglePremios($event)" class="form-control">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-info btn-sm w-100" (click)="openDialog('Los ingresos por premios son aquellos obtenidos de sorteos, loterías o similares.')">Información</button>
+  </div>
+</div>
+
+<div *ngIf="israForm.get('ingresosPremios')?.value === 'si'" class="mb-3 row">
+  <label for="montoPremios" class="col-sm-2 col-form-label">Monto de ingresos por premios</label>
+  <div class="col-sm-6">
+    <input type="number" step="0.01" formControlName="montoPremios" (input)="calcularImpuestoPremios()" class="form-control" />
+  </div>
+</div>
+
+<div *ngIf="israForm.get('ingresosPremios')?.value === 'si'" class="mb-3 row">
+  <label for="impuestoPremios" class="col-sm-2 col-form-label">Tu impuesto por premios es:</label>
+  <div class="col-sm-6">
+    <input type="number" formControlName="impuestoPremios" class="form-control" readonly />
+  </div>
+</div>
+
   
       <!-- ISR a cargo -->
       <div class="mb-3 row">
