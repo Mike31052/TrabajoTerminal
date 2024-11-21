@@ -16,7 +16,38 @@ export class DatosComponent {
   stepTwo: boolean = false;
   stepThree: boolean = false;
 
+  showModal = false;
+  modalTitle = '';
+  videoSrc = '';
+  videoNumber: number = 0;
+
   constructor(private router: Router) {}
+
+   // URLs de videos de YouTube usando el formato de incrustación
+   videoPaths: string[] = [
+    'https://www.youtube.com/embed/Z6FR5j0zAvQ?si=IMAsWQ8UbqwPNqn3'
+  ];
+
+  // Títulos específicos para cada video
+  videoTitles: string[] = [
+    'Estás viendo el video de explicacion del formulario para Regimen con actividad empresarial y profesional'
+  ];
+
+  openModal(videoNumber: number) {
+    
+    this.showModal = true;
+    this.videoNumber = videoNumber; // Asignar el número del video
+    this.modalTitle = this.videoTitles[videoNumber - 1]; // Asignar el título correspondiente
+    this.videoSrc = this.videoPaths[videoNumber - 1]; // Obtener la URL del video
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  onBackdropClick(event: MouseEvent) {
+    this.closeModal();
+  }
 
   // Función para validar el primer paso
   validateStepOne() {

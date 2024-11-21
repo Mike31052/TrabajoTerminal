@@ -15,15 +15,11 @@ export class Deducciones2Service {
     this.montoTotalPorDeducirSource.next(monto);
   }
 
-  setMontoTotalPorDeduciranual(monto: number) {
-    this.montoTotalPorDeduciranualSource.next(monto);
-  }
+  
 
   getMontoTotalADeducir() {
     return this.montoTotalPorDeducirSource.asObservable();
   }
 
-  getMontoTotalADeduciranual() {
-    return this.montoTotalPorDeduciranualSource.asObservable();
-  }
+ 
 }
