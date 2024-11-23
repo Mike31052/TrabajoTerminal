@@ -5,32 +5,43 @@
           <div class="form-group row">
             <label for="rfcRetenedor" class="col-sm-4 col-form-label">RFC del retenedor</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="rfcRetenedor" placeholder="RFC del retenedor" [(ngModel)]="ingreso.rfc" name="rfcRetenedor"/>
+              <input type="text" class="form-control" id="rfcRetenedor" placeholder="RFC del retenedor" [(ngModel)]="ingreso.rfc" name="rfcRetenedor" [readonly]="ingreso.id_ingreso"/>
             </div>
           </div>
+
           <div class="form-group row mt-3">
             <label for="nombre" class="col-sm-4 col-form-label">Nombre, denominación o razón social</label>
             <div class="col-sm-8">
               <input type="text" class="form-control" id="nombre" placeholder="Nombre, denominación o razón social" [(ngModel)]="ingreso.empresa" name="empresa" />
             </div>
-          </div>
+          </div>          
 
-          <div class="form-group row mt-4">
+          <div class="form-group row mt-4" *ngIf="ingreso.id_ingreso">
             <label for="aceptacionInfo" class="col-sm-4 col-form-label">¿Aceptas y reconoces la información precargada?</label>
             <div class="col-sm-8">
-              <select id="aceptacionInfo" class="form-control">
+              <select 
+                id="aceptacionInfo" 
+                class="form-control" 
+                [(ngModel)]="opcionSeleccionada" 
+                name="aceptacionInfo"
+                [ngClass]="{'is-invalid': !opcionSeleccionada && mostrarError}">
                 <option value="" selected>Seleccione</option>
                 <option value="si">Sí</option>
                 <option value="no">No</option>
               </select>
+              <!-- Mensaje de error -->
+              <mat-error *ngIf="!opcionSeleccionada && mostrarError">
+                Debes seleccionar una opción.
+              </mat-error>
             </div>
           </div>
+          
   
           <div class="card mt-4">
 
             <mat-tab-group>
-              <mat-tab label="Salarios"> <app-add-ingreso-sueldo [ingreso]="ingreso"></app-add-ingreso-sueldo> </mat-tab>
-              <mat-tab label="Asimilados a Salarios"> <app-add-ingreso-asimilado></app-add-ingreso-asimilado> </mat-tab>
+              <mat-tab label="Salarios"> <app-add-ingreso-sueldo [ingreso]="ingreso" #componenteSueldo></app-add-ingreso-sueldo> </mat-tab>
+              <mat-tab label="Asimilados a Salarios"> <app-add-ingreso-asimilado [ingreso]="ingreso" #componenteAsimilado></app-add-ingreso-asimilado> </mat-tab>
             </mat-tab-group>
         
           </div>

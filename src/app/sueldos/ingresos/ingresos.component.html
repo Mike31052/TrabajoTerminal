@@ -4,14 +4,14 @@
   <div class="mb-3 row">
     <label for="ingresoAnual" class="col-sm-2 col-form-label">Ingreso anual</label>
     <div class="col-sm-8">
-      <input type="number" id="ingresoAnual" class="form-control" [(ngModel)]="ingresoAnual"
+      <input type="number" id="ingresoAnual" class="form-control" [(ngModel)]="ingresoAnual" readonly
         matTooltip="Ingreso anual bruto">
     </div>
     <div class="col-sm-2">
       <button class="btn btn-info btn-sm w-100" 
         (click)="openDialog('El ingreso total anual es la cantidad de dinero que se recibe en un año.
         Este campo se refiere al ingreso anual bruto que es la cantidad que se gana antes de aplicar cualquier impuesto o deducción.
-        Se obtiene facilmente multiplicando el ingreso bruto mensual por los 12 meses laborados.')">
+        Es la suma de todos tus ingresos del año.')">
         Info
       </button>
     </div>
@@ -36,11 +36,13 @@
       <tr *ngFor="let ingreso of ingresos">
         <td>{{ ingreso.rfc }}</td>
         <td>{{ ingreso.empresa }}</td>
-        <td>{{ ingreso.ingresoAnual }}</td>
+        <td>{{ getIngresoTotal(ingreso) }}</td>
         <td>{{ ingreso.ingresoExento }}</td>
         <td>{{ ingreso.subsidioEmpleo }}</td>
-        <td>{{ ingreso.retencionISR }}</td>
-        <td class="text-center">Agregado</td>
+        <td>{{ getRetencionTotal(ingreso) }}</td>
+        <td class="text-center">
+          {{ ingreso.confirmacion === null || ingreso.confirmacion === undefined ? 'Por confirmar' : ingreso.confirmacion ? 'Confirmado' : 'Rechazado' }}
+        </td>
         <td class="text-center">
           <button class="btn btn-sm btn-warning me-1" (click)="validarIngreso(ingreso)">Validar</button>
           <button class="btn btn-sm btn-danger" (click)="eliminarIngreso(ingreso)">Eliminar</button>
@@ -52,7 +54,7 @@
   <div class="mb-3 row">
     <label for="ingresosExentos" class="col-sm-2 col-form-label">Ingresos exentos</label>
     <div class="col-sm-8">
-      <input type="number" id="ingresosExentos" class="form-control" [(ngModel)]="ingresosExentos"
+      <input type="number" id="ingresosExentos" class="form-control" [(ngModel)]="ingresosExentos" readonly
         matTooltip="Ingresos exentos">
     </div>    
     <div class="col-sm-2">
@@ -71,7 +73,7 @@
   <div class="mb-3 row">
     <label for="ingresosAcumulables" class="col-sm-2 col-form-label">Ingresos acumulables</label>
     <div class="col-sm-8">
-      <input type="number" id="ingresosAcumulables" class="form-control" [(ngModel)]="ingresosAcumulables" matTooltip="Ingreso acumulables">
+      <input type="number" id="ingresosAcumulables" class="form-control" [(ngModel)]="ingresosAcumulables" readonly matTooltip="Ingreso acumulables">
     </div>
     <div class="col-sm-2">
       <button class="btn btn-info btn-sm w-100" (click)="openDialog('Son los ingresos que, después de aplicar las exenciones fiscales, se consideran para el cálculo del ISR.
@@ -83,7 +85,7 @@
   <div class="mb-3 row">
     <label for="impuestoRetenido" class="col-sm-2 col-form-label">Impuesto retenido</label>
     <div class="col-sm-8">
-      <input type="number" id="impuestoRetenido" class="form-control" [(ngModel)]="impuestoRetenido" matTooltip="impuesto retenido">
+      <input type="number" id="impuestoRetenido" class="form-control" [(ngModel)]="impuestoRetenido" readonly matTooltip="impuesto retenido">
     </div>
     <div class="col-sm-2">
       <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el ISR que el empleador retiene de manera mensual de los ingresos gravables del trabajador y lo paga directamente al SAT.

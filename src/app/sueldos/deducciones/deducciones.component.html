@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <div>
         <label for="montoTotalDeducible" class="form-label">Monto total deducible</label>
-        <input type="text" class="form-control" id="montoTotalDeducible" value="46,420" disabled />
+        <input type="text" class="form-control" id="montoTotalDeducible" [(ngModel)]="montoTotalDeducible" name="montoTotalDeducible" disabled />
       </div>
       <div>
         <label for="montoPorDeducir" class="form-label">Monto total por deducir</label>
@@ -36,37 +36,45 @@
     </p>
 
 
-    <!-- Botón Agregar -->
-    <button class="btn btn-primary mb-4" (click)="addDeduccion()">Agregar</button>
-
     <!-- Tabla de detalles -->
-    <div *ngIf="selectedDeduccion">
-      <h5>{{ selectedDeduccion.title }}</h5>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>RFC del emisor</th>
-            <th>Nombre, denominación o razón social</th>
-            <th>Fecha emisión</th>
-            <th>Descripción</th>
-            <th>Importe</th>
-            <th>Monto deducible</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngIf="!selectedDeduccion.data.length">
-            <td colspan="6" class="text-center">No se encontraron registros</td>
-          </tr>
-          <tr *ngFor="let item of selectedDeduccion.data">
-            <td>{{ item.rfc }}</td>
-            <td>{{ item.nombre }}</td>
-            <td>{{ item.fechaEmision }}</td>
+<div *ngIf="selectedDeduccion">
+  <!-- Botón Agregar -->
+  <button class="btn btn-primary mb-4" (click)="addDeduccion()">Agregar</button>
+
+  <h5>{{ selectedDeduccion.title }}</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>RFC del emisor</th>
+        <th>Nombre, denominación o razón social</th>
+        <th>Fecha emisión</th>
+        <th>Descripción</th>
+        <th>Importe</th>
+        <th>Monto deducible</th>
+        <th>Acciones</th> <!-- Columna para los íconos -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!selectedDeduccion.data.length">
+        <td colspan="7" class="text-center">No se encontraron registros</td>
+      </tr>
+      <tr *ngFor="let item of selectedDeduccion.data; let i = index">
+        <td>{{ item.rfc_emisor }}</td>
+            <td>{{ item.empresa }}</td>
+            <td>{{ item.fecha_emision | date: 'dd-MM-yyyy' }}</td>
             <td>{{ item.descripcion }}</td>
             <td>{{ item.importe }}</td>
-            <td>{{ item.montoDeducible }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <td>{{ item.deducible }}</td>
+        <td>
+          <!-- Ícono de eliminar -->
+          <button class="btn btn-danger btn-sm" (click)="eliminarDeduccion(i)">
+            <i class="fas fa-trash"></i> <!-- Usando el ícono de Font Awesome -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
   </div>
 </div>

@@ -3,23 +3,22 @@
     <div class="row" style="padding: 10px;">
       <div class="col-md-6">
         <label for="ingresoAnual">Ingreso anual</label>
-        <input type="number" class="form-control" id="ingresoAnual" [(ngModel)]="ingreso.ingresoAnual" name="ingresoAnual" />
+        <input type="number" class="form-control" id="ingresoAnual" [(ngModel)]="ingreso.ingresoAnual" name="ingresoAnual" [readonly]="ingreso.id_ingreso"/>
       </div>
       <div class="col-md-6">
         <label for="ingresoExento">Ingreso exento</label>
-        <input type="number" class="form-control" id="ingresoExento" [(ngModel)]="ingreso.ingresoExento" name="ingresoExento" />
+        <input type="number" class="form-control" id="ingresoExento" [(ngModel)]="ingreso.ingresoExento" name="ingresoExento" readonly
+        data-bs-toggle="popover" 
+        data-bs-trigger="hover" 
+        data-bs-content="Fundamento legal: Ley del Impuesto Sobre la Renta, en su artículo 93"/>
       </div>
       <div class="col-md-6">
         <label for="subsidioEmpleo">Subsidio para el empleo</label>
-        <input type="number" class="form-control" id="subsidioEmpleo" placeholder="0" />
-      </div>
-      <div class="col-md-6">
-        <label for="subsidioRecibido">Subsidio para el empleo recibido</label>
-        <input type="number" class="form-control" id="subsidioRecibido" placeholder="0" />
+        <input type="number" class="form-control" id="subsidioEmpleo" [(ngModel)]="ingreso.subsidioEmpleo" name="subsidioEmpleo" [readonly]="ingreso.id_ingreso"/>
       </div>
       <div class="col-md-6">
         <label for="impuestoRetenido">Impuesto retenido</label>
-        <input type="number" class="form-control" id="impuestoRetenido" [(ngModel)]="ingreso.retencionISR" name="retencionISR" />
+        <input type="number" class="form-control" id="impuestoRetenido" [(ngModel)]="ingreso.retencionISR" name="retencionISR" [readonly]="ingreso.id_ingreso"/>
       </div>
     </div>
   
@@ -31,23 +30,35 @@
       <div class="row">
         <div class="col-md-6">
           <label for="aguinaldo">Aguinaldo</label>
-          <input type="number" class="form-control" id="aguinaldo" placeholder="0" />
+          <input type="number" class="form-control" id="aguinaldo" [(ngModel)]="ingreso.aguinaldo" (ngModelChange)="calcularIngresos()" [readonly]="ingreso.id_ingreso"
+          data-bs-toggle="popover" 
+          data-bs-trigger="hover"
+          data-bs-html="true" 
+          data-bs-content="Tope exento: 30 UMAS<br>Art. 93 Fracción XIV LISR"/>
         </div>
         <div class="col-md-6">
           <label for="primaVacacional">Prima vacacional</label>
-          <input type="number" class="form-control" id="primaVacacional" placeholder="0" />
+          <input type="number" class="form-control" id="primaVacacional" [(ngModel)]="ingreso.primaVacacional" (ngModelChange)="calcularIngresos()" [readonly]="ingreso.id_ingreso"
+          data-bs-toggle="popover" 
+          data-bs-trigger="hover"
+          data-bs-html="true" 
+          data-bs-content="Tope exento: 15 UMAS<br>Art. 93 Fracción XIV LISR"/>
         </div>
         <div class="col-md-6">
           <label for="ptu">PTU</label>
-          <input type="number" class="form-control" id="ptu" placeholder="0" />
+          <input type="number" class="form-control" id="ptu" [(ngModel)]="ingreso.ptu" (ngModelChange)="calcularIngresos()" [readonly]="ingreso.id_ingreso"
+          data-bs-toggle="popover" 
+          data-bs-trigger="hover"
+          data-bs-html="true" 
+          data-bs-content="Tope exento: 15 UMAS<br>Art. 93 Fracción XIV LISR"/>
         </div>
         <div class="col-md-6">
           <label for="primaDominical">Prima dominical</label>
-          <input type="number" class="form-control" id="primaDominical" placeholder="0" />
-        </div>
-        <div class="col-md-6">
-          <label for="otrosIngresosExentos">Otros ingresos exentos</label>
-          <input type="number" class="form-control" id="otrosIngresosExentos" placeholder="0" />
+          <input type="number" class="form-control" id="primaDominical" [(ngModel)]="ingreso.primaDominical" (ngModelChange)="calcularIngresos()" [readonly]="ingreso.id_ingreso"
+          data-bs-toggle="popover" 
+          data-bs-trigger="hover"
+          data-bs-html="true" 
+          data-bs-content="Tope exento: 1 UMA por cada domingo que se labore<br>Art. 93 Fracción XIV LISR"/>
         </div>
       </div>
   
