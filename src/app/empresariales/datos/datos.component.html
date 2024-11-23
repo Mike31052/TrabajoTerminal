@@ -1,6 +1,10 @@
 <app-header title="Datos de Declaracion"></app-header>
 
 <app-body>
+  
+  <button class="custom-button" (click)="openModal(1)">Ver video</button>
+  <br>
+  
   <h2>Selecciona tu declaración</h2>
 
   <form #declaracionForm="ngForm" novalidate>
@@ -74,3 +78,13 @@
 </app-body>
 
 <app-footer></app-footer>
+
+<!-- Modal -->
+<!-- Modal -->
+<div id="videoModal" class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ modalTitle }}</h2>
+    <iframe [src]="videoSrc | safeUrl" width="100%" height="700px" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>

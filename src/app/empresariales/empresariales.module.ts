@@ -14,12 +14,14 @@ import { EmpmensualComponent } from './empmensual/empmensual.component';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 import { IsraComponent } from './isra/isra.component';
 import { IsrmComponent } from './isrm/isrm.component';
-import { IvaaComponent } from './ivaa/ivaa.component';
+
 import { IvamComponent } from './ivam/ivam.component';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Elimina esta línea
 import { PrincipalModule } from '../principal/principal.module';
+import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
+
 
 
 
@@ -32,7 +34,7 @@ import { PrincipalModule } from '../principal/principal.module';
     DeduccionesComponent,
     InfoDialogComponent,
     IsraComponent,
-    IvaaComponent,
+    SafeUrlPipe,
     DeduccionesaComponent,
     EmpanualComponent,
   ],

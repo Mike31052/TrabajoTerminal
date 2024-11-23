@@ -11,6 +11,9 @@
             <option value="si">Sí</option>
           </select>
         </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Estos ingresos son obtenidos en copropiedad y se suman al total de ingresos de la declaracion del mes activo')">Información</button>
+        </div>
       </div>
   
       <div *ngIf="israForm.get('copropiedadanual')?.value === 'si'" class="mb-3 row">
@@ -25,6 +28,9 @@
         <label for="ingresosPeriodoanual" class="col-sm-2 col-form-label">Ingresos del periodo</label>
         <div class="col-sm-6">
           <input type="number" step="0.01" formControlName="ingresosPeriodoanual" (input)="calcularISR()" class="form-control" />
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Son los ingresos que obtuviste con tu actividad del regimen durante el mes activo')">Información</button>
         </div>
       </div>
   
@@ -70,6 +76,9 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
         <div class="col-sm-6">
           <input type="number" step="0.01" formControlName="totalComprasGastosanual" class="form-control" (input)="calcularISR()" />
         </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Modificando deducciones autorizadas se muestra aqui el valor.')">Información</button>
+        </div>
       </div>
 
       <!-- Estimulos fiscales -->
@@ -78,6 +87,9 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
   <div class="col-sm-6">
     <input type="number" step="0.01" formControlName="estimulosFiscales" class="form-control" />
   </div>
+  <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Solo se aplica en IEPS y en ISR para acreditamiento en contra del ISR del derecho especial sobre minería, para mas informacion checar la pagina del SAT')">Información</button>
+        </div>
 </div>
 
 <!--  Perdidas fiscales de ejercicios anteriores -->
@@ -86,6 +98,9 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
   <div class="col-sm-6">
     <input type="number" step="0.01" formControlName="perdidasfiscales" class="form-control" />
   </div>
+  <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Se obtendrá cuando los ingresos a que se refiere esta Sección obtenidos en el ejercicio sean menores a las deducciones autorizadas en el mismo')">Información</button>
+        </div>
 </div>
   
   
@@ -100,6 +115,9 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
   <div class="col-sm-6">
     <input type="number" formControlName="deduccionesPersonales" class="form-control" readonly />
   </div>
+  <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Al modificar la pestaña de deducciones y actualizar el valor se mostrara aqui.')">Información</button>
+        </div>
 </div>
 
 <!-- Base gravable -->
@@ -108,6 +126,9 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
   <div class="col-sm-6">
     <input type="number" formControlName="baseGravable" class="form-control" readonly />
   </div>
+  <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es la base que se usara para aplicar las tarifas y sacar el impuesto previo al pago')">Información</button>
+        </div>
 </div>
   
       <!-- ISR causado -->
@@ -116,6 +137,9 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
         <div class="col-sm-6">
           <input type="number" formControlName="isrCausadoanual" class="form-control" readonly />
         </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el impuesto previo a ciertas reducciones para el pago')">Información</button>
+        </div>  
       </div>
   
       <!-- Pagos provisionales de periodos anteriores -->
@@ -139,6 +163,35 @@ Colegiaturas (preescolar a preparatoria)')">Información</button>
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Este monto es el ISR retenido por personas morales')">Información</button>
         </div>
       </div>
+
+      <!-- Ingresos por premios -->
+<div class="mb-3 row">
+  <label for="ingresosPremios" class="col-sm-2 col-form-label">¿Obtuviste ingresos por premios?</label>
+  <div class="col-sm-6">
+    <select formControlName="ingresosPremios" (change)="togglePremios($event)" class="form-control">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-info btn-sm w-100" (click)="openDialog('Los ingresos por premios son aquellos obtenidos de sorteos, loterías o similares.')">Información</button>
+  </div>
+</div>
+
+<div *ngIf="israForm.get('ingresosPremios')?.value === 'si'" class="mb-3 row">
+  <label for="montoPremios" class="col-sm-2 col-form-label">Monto de ingresos por premios</label>
+  <div class="col-sm-6">
+    <input type="number" step="0.01" formControlName="montoPremios" (input)="calcularImpuestoPremios()" class="form-control" />
+  </div>
+</div>
+
+<div *ngIf="israForm.get('ingresosPremios')?.value === 'si'" class="mb-3 row">
+  <label for="impuestoPremios" class="col-sm-2 col-form-label">Tu impuesto por premios es:</label>
+  <div class="col-sm-6">
+    <input type="number" formControlName="impuestoPremios" class="form-control" readonly />
+  </div>
+</div>
+
   
       <!-- ISR a cargo -->
       <div class="mb-3 row">

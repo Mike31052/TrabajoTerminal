@@ -17,7 +17,7 @@ export class IsraComponent implements OnInit {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private router: Router,
-    private deduccionesservice2: Deducciones2Service,
+    private deduccionesservice2: Deducciones2Service
   ) {
     this.israForm = this.fb.group({
       copropiedadanual: ['no', Validators.required],
@@ -40,14 +40,36 @@ export class IsraComponent implements OnInit {
       perdidasfiscales: [0, Validators.required],
       deduccionesPersonales: [{ value: 0, disabled: true }],
       baseGravable: [{ value: 0, disabled: true }],
+      ingresosPremios: ['no', Validators.required],
+      montoPremios: [0],
+      impuestoPremios: [{ value: 0, disabled: true }]
     });
   }
 
   ngOnInit(): void {
-    // Suscripción para recibir el monto total a deducir desde el servicio
     this.deduccionesservice2.getMontoTotalADeducir().subscribe((montoDeducir) => {
       this.israForm.get('deduccionesPersonales')?.setValue(montoDeducir);
     });
+  }
+
+  togglePremios(event: any): void {
+    if (event.target.value === 'si') {
+      this.israForm.get('montoPremios')?.enable();
+    } else {
+      this.israForm.get('montoPremios')?.disable();
+      this.israForm.patchValue({ montoPremios: 0, impuestoPremios: 0 });
+    }
+  }
+
+  calcularImpuestoPremios(): void {
+    const montoPremios = parseFloat(this.israForm.get('montoPremios')?.value) || 0;
+    let impuestoPremios = 0;
+
+    if (montoPremios > 0) {
+      impuestoPremios = montoPremios <= 600000 ? montoPremios * 0.01 : montoPremios * 0.06;
+    }
+
+    this.israForm.patchValue({ impuestoPremios });
   }
 
   calcularISR() {
@@ -85,7 +107,8 @@ export class IsraComponent implements OnInit {
 
     const pagosAnterioresanual = parseFloat(this.israForm.get('pagosAnterioresanual')?.value) || 0;
     const isrRetenidoPeriodoanual = parseFloat(this.israForm.get('isrRetenidoPeriodoanual')?.value) || 0;
-    const isrACargoanual = isrCausadoanual - pagosAnterioresanual - isrRetenidoPeriodoanual;
+    const impuestoPremios = parseFloat(this.israForm.get('impuestoPremios')?.value) || 0;
+    const isrACargoanual = isrCausadoanual - pagosAnterioresanual - isrRetenidoPeriodoanual + impuestoPremios;
 
     this.israForm.patchValue({
       isrCausadoanual: isrCausadoanual,
@@ -102,6 +125,8 @@ export class IsraComponent implements OnInit {
     }
     this.calcularISR();
   }
+
+  
 
   toggleFacilidades(event: any) {
     this.israForm.get('facilidades')?.setValue(event.target.value);
