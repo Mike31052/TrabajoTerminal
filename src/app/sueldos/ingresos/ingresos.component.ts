@@ -4,6 +4,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component'; // A
 import { IngresosAsalariado } from '../../shared/models/ingresos-sueldos.model';
 import { Usuario } from '../../shared/models/usuario.model';
 import { AddIngresoComponent } from '../add-ingreso/add-ingreso.component';
+import { SueldosService } from '../../core/services/sueldos.service';
 
 @Component({
   selector: 'app-ingresos',
@@ -19,7 +20,9 @@ export class IngresosComponent {
   ingresos: IngresosAsalariado [] = [];
   userTO?: Usuario;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,
+    private sueldosService: SueldosService
+  ) {}
 
   ngOnInit() {
     if (!this.ingresos || this.ingresos.length === 0) {
@@ -104,6 +107,9 @@ export class IngresosComponent {
   
     // Calcular ingresos acumulables
     this.ingresosAcumulables = (this.ingresoAnual || 0) + (this.ingresosGravables || 0);
+
+    this.sueldosService.setIngresoAnual(this.ingresoAnual);
+    this.sueldosService.setIngresoAcumulable(this.ingresosAcumulables);
   }
   
 }

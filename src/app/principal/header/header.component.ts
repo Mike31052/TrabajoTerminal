@@ -19,7 +19,6 @@ export class HeaderComponent {
 
   ngOnInit(): void {
   this.userTO = this.userSesionService.getUsuario();
-  console.log("usuario: ", this.userTO);
   }
 
   logout(){
@@ -27,6 +26,21 @@ export class HeaderComponent {
       this.userSesionService.clearUsuario();
     }
     this.router.navigate(['/']);
+  }
 
+  goToImpuestos() {
+    this.userTO = this.userSesionService.getUsuario();
+    console.log(this.userTO);
+    if(this.userTO?.regimen){
+      if(this.userTO.regimen == 'SS'){
+        this.router.navigate(['/sueldos-y-salarios/ejercicio']);
+      }else if(this.userTO.regimen == 'SC'){
+        this.router.navigate(['/escoger-declaracion']);
+      }else if(this.userTO.regimen == 'EP'){
+        this.router.navigate(['/edatos']);
+      }
+    }else{
+      alert('Primero confirma a que regimen perteneces');
+    }
   }
 }

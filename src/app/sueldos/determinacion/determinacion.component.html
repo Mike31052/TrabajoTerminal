@@ -2,19 +2,49 @@
     <div class="row mb-3">
       <label class="col-sm-6 col-form-label">Ingresos acumulables</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" value="24,549"/>
+        <input type="text" class="form-control" name="ingresoAcumulable" [(ngModel)]="ingresoAcumulable"/>
       </div>
     </div>
     <div class="row mb-3">
       <label class="col-sm-6 col-form-label">Deducciones personales</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" value="44,324"/>
+        <input type="text" class="form-control" name="deduccionesPersonales" [(ngModel)]="deduccionesPersonales"/>
       </div>
     </div>
     <div class="row mb-3">
       <label class="col-sm-6 col-form-label">Base gravable</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" value="0"/>
+        <input type="text" class="form-control" name="baseGravable" [(ngModel)]="baseGravable"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label class="col-sm-6 col-form-label">Limite inferior</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="limiteInferior" [(ngModel)]="limiteInferior"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label class="col-sm-6 col-form-label">Excedente del limite inferior</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="excedenteLimiteInferior" [(ngModel)]="excedenteLimiteInferior"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label class="col-sm-6 col-form-label">% Sobre excedente</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="porcentajeExcedente" [(ngModel)]="porcentajeExcedente"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label class="col-sm-6 col-form-label">Impuesto marginal</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="impuestoMarginal" [(ngModel)]="impuestoMarginal"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label class="col-sm-6 col-form-label">Cuota Fija</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="cuotaFija" [(ngModel)]="cuotaFija"/>
       </div>
     </div>
     <div class="row mb-3">

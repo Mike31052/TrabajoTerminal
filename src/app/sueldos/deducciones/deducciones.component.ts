@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDeduccionComponent } from '../add-deduccion/add-deduccion.component';
 import { DeduccionesAsalariado } from '../../shared/models/deducciones-sueldos.model';
 import { tipoDeduccionMap } from '../../shared/models/tipo-deduccion-mapper';
+import { EXENCIONES } from '../../shared/models/constantes.model';
+import { SueldosService } from '../../core/services/sueldos.service';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-deducciones',
   templateUrl: './deducciones.component.html',
   styleUrls: ['./deducciones.component.css']
 })
-export class DeduccionesComponent {
-  montoPorDeducir: number = 310;
-  deduccionesPersonales: DeduccionesAsalariado[] = [];
+export class DeduccionesComponent implements AfterViewInit{
+  montoPorDeducir: number = 0;
+  montoTotalDeducible: number = 0;
+  ingresoAnual: number = 0;
   deducciones: { 
     title: string; 
     iconClass: string; 
@@ -67,15 +71,34 @@ export class DeduccionesComponent {
 
   selectedDeduccion: any = null;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+    private sueldosService: SueldosService
+  ) {}
 
   ngOnInit() {
+    this.sueldosService.ingresoAnual$.subscribe((value) => {
+      this.ingresoAnual = value;
+    });
+    // Calcular el monto total que se puede deducir
+    this.montoTotalDeducible = Math.min(0.15 * this.ingresoAnual, EXENCIONES.TOTAL_DEDUCIBLE * EXENCIONES.UMA_VALUE_ANUAL);
+
     // Contar y asignar datos prellenados a cada deducción según su tipo
     this.deducciones.forEach((deduccion, index) => {
       deduccion.data = this.dataInicial.filter(
         (item) => item.tipo_deduccion === index + 1
       );
       deduccion.count = deduccion.data.length;
+    });
+
+    // Calcular el monto total deducible
+    this.calcularTotalDeducible();
+  }
+
+  ngAfterViewInit(): void {
+    // Inicializa todos los popovers en los elementos con atributo data-bs-toggle="popover"
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    popoverTriggerList.forEach(popoverTriggerEl => {
+      new bootstrap.Popover(popoverTriggerEl);
     });
   }
 
@@ -101,12 +124,20 @@ export class DeduccionesComponent {
         if (targetDeduccion) {
           targetDeduccion.data.push(result);
           targetDeduccion.count++;
+          // Calcular el monto total deducible
+          this.calcularTotalDeducible();
         }
       }
     });
   }
   
-  
+  actualizar(){
+    this.sueldosService.ingresoAnual$.subscribe((value) => {
+      this.ingresoAnual = value;
+    });
+    // Calcular el monto total que se puede deducir
+    this.montoTotalDeducible = Math.min(0.15 * this.ingresoAnual, EXENCIONES.TOTAL_DEDUCIBLE * EXENCIONES.UMA_VALUE_ANUAL);
+  }
 
   // Método para eliminar una deducción
   eliminarDeduccion(index: number): void {
@@ -116,7 +147,23 @@ export class DeduccionesComponent {
       this.selectedDeduccion.data.splice(index, 1);
       // Actualizar el contador de deducciones para esta categoría
       this.selectedDeduccion.count = this.selectedDeduccion.data.length;
+      // Calcular el monto total deducible
+      this.calcularTotalDeducible();
     }
   }
+
+  sumarUnDia(fecha: Date): Date {
+    const nuevaFecha = new Date(fecha); // Copiar la fecha original
+    nuevaFecha.setDate(nuevaFecha.getDate() + 1); // Sumar un día
+    return nuevaFecha;
+  }
   
+  calcularTotalDeducible() {
+    // Sumar el campo 'deducible' de todas las deducciones
+    this.montoPorDeducir = this.deducciones.reduce((total, deduccion) => {
+      return total + deduccion.data.reduce((sum, item) => sum + (item.deducible || 0), 0);
+    }, 0);
+
+    this.sueldosService.setDeduccionesPersonales(this.montoPorDeducir);
+  }
 }

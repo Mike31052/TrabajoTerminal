@@ -46,6 +46,7 @@ export class DetRegFisComponent implements OnInit {
         this.userHttpService.updateRegimen(this.userTO!).subscribe(
           (response) => {
             console.log("Éxito:", response);
+            this.userSesionService.setUsuario(this.userTO);
             this.router.navigate(['/Inicio']);
           },
           (error) => {

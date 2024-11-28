@@ -1,11 +1,19 @@
 <div class="container my-4 p-4">
-    <h2 class="text-center mb-4">Proporciona los datos de la factura</h2>
-  
+    <h3 class="text-center">Proporciona los datos de la factura</h3>
+
+    <!-- Mensaje de exito-->
+    <div *ngIf="tippoAlert" class="alert alert-success" role="alert">
+      {{ mensaje }}
+    </div>
+    <!-- Mensaje de warning-->
+    <div *ngIf="!tippoAlert" class="alert alert-warning" role="alert">
+      {{ mensaje }}
+    </div>
     <form>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="tipoDeduccion" class="form-label">Tipo de Deducción</label>
-          <input id="tipoDeduccion" type="text" class="form-control" [value]="getTipoDeduccionTexto(tipoDeduccion)" readonly />
+          <input id="tipoDeduccion" type="text" class="form-control" [value]="getTipoDeduccionTexto(tipoDeduccion)" readonly/>
         </div>
   
         <div class="col-md-6 mb-3">
