@@ -14,6 +14,9 @@ export class SueldosService {
   private deduccionesPersonalesSource = new BehaviorSubject<number>(0); // Valor inicial: 0
   deduccionesPersonales$ = this.deduccionesPersonalesSource.asObservable();
 
+  private isrRetenidoSource = new BehaviorSubject<number>(0); // Valor inicial: 0
+  isrRetenido$ = this.isrRetenidoSource.asObservable();
+
   constructor() {}
 
   setIngresoAnual(value: number) {
@@ -26,5 +29,9 @@ export class SueldosService {
 
   setDeduccionesPersonales(value: number) {
     this.deduccionesPersonalesSource.next(value);
+  }
+
+  setIsrRetenido(value: number) {
+    this.isrRetenidoSource.next(value);
   }
 }

@@ -50,25 +50,19 @@
     <div class="row mb-3">
       <label class="col-sm-6 col-form-label">ISR conforme a la tarifa anual</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" value="0" />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Pagos provisionales</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" value="0" />
+        <input type="text" class="form-control" name="isrTarifaAnual" [(ngModel)]="isrTarifaAnual" />
       </div>
     </div>
     <div class="row mb-3">
       <label class="col-sm-6 col-form-label">ISR retenido</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" value="5,400" />
+        <input type="text" class="form-control" name="isrRetenido" [(ngModel)]="isrRetenido" />
       </div>
     </div>
     <div class="row mb-3">
       <label class="col-sm-6 col-form-label">Impuesto a favor del ejercicio</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" value="5,400"/>
+        <input type="text" class="form-control" name="isrFinal" [(ngModel)]="isrFinal"/>
       </div>
     </div>
   </div>

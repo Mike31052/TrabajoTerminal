@@ -16,6 +16,9 @@ export class DeterminacionComponent {
   porcentajeExcedente: number = 0;
   impuestoMarginal: number = 0;
   cuotaFija: number = 0;
+  isrTarifaAnual: number = 0;
+  isrRetenido: number = 0;
+  isrFinal: number = 0;
 
   limites_inf: number[] = [
     0.01, 8952.50, 75984.56, 133536.08, 155229.81,
@@ -45,6 +48,10 @@ export class DeterminacionComponent {
       this.deduccionesPersonales = value;
     });
 
+    this.sueldosService.isrRetenido$.subscribe((value) => {
+      this.isrRetenido = value;
+    });
+
     if(this.ingresoAcumulable > this.deduccionesPersonales){
       this.baseGravable = this.ingresoAcumulable - this.deduccionesPersonales;
 
@@ -59,6 +66,16 @@ export class DeterminacionComponent {
     this.porcentajeExcedente = this.porcentajes_exc[index];
     this.impuestoMarginal = Math.round((this.porcentajeExcedente * this.excedenteLimiteInferior) / 100);
     this.cuotaFija = this.cuotas[index];
+    this.isrTarifaAnual = this.impuestoMarginal + this.cuotaFija;
+    if(this.isrRetenido >= this.isrTarifaAnual){
+      this.isrFinal = Math.round((this.isrRetenido - this.isrTarifaAnual) / 100); 
+    } else {
+      this.isrFinal = Math.round((this.isrTarifaAnual - this.isrRetenido) / 100); 
+    }
+    
+
+    }else{
+      
 
     }
   }
