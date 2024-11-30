@@ -26,3 +26,9 @@
     transition: background-color 0.3s ease;
     margin-left: 20px;
   }
+
+  /*Para los iconoa*/
+  .material-icons{
+    cursor:pointer;
+    margin-left: 5px;
+  }

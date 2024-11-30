@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EscogerDeclaracionComponent } from './escoger-declaracion/escoger-declaracion.component';
 import { PrincipalModule } from '../principal/principal.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
 
 // Importa el componente
 import { MensualResicoComponent } from './mensual-resico/mensual-resico.component'; 
@@ -22,6 +26,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AnuaDetalleIngresoEfectivamenteComponent } from './anua-detalle-ingreso-efectivamente/anua-detalle-ingreso-efectivamente.component';
+import { AnualDetallePagosMensualesComponent } from './anual-detalle-pagos-mensuales/anual-detalle-pagos-mensuales.component';
 
 
 // Agrega una ruta si necesitas navegación
@@ -38,6 +44,8 @@ const routes: Routes = [
   { path: 'anual-ingresos', component: AnualIngresosComponent},
   { path: 'anual-det', component: AnualDetComponent},
   { path: 'anual-pago', component: AnualPagoComponent},
+  { path: 'anual-detalle-ingreso-efectivamente', component: AnuaDetalleIngresoEfectivamenteComponent},
+  { path: 'anual-detalle-pagos-mensuales', component: AnualDetallePagosMensualesComponent}
 
 ];
 
@@ -55,7 +63,9 @@ const routes: Routes = [
     AnualResicoComponent,
     AnualIngresosComponent,
     AnualDetComponent,
-    AnualPagoComponent
+    AnualPagoComponent,
+    AnuaDetalleIngresoEfectivamenteComponent,
+    AnualDetallePagosMensualesComponent,
   ],
   imports: [
     CommonModule,
@@ -63,11 +73,17 @@ const routes: Routes = [
     PrincipalModule,
     MatTabsModule,
     MatTooltipModule,
-    MatExpansionModule, // Importar panel de expansión
-    MatFormFieldModule, // Importar campo de formulario
+    MatExpansionModule,
+    MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    FormsModule,
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule,
+    AnualIngresosComponent,
+  ]
 })
-export class ResicoModule { }
-
+export class ResicoModule {
+  
+ }

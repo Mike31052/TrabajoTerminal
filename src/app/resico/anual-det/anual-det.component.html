@@ -7,47 +7,116 @@
           <mat-panel-title>Determinación del ISR</mat-panel-title>
         </mat-expansion-panel-header>
           <div class="input-container">
-                <label>Base gravable</label>
+                <label>Base gravable<span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Base gravable</mat-label>
+                        <input matInput [(ngModel)]="baseGravable" (ngModelChange)="calcularISR()" min="0" max="3500000" onkeypress="return event.key !== '-'" type="number"/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>Tasa aplicable (x)</label>
+                <label>Tasa aplicable (x)<span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Tasa aplicable</mat-label>
+                        <input matInput [value]="tasaAplicable + '%'" readonly/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>ISR causado (=)</label>
+                <label>ISR causado (=)<span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>ISR causado</mat-label>
+                        <input matInput [value]="isrCausado" readonly />
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>Pagos mensuales (-)</label>
+                <label>Pagos mensuales<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Pagos mensuales</mat-label>
+                        <input matInput [(ngModel)]="pagosMensuales" (ngModelChange)="calcularISR()" disabled/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>ISR retenido (-)</label>
+                <label>ISR retenido (-)<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>ISR retenido</mat-label>
+                        <input matInput [(ngModel)]="isrRetenido" (ngModelChange)="calcularISR()" onkeypress="return event.key !== '-'"/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>Impuesto a cargo (=)</label>
+                <label>Impuesto a cargo (=)<span class="material-icons" (click)="openModal(modal6)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Impuesto a cargo</mat-label>
+                        <input matInput  [value]="impuestoACargo" readonly/>
                     </mat-form-field>
           </div>
         </mat-expansion-panel>
 
 </mat-accordion>
+<br>
+<button>Continuar</button>
+
+<!-- Modal 1 Determinacion de ISR - Base gravable-->
+<ng-template #modal1>
+    <h1 mat-dialog-title>Base gravable</h1>
+    <div mat-dialog-content>
+      <p>Total de los ingresos gravados en la seccion anterior (ingresos).</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template> 
+
+  <!-- Modal 2 Determinacion de ISR - Tasa aplicable-->
+<ng-template #modal2>
+    <h1 mat-dialog-title>Tasa aplicable</h1>
+    <div mat-dialog-content>
+      <p>Este campo esta prellenado con la tasa de impuestos aplicable correspondiente a la base gravada, como se muestra en la siguiente tabla:</p>
+      <img src="assets/imagenes/F_tasas_anual.png" class="imagen-ajustada">
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 3 Determinacion de ISR - ISR causado-->
+<ng-template #modal3>
+  <h1 mat-dialog-title>ISR causado</h1>
+  <div mat-dialog-content>
+    <p>Es la cantidad de impuestos que debes pagar por tus ingresos de acuerdo con la tasa aplicable. Este campo se llena por defecto.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Cerrar</button>
+  </div>
+</ng-template>
+
+<!-- Modal 4 Determinacion de ISR - Pagos mensuales-->
+<ng-template #modal4>
+  <h1 mat-dialog-title>Pagos mensuales</h1>
+  <div mat-dialog-content>
+    <p>Es el total de pagos que hiciste a lo largo del año. Este campo se llena por defecto.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Cerrar</button>
+  </div>
+</ng-template>
+
+<!-- Modal 5 Determinacion de ISR - ISR retenido-->
+<ng-template #modal5>
+  <h1 mat-dialog-title>ISR retenido</h1>
+  <div mat-dialog-content>
+    <p>Es el total de retenciones que tuviste. Este campo se llena por defecto.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Cerrar</button>
+  </div>
+</ng-template>
+
+<!-- Modal 6 Determinacion de ISR - Impuesto a cargo-->
+<ng-template #modal6>
+  <h1 mat-dialog-title>Impuesto a cargo</h1>
+  <div mat-dialog-content>
+    <p>Es el impuesto que resta por pagar. Este campo se llena por defecto.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Cerrar</button>
+  </div>
+</ng-template>

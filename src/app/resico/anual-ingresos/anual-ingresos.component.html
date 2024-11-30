@@ -7,10 +7,9 @@
         <mat-panel-title>Información sobre situación fiscal</mat-panel-title>
       </mat-expansion-panel-header>
         <div class="input-container">
-        <label>¿Estás obligado a presentar la información sobre tu situación fiscal (ISSIF) en términos del Art. 32-H del CFF?</label>
+        <label>¿Estás obligado a presentar la información sobre tu situación fiscal (ISSIF) en términos del Art. 32-H del CFF?<span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <input matInput value="No" placeholder="Otro ejemplo de entrada de datos" disabled/>
             </mat-form-field>
         </div>
     </mat-expansion-panel>
@@ -22,10 +21,9 @@
       </mat-expansion-panel-header>
 
         <div class="input-container">
-            <label>¿Los ingresos fueron obtenidos a través de copropiedad?</label>
+            <label>¿Los ingresos fueron obtenidos a través de copropiedad? <span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <input matInput value="No" placeholder="Otro ejemplo de entrada de datos" disabled/>
             </mat-form-field>
         </div>
       
@@ -38,51 +36,47 @@
         </mat-expansion-panel-header>
       
         <div class="input-container">
-            <label>Total de ingresos efectivamente cobrados</label>
+            <label>Total de ingresos efectivamente cobrados<span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>Total de ingresos efectivamente cobrados</mat-label>
+                <input matInput type="number" [value]="totalIngresosEfectivamenteCobrados" disabled/>
             </mat-form-field>
-            <button>Detalles</button>
+            <button (click)="openModal(modal12)">Detalles</button>
         </div>
         
         <div class="input-container">
-            <label>Descuentos, devoluciones y bonificaciones (-)</label>
+            <label>Descuentos, devoluciones y bonificaciones (-)<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>Descuentos, devoluciones y bonificaciones</mat-label>
+                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="descuentosDevolucionesBonificaciones" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '-'"/>
             </mat-form-field>
-            <button>Detalles</button>
         </div>
         <div class="input-container">
-            <label>Ingresos a disminuir (-)</label>
+            <label>Ingresos a disminuir (-)<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>Ingresos a disminuir</mat-label>
+                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="ingresosADisminuir" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '-'"/>
             </mat-form-field>
-            <button>Capturar</button>
         </div>
         <div class="input-container">
-            <label>Ingresos adicionales (+)</label>
+            <label>Ingresos adicionales (+) <span class="material-icons" (click)="openModal(modal6)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>Ingresos adicionales</mat-label>
+                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="ingresosAdicionales" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '-'"/>
             </mat-form-field>
-            <button>Capturar</button>
         </div>
         <div class="input-container">
-            <label>Total de ingresos percibidos por la actividad (=)</label>
+            <label>Total de ingresos percibidos por la actividad (=)<span class="material-icons" (click)="openModal(modal7)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+              <mat-label>Ingresos percibidos por la actividad</mat-label>
+                <input matInput type="number" [value]="totalIngresosPercibidos" disabled/>
             </mat-form-field>
-            <button>Detalles</button>
         </div>
         <div class="input-container">
-            <label>Ingresos gravados</label>
+            <label>Ingresos gravados<span class="material-icons" (click)="openModal(modal8)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>Ingresos gravados</mat-label>
+                <input matInput type="number" [value]="ingresosGravados" disabled/>
             </mat-form-field>
         </div>
     </mat-expansion-panel>
@@ -93,10 +87,10 @@
           <mat-panel-title>Resultado</mat-panel-title>
         </mat-expansion-panel-header>
             <div class="input-container">
-                <label>Ingresos gravados (=)</label>
+                <label>Ingresos gravados (=)<span class="material-icons" (click)="openModal(modal9)">help_outline</span></label>
                 <mat-form-field appearance="outline">
-                    <mat-label>Ingrese otro dato</mat-label>
-                    <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                    <mat-label>Ingresos gravados</mat-label>
+                    <input matInput [value]="ingresosGravados" disabled/>
                 </mat-form-field>
             </div>
     </mat-expansion-panel>
@@ -107,12 +101,12 @@
           <mat-panel-title>Pagos mensuales</mat-panel-title>
         </mat-expansion-panel-header>
         <div class="input-container">
-            <label>Pagos mensuales</label>
+            <label>Pagos mensuales<span class="material-icons" (click)="openModal(modal10)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>Total de pagos mensuales</mat-label>
+                <input matInput value="54966" disabled/>
             </mat-form-field>
-            <button>Detalles</button>
+            <button (click)="openModal(modal13)">Detalles</button>
         </div>
     </mat-expansion-panel>
 
@@ -122,17 +116,183 @@
           <mat-panel-title>Retenciones de ISR</mat-panel-title>
         </mat-expansion-panel-header>
         <div class="input-container">
-            <label>ISR retenido por personas morales</label>
+            <label>ISR retenido por personas morales<span class="material-icons" (click)="openModal(modal11)">help_outline</span></label>
             <mat-form-field appearance="outline">
-                <mat-label>Ingrese otro dato</mat-label>
-                <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                <mat-label>ISR retenido por personas morales</mat-label>
+                <input matInput placeholder="Ingrese una cantidad" type="number" min="0" />
             </mat-form-field>
-            <button>Capturar</button>
         </div>
     </mat-expansion-panel>
 
-      
-    <!-- Más secciones -->
-    <!-- Repite el mat-expansion-panel según sea necesario -->
+
   </mat-accordion>
+  <br>
+  <button>Continuar</button>
+  
+  <!-- Modal 1 Informacion sobre situacion fiscal-->
+<ng-template #modal1>
+    <h1 mat-dialog-title>Información sobre situación fiscal</h1>
+    <div mat-dialog-content>
+      <p>El artículo 32-H del Código Fiscal de la Federación (CFF) especifica que ciertos contribuyentes están obligados a presentar la Información sobre su Situación Fiscal (ISSIF) como parte de su declaración anual. Entre estos se incluyen:</p>
+      <ul>
+        <li>Personas morales</li>
+        <li>Sociedades mercantiles</li>
+        <li>Entidades paraestatales</li>
+        <li>Personas morales residentes en el extrangero</li>
+        <li>Personas morales residentes en México</li>
+      </ul>
+      <p>El artículo 32-H del CFF está enfocado principalmente en los contribuyentes que son personas morales y, en general, <b>no contempla la obligación de las personas físicas de presentar la ISSIF.</b></p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+  
+  <!-- Modal 2 Datos iniciales - ingresos por copropiedad-->
+  <ng-template #modal2>
+    <h1 mat-dialog-title>Datos iniciales</h1>
+    <div mat-dialog-content>
+      <p>Esta pregunta se refiere a determinar si los ingresos declarados provienen de un bien o actividad en la que existe copropiedad, es decir, que los ingresos sean generados a partir de un bien o actividad que es propiedad de más de una persona.</p>
+      <p><b>Para este ejemplo asumiremos que los ingresos no fueron obtenidos a través de copropiedad.</b></p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 3 Ingresos - total de ingresos efectivamente cobrados-->
+  <ng-template #modal3>
+    <h1 mat-dialog-title>Total de ingresos efectivamente cobrados</h1>
+    <div mat-dialog-content>
+      <p>Se refiere a los ingresos que fueron facturados (amparados por comprobantes fiscales), este campo viene prellenado por defecto y al dar clic en el botón “Detalle” se pueden ver los ingresos facturados de cada mes. <b>Esta cantidad esta establecida a modo de ejemplo</b></p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 4 Ingresos - descuentos, devoluciones y bonificaciones-->
+  <ng-template #modal4>
+    <h1 mat-dialog-title>Descuentos, devoluciones y bonificaciones</h1>
+    <div mat-dialog-content>
+      <p>Se refieren a ajustes que deben hacerse a los ingresos acumulables que se reportan, de manera que reflejen el ingreso neto real.</p>
+      <ul>
+        <li><b>Descuentos:</b> Son reducciones en el precio de venta otorgadas por el contribuyente</li>
+        <li><b>Devoluciones:</b> Ocurren cuando un cliente regresa un bien o servicio y se le reintegra el pago.</li>
+        <li><b>Bonificaciones:</b> Son reducciones o ajustes al precio de venta original</li>
+      </ul>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 5 Ingresos - ingresos a disminuir-->
+  <ng-template #modal5>
+    <h1 mat-dialog-title>Ingresos a disminuir</h1>
+    <div mat-dialog-content>
+      <p>La finalidad de esta sección es ajustar el monto de los ingresos que efectivamente están sujetos a tributación, asegurando que solo se paguen impuestos sobre los ingresos reales y no sobre aquellos que fueron cancelados, devueltos o disminuidos por estos conceptos. </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 6 Ingresos - ingresos adicionales-->
+  <ng-template #modal6>
+    <h1 mat-dialog-title>Ingresos adicionales</h1>
+    <div mat-dialog-content>
+      <p>Aquí se colocarán los ingresos que no estén precargados en el sistema, estos ingresos son bajo el concepto de “Ingresos no considerados en el prellenado”.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 7 Ingresos - Total de ingresos percibidos por la actividad-->
+  <ng-template #modal7>
+    <h1 mat-dialog-title>Total de ingresos percibidos por la actividad</h1>
+    <div mat-dialog-content>
+      <p>Este campo se refiere la totalidad de ingresos percibidos y resulta de las operaciones anteriores, se llena automaticamente conforme llenamos los campos</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 8 Ingresos - ingresos grabados-->
+  <ng-template #modal8>
+    <h1 mat-dialog-title>Ingresos grabados</h1>
+    <div mat-dialog-content>
+      <p>Total de los ingresos gravados de acuerdo a lo declarado.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 9 Resultado - Base gravable-->
+  <ng-template #modal9>
+    <h1 mat-dialog-title>Base gravable</h1>
+    <div mat-dialog-content>
+      <p>Este es el mismo resultado que los ingresos gravados porque en el régimen simplificado de confianza no hay deducciones por las bajas tasas de ISR.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 10 Pagos mensuales - Pagos mensuales-->
+  <ng-template #modal10>
+    <h1 mat-dialog-title>Pagos mensuales</h1>
+    <div mat-dialog-content>
+      <p>Este campo esta prellenado por defecto y se refiere a los pagos que se hicieron en las declaraciones mensuales. <b>A modo de ejemplo se ha considerado esta cantidad</b></p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 11 Retenciones de ISR - ISR retenido por personas morales-->
+  <ng-template #modal11>
+    <h1 mat-dialog-title>ISR retenido por personas morales</h1>
+    <div mat-dialog-content>
+      <p>Este es campo vamos a especificar las cantidades de ISR retenido en Comprobantes Fiscales Digitales por Internet (CFDI) y por personas morales</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 12 Retenciones de ISR - ISR retenido por personas morales-->
+  <ng-template #modal12>
+    <h1 mat-dialog-title>Total de ingresos efectivamente cobrados</h1>
+    <div mat-dialog-content>
+      <app-anua-detalle-ingreso-efectivamente></app-anua-detalle-ingreso-efectivamente>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 13 Pagos mensuales - Pagos mensuales-->
+  <ng-template #modal13>
+    <h1 mat-dialog-title>Total de ingresos efectivamente cobrados</h1>
+    <div mat-dialog-content>
+      <app-anual-detalle-pagos-mensuales></app-anual-detalle-pagos-mensuales>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+
+
+
+
+
+
+
+
+
   
