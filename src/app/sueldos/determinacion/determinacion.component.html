@@ -1,69 +1,105 @@
 <div style="margin-top: 15px;" class="container-fluid">
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Ingresos acumulables</label>
+      <label class="col-sm-4 col-form-label">Ingresos acumulables</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="ingresoAcumulable" [(ngModel)]="ingresoAcumulable"/>
+        <input type="text" class="form-control" name="ingresoAcumulable" [(ngModel)]="ingresoAcumulable" readonly>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Deducciones personales</label>
+      <label class="col-sm-4 col-form-label">Deducciones personales</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="deduccionesPersonales" [(ngModel)]="deduccionesPersonales"/>
+        <input type="text" class="form-control" name="deduccionesPersonales" [(ngModel)]="deduccionesPersonales" readonly/>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Base gravable</label>
+      <label class="col-sm-4 col-form-label">Base gravable</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="baseGravable" [(ngModel)]="baseGravable"/>
+        <input type="text" class="form-control" name="baseGravable" [(ngModel)]="baseGravable" readonly />
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('La base gravable en sueldos y salarios es el monto sobre el cual se calcula el impuesto sobre la renta (ISR)
+        Una vez que se han sumado todos los ingresos acumulables y se han restado las deducciones, el resultado es la base gravable')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Limite inferior</label>
+      <label class="col-sm-4 col-form-label">Limite inferior</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="limiteInferior" [(ngModel)]="limiteInferior"/>
+        <input type="text" class="form-control" name="limiteInferior" [(ngModel)]="limiteInferior" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('El límite inferior en sueldos y salarios se refiere al monto mínimo de ingresos que se toma en cuenta en la tarifa del Impuesto Sobre la Renta (ISR) para un determinado intervalo de ingresos.')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Excedente del limite inferior</label>
+      <label class="col-sm-4 col-form-label">Excedente del limite inferior</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="excedenteLimiteInferior" [(ngModel)]="excedenteLimiteInferior"/>
+        <input type="text" class="form-control" name="excedenteLimiteInferior" [(ngModel)]="excedenteLimiteInferior" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('El excedente del límite inferior es el monto de ingresos que supera el límite inferior.
+        El excedente del límite inferior se calcula restando el límite inferior del ingreso acumulable o base gravable.')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">% Sobre excedente</label>
+      <label class="col-sm-4 col-form-label">% Sobre excedente</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="porcentajeExcedente" [(ngModel)]="porcentajeExcedente"/>
+        <input type="text" class="form-control" name="porcentajeExcedente" [(ngModel)]="porcentajeExcedente" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('Este valor corresponde a la tasa que se aplica indicada en la tarifa del Impuesto Sobre la Renta')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Impuesto marginal</label>
+      <label class="col-sm-4 col-form-label">Impuesto marginal</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="impuestoMarginal" [(ngModel)]="impuestoMarginal"/>
+        <input type="text" class="form-control" name="impuestoMarginal" [(ngModel)]="impuestoMarginal" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('El impuesto marginal se calcula aplicando el porcentaje sobre el excedente (que es el porcentaje establecido en la tabla de tarifas) al excedente del límite inferior. ')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Cuota Fija</label>
+      <label class="col-sm-4 col-form-label">Cuota Fija</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="cuotaFija" [(ngModel)]="cuotaFija"/>
+        <input type="text" class="form-control" name="cuotaFija" [(ngModel)]="cuotaFija" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('La cuota fija representa el monto del impuesto que se debe pagar en adición al impuesto calculado sobre el excedente de los ingresos dentro de ese rango')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">ISR conforme a la tarifa anual</label>
+      <label class="col-sm-4 col-form-label">ISR conforme a la tarifa anual</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="isrTarifaAnual" [(ngModel)]="isrTarifaAnual" />
+        <input type="text" class="form-control" name="isrTarifaAnual" [(ngModel)]="isrTarifaAnual" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('')">Info</button>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">ISR retenido</label>
+      <label class="col-sm-4 col-form-label">ISR retenido</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="isrRetenido" [(ngModel)]="isrRetenido" />
+        <input type="text" class="form-control" name="isrRetenido" [(ngModel)]="isrRetenido" readonly/>
       </div>
     </div>
     <div class="row mb-3">
-      <label class="col-sm-6 col-form-label">Impuesto a favor del ejercicio</label>
+      <label class="col-sm-4 col-form-label" *ngIf="validacion">Impuesto a favor del ejercicio</label>
+      <label class="col-sm-4 col-form-label" *ngIf="!validacion">Impuesto a cargo del ejercicio</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="isrFinal" [(ngModel)]="isrFinal"/>
+        <input type="text" class="form-control" name="isrFinal" [(ngModel)]="isrFinal" readonly/>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-info btn-sm w-100" (click)="openDialog('El impuesto a cargo es el monto que el contribuyente debe pagar al Servicio de Administración Tributaria (SAT) si el cálculo del ISR total que corresponde al año fiscal es mayor que el ISR retenido o pagado durante el mismo periodo.
+        El impuesto a favor es el monto que el contribuyente tiene derecho a recibir de vuelta si, después de realizar su declaración anual, el ISR retenido o pagado durante el año es mayor que el ISR total que corresponde a su base gravable.')">Info</button>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-sm-12 text-end">
+        <button class="btn btn-primary me-2" (click)="actualizarValores()">Actualizar</button>
+        <button class="btn btn-success" (click)="guardar()">Guardar</button>
+      </div>
+    </div>
+
   </div>
   

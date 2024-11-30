@@ -81,6 +81,8 @@ export class IngresosComponent {
       this.ingresoAnual = 0;
       this.ingresosExentos = 0;
       this.impuestoRetenido = 0;
+      this.ingresosGravables = 0;
+      this.ingresosAcumulables = 0;
     }
   }
 
@@ -99,19 +101,31 @@ export class IngresosComponent {
   }
 
   actualizarValores() {
-    // Calcular los totales sumando todas las propiedades relevantes del arreglo 'ingresos'
-    this.ingresoAnual = this.ingresos.reduce((total, ingreso) => total + (ingreso.ingresoAnual || 0), 0);
-    this.ingresosExentos = this.ingresos.reduce((total, ingreso) => total + (ingreso.ingresoExento || 0), 0);
-    this.ingresosGravables = this.ingresos.reduce((total, ingreso) => total + (ingreso.ingresoGravable || 0), 0);
-    this.impuestoRetenido = this.ingresos.reduce((total, ingreso) => total + (ingreso.retencionISR || 0), 0);
+    this.ingresoAnual = parseFloat(
+      this.ingresos.reduce((total, ingreso) => total + this.getIngresoTotal(ingreso), 0).toFixed(2)
+    );
   
-    // Calcular ingresos acumulables
-    this.ingresosAcumulables = (this.ingresoAnual || 0) + (this.ingresosGravables || 0);
+    this.impuestoRetenido = parseFloat(
+      this.ingresos.reduce((total, ingreso) => total + this.getRetencionTotal(ingreso), 0).toFixed(2)
+    );
 
+    this.ingresosExentos = parseFloat(
+      this.ingresos.reduce((total, ingreso) => total + (ingreso.ingresoExento || 0), 0).toFixed(2)
+    );
+  
+    this.ingresosGravables = parseFloat(
+      this.ingresos.reduce((total, ingreso) => total + (ingreso.ingresoGravable || 0), 0).toFixed(2)
+    );
+  
+    this.ingresosAcumulables = parseFloat(
+      ((this.ingresoAnual || 0) + (this.ingresosGravables || 0)).toFixed(2)
+    );
+  
+    // Actualizar valores en el servicio
     this.sueldosService.setIngresoAnual(this.ingresoAnual);
     this.sueldosService.setIngresoAcumulable(this.ingresosAcumulables);
     this.sueldosService.setIsrRetenido(this.impuestoRetenido);
-
   }
+  
   
 }

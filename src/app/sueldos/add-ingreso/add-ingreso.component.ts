@@ -51,9 +51,6 @@ export class AddIngresoComponent {
   }
 
   onConfirm(): void {
-    if (this.userTO?.id_usuario) {
-      // Lógica cuando el usuario inició sesión
-    } else {
       if (this.isConfirm) {
         // Validar ingreso
         if (!this.opcionSeleccionada) {
@@ -80,7 +77,6 @@ export class AddIngresoComponent {
         else{
           alert('El ingreso anual e ISR son obligatorios');
         }
-      }
     }
   }
 }

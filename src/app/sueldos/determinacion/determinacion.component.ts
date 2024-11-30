@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SueldosService } from '../../core/services/sueldos.service';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-determinacion',
@@ -19,6 +21,7 @@ export class DeterminacionComponent {
   isrTarifaAnual: number = 0;
   isrRetenido: number = 0;
   isrFinal: number = 0;
+  validacion:boolean = false;
 
   limites_inf: number[] = [
     0.01, 8952.50, 75984.56, 133536.08, 155229.81,
@@ -37,9 +40,14 @@ export class DeterminacionComponent {
     392294.17, 1414947.85
   ];
 
-  constructor(private sueldosService: SueldosService){}
+  constructor(private dialog: MatDialog,
+    private sueldosService: SueldosService){}
 
   ngOnInit(){
+    this.actualizarValores();
+  }
+
+  actualizarValores(){
     this.sueldosService.ingresoAcumulable$.subscribe((value) => {
       this.ingresoAcumulable = value;
     });
@@ -56,27 +64,40 @@ export class DeterminacionComponent {
       this.baseGravable = this.ingresoAcumulable - this.deduccionesPersonales;
 
       // Encontrar el límite inferior
-    const index = this.limites_inf
-    .map((limite, idx) => ({ limite, idx }))
-    .filter(item => item.limite <= this.baseGravable)
-    .reduce((prev, current) => current.limite > prev.limite ? current : prev, { limite: 0, idx: 0 }).idx;
+      const index = this.limites_inf
+      .map((limite, idx) => ({ limite, idx }))
+      .filter(item => item.limite <= this.baseGravable)
+      .reduce((prev, current) => current.limite > prev.limite ? current : prev, { limite: 0, idx: 0 }).idx;
 
-    this.limiteInferior = this.limites_inf[index];
-    this.excedenteLimiteInferior = Math.round((this.baseGravable - this.limiteInferior) * 100) / 100;
-    this.porcentajeExcedente = this.porcentajes_exc[index];
-    this.impuestoMarginal = Math.round((this.porcentajeExcedente * this.excedenteLimiteInferior) / 100);
-    this.cuotaFija = this.cuotas[index];
-    this.isrTarifaAnual = this.impuestoMarginal + this.cuotaFija;
-    if(this.isrRetenido >= this.isrTarifaAnual){
-      this.isrFinal = Math.round((this.isrRetenido - this.isrTarifaAnual) / 100); 
-    } else {
-      this.isrFinal = Math.round((this.isrTarifaAnual - this.isrRetenido) / 100); 
-    }
-    
-
+      this.limiteInferior = this.limites_inf[index];
+      this.excedenteLimiteInferior = Math.round((this.baseGravable - this.limiteInferior) * 100) / 100;
+      this.porcentajeExcedente = this.porcentajes_exc[index];
+      this.impuestoMarginal = Math.round((this.porcentajeExcedente * this.excedenteLimiteInferior) / 100);
+      this.cuotaFija = this.cuotas[index];
+      this.isrTarifaAnual = this.impuestoMarginal + this.cuotaFija;
+      if(this.isrRetenido >= this.isrTarifaAnual){
+        this.isrFinal = Math.round((this.isrRetenido - this.isrTarifaAnual) / 100); 
+        //ISR a cargo
+        this.validacion = true;
+      } else {
+        this.isrFinal = Math.round((this.isrTarifaAnual - this.isrRetenido) / 100); 
+        //ISR a favor
+        this.validacion = false;
+      }   
     }else{
-      
-
+      this.isrFinal = this.deduccionesPersonales - this.isrRetenido
+      //ISR a favor
+      this.validacion = true;
     }
+  }
+
+  guardar(){
+
+  }
+
+  openDialog(message: string): void {
+    this.dialog.open(InfoDialogComponent, {
+      data: { message }
+    });
   }
 }
