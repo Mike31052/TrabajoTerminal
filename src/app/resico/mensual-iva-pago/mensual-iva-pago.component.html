@@ -1,67 +1,107 @@
 <br>
-<p><i>Los campos marcados con asterisco (*) son obligatorios</i></p>
-<br>
 
 
     <div class="form-group">
-        <label>A cargo</label>
-        <input type="number">
+        <label>A cargo<span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
+        <input type="number" [(ngModel)]="aCargo" (input)="actualizarValores()" onkeypress="return event.key !== '-'" min="0">
     </div>
 
     <div class="form-group">
         <label>Total de contribuciones (=)</label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [value]="totalContribuciones" onkeypress="return event.key !== '-'" disabled readonly>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="compensaciones_si_no">*¿Tienes compensaciones por aplicar?</label>
-        <select id="compensaciones_si_no">
-            <option value="no">No</option>
-            <option value="yes">Sí</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="estimulos_si_no">*¿Tienes estimulos por aplicar?</label>
-        <select id="estimulos_si_no">
-            <option value="no">No</option>
-            <option value="yes">Sí</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label>Total de aplicaciones (=)</label>
+        <label>Compensaciones por aplicar(-)<span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [(ngModel)]="compensaciones" (input)="actualizarValores()" onkeypress="return event.key !== '-'" min="0">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Total de contribuciones</label>
+        <label>Estimulos por aplicar (-)<span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [(ngModel)]="estimulos" (input)="actualizarValores()" onkeypress="return event.key !== '-'" min="0">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Total de aplicaciones (-)</label>
+        <label>Cantidad a cargo (=)<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [value]="cantidadACargo" readonly disabled>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Cantidad a cargo (=)</label>
+        <label>Cantidad a pagar<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [value]="cantidadAPagar" readonly disabled>
         </div>
     </div>
+    <button>Finalizar</button>
 
-    <div class="form-group">
-        <label>Cantidad a pagar</label>
-        <div>
-            <input type="number" placeholder="0">
+    <!--Modal 1-->
+    <ng-template #modal1>
+        <h1 mat-dialog-title>A cargo</h1>
+        <div mat-dialog-content>
+          <p>Resultado de la sección anterior (Determinación).</p>
         </div>
-    </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 2-->
+      <ng-template #modal2>
+          <h1 mat-dialog-title>Compensaciones por aplicar</h1>
+          <div mat-dialog-content>
+            <p>Aquí puedes aplicar compensaciones como “pago de lo indebido” de periodos anteriores.</p>
+          </div>
+          <div mat-dialog-actions>
+            <button mat-button (click)="closeModal()">Cerrar</button>
+          </div>
+        </ng-template>
+
+        <!--Modal 3-->
+        <ng-template #modal3>
+            <h1 mat-dialog-title>Estimulos por aplicar</h1>
+            <div mat-dialog-content>
+              <p>Aquí puedes aplicar estimulos como: </p>
+                <ul>
+                    <li>Estímulo a gasolinas en zona fronteriza</li>
+                    <li>Estímulo a gasolinas en regiones cercanas a zona fronteriza</li>
+                    <li>Estímulo complementario combustibles</li>
+                    <li>Estímulo fiscal por la importación o enajenación de jugos, néctares, concentrados de frutas o de verduras y de productos para beber</li>
+                    <li>Estímulo fiscal por la prestación de servicios de hotelería y comercios a turistas extranjeros</li>
+                    <li>Estímulo fiscal por el uso temporal de centros de convenciones y de exposiciones a residentes en el extranjero</li>
+                    <li>Estímulo fiscal por zonas afectadas por lluvias severas y vientos fuertes</li>
+                </ul>
+            </div>
+            <div mat-dialog-actions>
+              <button mat-button (click)="closeModal()">Cerrar</button>
+            </div>
+          </ng-template>
+
+          <!--Modal 4-->
+          <ng-template #modal4>
+              <h1 mat-dialog-title>Cantidad a cargo</h1>
+              <div mat-dialog-content>
+                <p>Resultado del descuento de las compensaciones y los estimulos al total de contribuciones.</p>
+              </div>
+              <div mat-dialog-actions>
+                <button mat-button (click)="closeModal()">Cerrar</button>
+              </div>
+            </ng-template>
+
+            <!--Modal 5-->
+            <ng-template #modal5>
+                <h1 mat-dialog-title>Cantidad a cargo</h1>
+                <div mat-dialog-content>
+                  <p>Cantidad final que debe ser pagada.</p>
+                </div>
+                <div mat-dialog-actions>
+                  <button mat-button (click)="closeModal()">Cerrar</button>
+                </div>
+              </ng-template>

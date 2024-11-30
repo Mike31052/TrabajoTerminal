@@ -1,51 +1,80 @@
 <br>
-<p><i>Los campos marcados con asterisco (*) son obligatorios</i></p>
-<br>
 
 
     <div class="form-group">
-        <label>A cargo</label>
-        <input type="number">
+        <label>A cargo <span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
+        <input type="number" [(ngModel)]="aCargo" (input)="actualizarValores()" min="0" onkeypress="return event.key !== '-'">
     </div>
 
     <div class="form-group">
         <label>Total de contribuciones (=)</label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [value]="totalContribuciones" readonly>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Total de aplicaciones (=)</label>
+        <label>Compensaciones por aplicar (-)<span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [(ngModel)]="compensaciones" (input)="actualizarValores()" min="0" onkeypress="return event.key !== '-'">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Total de contribuciones</label>
+        <label>Cantidad a cargo (=)<span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [value]="cantidadACargo" readonly>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Total de aplicaciones (-)</label>
+        <label>Cantidad a pagar<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" [value]="cantidadAPagar" readonly>
         </div>
     </div>
+    <button>Finalizar</button>
 
-    <div class="form-group">
-        <label>Cantidad a cargo (=)</label>
-        <div>
-            <input type="number" placeholder="0">
-        </div>
+    <!-- Modal 1-->
+  <ng-template #modal1>
+    <h1 mat-dialog-title>A cargo</h1>
+    <div mat-dialog-content>
+      <p>Catidad resultante del apartado anterior (Determinación). Este campo se llena automaticamente</p>
     </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
 
-    <div class="form-group">
-        <label>Cantidad a pagar</label>
-        <div>
-            <input type="number" placeholder="0">
-        </div>
+  <!-- Modal 2-->
+  <ng-template #modal2>
+    <h1 mat-dialog-title>Compensaciones por aplicar</h1>
+    <div mat-dialog-content>
+      <p>Aqui puedes aplicar alguna compensacion que tengas como pudiera ser un saldo a favor.</p>
     </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 3-->
+  <ng-template #modal3>
+    <h1 mat-dialog-title>Cantidad a cargo</h1>
+    <div mat-dialog-content>
+      <p>Es el resultado de el total de contribuciones menos las compensaciones que hayas aplicado. Este campo se llena automaticamente.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 4-->
+  <ng-template #modal4>
+    <h1 mat-dialog-title>Cantidad a pagar</h1>
+    <div mat-dialog-content>
+      <p>Es la cantidad final que debes pagar. Este campo se llena automaticamente.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>

@@ -4,43 +4,100 @@
 
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>Determinación del ISR</mat-panel-title>
+          <mat-panel-title>Pago de ISR</mat-panel-title>
         </mat-expansion-panel-header>
           <div class="input-container">
-                <label>A cargo</label>
+                <label>A cargo<span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>A cargo</mat-label>
+                        <input matInput type="number"  [(ngModel)]="aCargo" (ngModelChange)="calcularValores()" min="0" onkeypress="return event.key !== '-'"/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>Tasa de contribuciones</label>
+                <label>Total de contribuciones<span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Total de contribuciones</mat-label>
+                        <input matInput [value]="totalContribuciones" type="number" readonly disabled/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>¿Desea aplicar alguna compensación o estímulo fiscal?</label>
+                <label>Compensaciones o estímulos ficales <span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Compensaciones o estímulos ficales</mat-label>
+                        <input matInput [(ngModel)]="compensaciones" (ngModelChange)="calcularValores()" type="number" min="0" onkeypress="return event.key !== '-'"/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>Cantidad a cargo</label>
+                <label>Cantidad a cargo<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Cantidad a cargo</mat-label>
+                        <input matInput [value]="cantidadACargo" type="number" readonly disabled/>
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>Cantidad a pagar</label>
+                <label>Cantidad a pagar<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
                     <mat-form-field appearance="outline">
-                        <mat-label>Ingrese otro dato</mat-label>
-                        <input matInput placeholder="Otro ejemplo de entrada de datos" />
+                        <mat-label>Cantidad a pagar</mat-label>
+                        <input matInput [value]="cantidadAPagar" type="number" readonly disabled/>
                     </mat-form-field>
           </div>
         </mat-expansion-panel>
 
 </mat-accordion>
+<br>
+<button>Finalizar</button>
+
+<!-- Modal 1 Pago de ISR - A cargo-->
+<ng-template #modal1>
+    <h1 mat-dialog-title>A cargo</h1>
+    <div mat-dialog-content>
+      <p>Es el monto que resulta como impuesto a pagar después de calcular el ISR anual con base en los ingresos acumulables.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+  
+  <!-- Modal 2 Pago de ISR - Total de contribuciones-->
+<ng-template #modal2>
+    <h1 mat-dialog-title>Total de contribuciones</h1>
+    <div mat-dialog-content>
+      <p>Este campo se refiere al monto total de las obligaciones fiscales generadas por el contribuyente</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 3 Pago de ISR - Compensaciones o estimulos fiscales-->
+<ng-template #modal3>
+    <h1 mat-dialog-title>Compensaciones o estímulos fiscales</h1>
+    <div mat-dialog-content>
+      <p>Aquí el contribuyente tiene la opción de aplicar estímulos fiscales o compensaciones. Por ejemplo: Compensación de saldos a favor de ejercicios anteriores.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 4 Pago de ISR - Cantidad a cargo-->
+<ng-template #modal4>
+    <h1 mat-dialog-title>Cantidad a cargo</h1>
+    <div mat-dialog-content>
+      <p>Es el monto final que queda después de aplicar cualquier compensación o estímulo fiscal al impuesto determinado.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 5 Pago de ISR - A cargo-->
+<ng-template #modal5>
+    <h1 mat-dialog-title>Cantidad a pagar</h1>
+    <div mat-dialog-content>
+      <p>Es el monto que debe ser pagado efectivamente al SAT. Este puede ser igual al "Cantidad a cargo" si no hay compensaciones ni estímulos aplicados.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>

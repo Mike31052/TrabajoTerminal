@@ -1,103 +1,217 @@
 <br>
-<p><i>Los campos marcados con asterisco (*) son obligatorios</i></p>
-<br>
 
 
     <div class="form-group">
-        <label>Actividades gravadas a la tasa del 16% <span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>Ingresos por actividades gravadas a la tasa del 16% <span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Ver detalle</button>
+            <input type="number" placeholder="0" [(ngModel)]="ingresos16" (input)="calcularIVA()" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Ver detalle</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>Actividades gravadas a la tasa del 0% <span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>Ingresos por actividades gravadas a la tasa del 0% <span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Capturar</button>
+            <input type="number" placeholder="0" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Capturar</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>Actividades externas <span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>Actividades externas <span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Ver detalle</button>
+            <input type="number" placeholder="0" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Ver detalle</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>Actividades no objeto de impuesto <span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>Actividades no objeto de impuesto <span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Ver detalle</button>
+            <input type="number" placeholder="0" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Ver detalle</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>IVA a cargo a la tasa del 16%</label>
+        <label>IVA a cargo a la tasa del 16% <span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" placeholder="0" [value]="ivaCargo16" disabled>
         </div>
     </div>
 
     <div class="form-group">
         <label>Total de IVA a cargo (=)</label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" placeholder="0" [value]="totalIvaCargo" disabled>
         </div>
     </div>
 
     <div class="form-group">
-        <label>IVA no cobrado por devoluciones, descuentos y bonificaciones de ventas<span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>IVA no cobrado por devoluciones, descuentos y bonificaciones de ventas (-)<span class="material-icons" (click)="openModal(modal6)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Ver detalle</button>
+            <input type="number" placeholder="0" [(ngModel)]="ivaNoCobrado" (input)="calcularIVA()" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Ver detalle</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>IVA retenido (-)</label>
+        <label>IVA retenido (-) <span class="material-icons" (click)="openModal(modal7)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Ver detalle</button>
+            <input type="number" placeholder="0" [(ngModel)]="ivaRetenido" (input)="calcularIVA()" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Ver detalle</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>*IVA acreditable del periodo (-)</label>
+        <label>IVA acreditable del periodo (-)<span class="material-icons" (click)="openModal(modal8)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Capturar</button>
+            <input type="number" placeholder="0" [(ngModel)]="ivaAcreditable" (input)="calcularIVA()" min="0" onkeypress="return event.key !== '-'">
+            <!--<button>Capturar</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>IVA por devoluciones, descuentos y bonificaciones en gastos (+)<span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>Cantidad a cargo (=)<span class="material-icons" (click)="openModal(modal9)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Ver detalle</button>
+            <input type="number" placeholder="0" [value]="cantidadCargo" disabled>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Cantidad a cargo (=)</label>
+        <label>Acreditamiento del saldo a favor en periodos anteriores (-)<span class="material-icons" (click)="openModal(modal10)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" placeholder="0" [(ngModel)]="saldoFavor" (input)="calcularIVA()" min="0" onkeypress="return event.key !== '-'">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Acreditamiento del saldo a favor en periodos anteriores (-)</label>
+        <label>Impuesto a cargo (=)<span class="material-icons" (click)="openModal(modal11)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
+            <input type="number" placeholder="0" [value]="impuestoCargo" disabled>
         </div>
     </div>
+    <button>Continuar</button>
 
-    <div class="form-group">
-        <label>Impuesto a cargo (=)</label>
-        <div>
-            <input type="number" placeholder="0">
+    <!--Modal 1-->
+    <ng-template #modal1>
+        <h1 mat-dialog-title>Ingresos por actividades gravadas a la tasa del 16%</h1>
+        <div mat-dialog-content>
+          <p>Se calcula con base a las facturas emitidas de tipo ingreso a tasa del 16%.</p>
         </div>
-    </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 2-->
+    <ng-template #modal2>
+        <h1 mat-dialog-title>Ingresos por actividades gravadas a la tasa del 0%</h1>
+        <div mat-dialog-content>
+          <p>Se calcula con base a las facturas emitidas de tipo ingreso a tasa del 0%.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 3-->
+    <ng-template #modal3>
+        <h1 mat-dialog-title>Actividades externas</h1>
+        <div mat-dialog-content>
+          <p>Se entenderá exentas las actividades de Venta de casahabitación, el suelo, transporte público terrestre de personas, servicios de enseñanza, arrendamiento de inmuebles destinados o utilizados para casa-habitación, y las demás a las que la Ley del IVA les otorgue ese carácter.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 4-->
+    <ng-template #modal4>
+        <h1 mat-dialog-title>Actividades no objeto de impuesto</h1>
+        <div mat-dialog-content>
+          <p>Se entiende por actos o actividades no objeto del
+            impuesto, aquéllos que el contribuyente no realiza en
+            territorio nacional. </p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 5-->
+    <ng-template #modal5>
+        <h1 mat-dialog-title>IVA a cargo a la tasa del 16%</h1>
+        <div mat-dialog-content>
+          <p>Es el resultado de la multiplicación de la cantidad introducida en “Ingresos por actividades gravadas a la tasa del 16%” multiplicada por 0.16</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 6-->
+    <ng-template #modal6>
+        <h1 mat-dialog-title>IVA no cobrado por devoluciones, descuentos y bonificaciones de ventas</h1>
+        <div mat-dialog-content>
+          <p>Se refieren a ajustes que debe hacerse al IVA que se reportan por devoluciones, descuentos y bonificaciones de ventas.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 7-->
+    <ng-template #modal7>
+        <h1 mat-dialog-title>IVA retenido</h1>
+        <div mat-dialog-content>
+          <p>Se refieren a ajustes que debe hacerse al IVA que se reportan por haber sido retenido.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 8-->
+    <ng-template #modal8>
+        <h1 mat-dialog-title>IVA acreditable del periodo</h1>
+        <div mat-dialog-content>
+          <p>Aquí colocas el IVA que has pagado en gastos y adquisiciones que has realizado.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 9-->
+    <ng-template #modal9>
+        <h1 mat-dialog-title>Cantidad a cargo</h1>
+        <div mat-dialog-content>
+          <p>Es el pre-resultado el IVA que debes pagar. Este campo se llena automaticamente.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 10-->
+    <ng-template #modal10>
+        <h1 mat-dialog-title>Acreditamiento del saldo a favor en periodos anteriores</h1>
+        <div mat-dialog-content>
+          <p>Aqui debes colocar el saldo a favor que tengas de periodos anteriores, la cantidad que coloques no debe exceder la Cantidad a cargo.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>
+
+      <!--Modal 11-->
+    <ng-template #modal11>
+        <h1 mat-dialog-title>Impuesto a cargo</h1>
+        <div mat-dialog-content>
+          <p>Es el impuesto que tienes pendiente de pago despues de acreditar el saldo a favor.</p>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="closeModal()">Cerrar</button>
+        </div>
+      </ng-template>

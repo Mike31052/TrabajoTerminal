@@ -1,7 +1,5 @@
 <br>
-<p><i>Los campos marcados con asterisco (*) son obligatorios</i></p>
-<br>
-
+<!--
     <div class="form-group">
         <label for="copropiedad">*¿Los ingresos fueron obtenidos a través de copropiedad?</label>
         <select id="copropiedad">
@@ -9,41 +7,101 @@
             <option value="yes">Sí</option>
         </select>
     </div>
-
+-->
     <div class="form-group">
-        <label>Total de ingresos efectivamente cobrados <span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
-        <input type="number">
+        <label>Total de ingresos efectivamente cobrados <span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
+        <input type="number" min="0" [(ngModel)]="totalIngresosCobrados" (input)="calcularTotalIngresos()" onkeypress="return event.key !== '-'">
     </div>
 
     <div class="form-group">
-        <label>Descuentos, devoluciones y bonificaciones</label>
+        <label>Descuentos, devoluciones y bonificaciones (-)<span class="material-icons" (click)="openModal(modal2)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Capturar</button>
+            <input type="number" min="0" [(ngModel)]="descuentosDevoluciones" (input)="calcularTotalIngresos()" onkeypress="return event.key !== '-'">
+            <!--<button>Capturar</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>*Ingresos a disminuir <span class="material-icons" style="font-size:14px; cursor:pointer;">help_outline</span></label>
+        <label>Ingresos a disminuir (-)<span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Capturar</button>
+            <input type="number" min="0" [(ngModel)]="ingresosADisminuir" (input)="calcularTotalIngresos()" onkeypress="return event.key !== '-'">
+            <!--<button>Capturar</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>*Ingresos adicionales</label>
+        <label>Ingresos adicionales (+)<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Capturar</button>
+            <input type="number" min="0" [(ngModel)]="ingresosAdicionales" (input)="calcularTotalIngresos()" onkeypress="return event.key !== '-'">
+            <!--<button>Capturar</button>-->
         </div>
     </div>
 
     <div class="form-group">
-        <label>Total de ingresos percibidos por la actividad</label>
+        <label>Total de ingresos percibidos por la actividad (=)<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
         <div>
-            <input type="number" placeholder="0">
-            <button>Capturar</button>
+            <input type="number" min="0" [value]="totalIngresosPercibidos" readonly>
+            <!--<button>Capturar</button>-->
         </div>
-        
     </div>
+    <button>Continuar</button>
+
+    <!-- Modal 1 Ingresos - total de ingresos efectivamente cobrados-->
+  <ng-template #modal1>
+    <h1 mat-dialog-title>Total de ingresos efectivamente cobrados</h1>
+    <div mat-dialog-content>
+      <p>Se refiere a los ingresos que fueron facturados (amparados por comprobantes fiscales), este campo viene prellenado por defecto y al dar clic en el botón “Detalle” se pueden ver los ingresos facturados de cada mes. <b>Esta cantidad esta establecida a modo de ejemplo</b></p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 2 Ingresos - descuentos, devoluciones y bonificaciones-->
+  <ng-template #modal2>
+    <h1 mat-dialog-title>Descuentos, devoluciones y bonificaciones</h1>
+    <div mat-dialog-content>
+      <p>Se refieren a ajustes que deben hacerse a los ingresos acumulables que reporta el contribuyente, de manera que reflejen el ingreso neto real.</p>
+      <ul>
+        <li><b>Descuentos:</b> Son reducciones en el precio de venta otorgadas por el contribuyente</li>
+        <li><b>Devoluciones:</b> Ocurren cuando un cliente regresa un bien o servicio y se le reintegra el pago.</li>
+        <li><b>Bonificaciones:</b> Son reducciones o ajustes al precio de venta original</li>
+      </ul>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 3 Ingresos - ingresos a disminuir-->
+  <ng-template #modal3>
+    <h1 mat-dialog-title>Ingresos a disminuir</h1>
+    <div mat-dialog-content>
+      <p>La finalidad de esta sección es ajustar el monto de los ingresos que efectivamente están sujetos a tributación, asegurando que solo se paguen impuestos sobre los ingresos reales y no sobre aquellos que fueron cancelados, devueltos o disminuidos por estos conceptos. </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 4 Ingresos - ingresos adicionales-->
+  <ng-template #modal4>
+    <h1 mat-dialog-title>Ingresos adicionales</h1>
+    <div mat-dialog-content>
+      <p>Aquí se colocarán los ingresos que no estén precargados en el sistema, estos ingresos son bajo el concepto de “Ingresos no considerados en el prellenado”.</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 5 Ingresos - Total de ingresos percibidos por la actividad-->
+  <ng-template #modal5>
+    <h1 mat-dialog-title>Total de ingresos percibidos por la actividad</h1>
+    <div mat-dialog-content>
+      <p>Este campo se refiere la totalidad de ingresos percibidos y resulta de las operaciones anteriores, se llena automaticamente conforme llenamos los campos</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>

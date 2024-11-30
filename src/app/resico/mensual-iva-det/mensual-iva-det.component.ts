@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mensual-iva-det',
@@ -6,5 +7,46 @@ import { Component } from '@angular/core';
   styleUrl: './mensual-iva-det.component.css'
 })
 export class MensualIvaDetComponent {
+  ingresos16: number = 0;
+  ivaCargo16: number = 0;
+  totalIvaCargo: number = 0;
+  ivaNoCobrado: number = 0;
+  ivaRetenido: number = 0;
+  ivaAcreditable: number = 0;
+  cantidadCargo: number = 0;
+  saldoFavor: number = 0;
+  impuestoCargo: number = 0;
+
+  calcularIVA(): void {
+    // Calcula IVA a cargo a la tasa del 16% y Total de IVA a cargo
+    this.ivaCargo16 = this.ingresos16 * 0.16;
+    this.totalIvaCargo = this.ivaCargo16;
+
+    // Calcula Cantidad a cargo
+    this.cantidadCargo =
+      this.totalIvaCargo -
+      this.ivaNoCobrado -
+      this.ivaRetenido -
+      this.ivaAcreditable;
+
+    // Calcula Impuesto a cargo
+    this.impuestoCargo = this.cantidadCargo - this.saldoFavor;
+  }
+
+
+  //Para el modal
+  private dialogRef: MatDialogRef<any> | null = null;
+
+  constructor(private dialog: MatDialog) {}
+
+  openModal(templateRef: TemplateRef<any>): void {
+    this.dialogRef = this.dialog.open(templateRef);
+  }
+
+  closeModal(): void {
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
+  }
 
 }
