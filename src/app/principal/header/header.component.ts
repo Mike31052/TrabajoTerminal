@@ -33,7 +33,7 @@ export class HeaderComponent {
     console.log(this.userTO);
     if(this.userTO?.regimen){
       if(this.userTO.regimen == 'SS'){
-        this.router.navigate(['/sueldos-y-salarios/ejercicio']);
+        this.router.navigate(['/sueldos-y-salarios']);
       }else if(this.userTO.regimen == 'SC'){
         this.router.navigate(['/escoger-declaracion']);
       }else if(this.userTO.regimen == 'EP'){

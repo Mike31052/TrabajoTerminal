@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { SueldosService } from '../../core/services/sueldos.service';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SueldosBD } from '../../shared/models/sueldosDB.model';
+import { SueldosHttpService } from '../../core/services/sueldos-http.service';
+import { Usuario } from '../../shared/models/usuario.model';
+import { UserSesionService } from '../../core/services/user-sesion.service';
 
 @Component({
   selector: 'app-determinacion',
@@ -22,6 +26,8 @@ export class DeterminacionComponent {
   isrRetenido: number = 0;
   isrFinal: number = 0;
   validacion:boolean = false;
+  sueldosBD: SueldosBD = {};
+  userTO: Usuario = {};
 
   limites_inf: number[] = [
     0.01, 8952.50, 75984.56, 133536.08, 155229.81,
@@ -41,10 +47,13 @@ export class DeterminacionComponent {
   ];
 
   constructor(private dialog: MatDialog,
-    private sueldosService: SueldosService){}
+    private sueldosService: SueldosService,
+    private sueldosHttpService: SueldosHttpService,
+    private userService: UserSesionService){}
 
   ngOnInit(){
     this.actualizarValores();
+    this.userTO = this.userService.getUsuario();
   }
 
   actualizarValores(){
@@ -92,12 +101,41 @@ export class DeterminacionComponent {
   }
 
   guardar(){
-
+    if(this.validarDatos()){
+      this.sueldosBD.base_gravable = this.baseGravable;
+      this.sueldosBD.ingresos_acumulables = this.ingresoAcumulable;
+      this.sueldosBD.deducciones_personales = this.deduccionesPersonales;
+      this.sueldosBD.isr_resultante = this.isrFinal;
+      this.sueldosBD.isr_retenido = this.isrRetenido;
+        this.sueldosBD.id_usuario = this.userTO.id;
+      this.sueldosHttpService.addRegistro(this.sueldosBD).subscribe(
+        (response) => {
+          if(response.success){
+            alert('Tu registro se ha creado exitosamente.');
+          }else{
+            alert('No se pudo guardar el registro. Hubo un errror');
+          }
+        },
+        (error) => {
+          alert('No se pudo guardar el registro. Hubo un errror');
+        }
+      );
+    }else{
+      alert('Debes llenar el formulario para guardar.')
+    }
   }
 
   openDialog(message: string): void {
     this.dialog.open(InfoDialogComponent, {
       data: { message }
     });
+  }
+
+  validarDatos(){
+    if(this.ingresoAcumulable!=0 && this.baseGravable!=0 && this.isrRetenido!=0 && this.isrFinal!=0){
+      return true;
+    }else{
+      return false
+    }
   }
 }

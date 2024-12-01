@@ -1,0 +1,47 @@
+<app-header [title]="'Salarios y Asimilados'"></app-header>
+
+<app-body>
+
+  <h1 style="text-align: center; font-size: 3rem;">Ejercicios previamente guardados</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Registro</th>
+        <th>Ingresos Acumulables</th>
+        <th>Deducciones Personales</th>
+        <th>Base Gravable</th>
+        <th>ISR Retenido</th>
+        <th>ISR Resultante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!sueldosBD.length && !loading">
+        <td colspan="6" class="text-center">No se encontraron registros</td>
+      </tr>
+      <tr *ngFor="let sueldo of sueldosBD">
+        <td>{{ sueldo.id_registro }}</td>
+        <td>{{ sueldo.ingresos_acumulables }}</td>
+        <td>{{ sueldo.deducciones_personales }}</td>
+        <td>{{ sueldo.base_gravable }}</td>
+        <td>{{ sueldo.isr_retenido }}</td>
+        <td>{{ sueldo.isr_resultante }}</td>
+      </tr>
+      <tr *ngIf="loading">
+        <td colspan="6" class="text-center">Cargando registros...</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-sm-6 text-end">
+      <button class="btn btn-primary me-2" [routerLink]="'/Inicio'">Volver al inicio</button>
+    </div>
+    <div class="col-sm-6 text-end">
+      <button class="btn btn-success" [routerLink]="'/sueldos-y-salarios/ejercicio'">Ir al ejercicio</button>
+    </div>
+  </div>
+  
+</app-body>
+
+<app-footer></app-footer>

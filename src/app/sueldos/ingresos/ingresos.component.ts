@@ -83,6 +83,11 @@ export class IngresosComponent {
       this.impuestoRetenido = 0;
       this.ingresosGravables = 0;
       this.ingresosAcumulables = 0;
+
+      // Actualizar valores en el servicio
+      this.sueldosService.setIngresoAnual(this.ingresoAnual);
+      this.sueldosService.setIngresoAcumulable(this.ingresosAcumulables);
+      this.sueldosService.setIsrRetenido(this.impuestoRetenido);
     }
   }
 

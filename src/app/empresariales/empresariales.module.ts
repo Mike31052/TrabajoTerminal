@@ -21,6 +21,7 @@ import { IvamComponent } from './ivam/ivam.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Elimina esta línea
 import { PrincipalModule } from '../principal/principal.module';
 import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
+import { PrincipalComponent } from './principal/principal.component';
 
 
 
@@ -37,6 +38,7 @@ import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
     SafeUrlPipe,
     DeduccionesaComponent,
     EmpanualComponent,
+    PrincipalComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,8 @@ import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
     MatDialogModule,
     PrincipalModule,
     ReactiveFormsModule,
+  ],providers: [
+    
   ]
 })
 export class EmpresarialesModule { }

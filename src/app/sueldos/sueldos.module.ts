@@ -19,6 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AddDeduccionComponent } from './add-deduccion/add-deduccion.component';
+import { SueldosHttpService } from '../core/services/sueldos-http.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PrincipalComponent } from './principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { AddDeduccionComponent } from './add-deduccion/add-deduccion.component';
     AddIngresoAsimiladoComponent,
     AddIngresoSueldoComponent,
     AddDeduccionComponent,
+    PrincipalComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,11 @@ import { AddDeduccionComponent } from './add-deduccion/add-deduccion.component';
     PrincipalModule,
     MatIconModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
+  ], 
+  providers: [
+    SueldosHttpService
   ]
 })
 export class SueldosModule { }
