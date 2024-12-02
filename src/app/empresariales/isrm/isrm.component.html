@@ -19,7 +19,7 @@
       <div *ngIf="isrmForm.get('copropiedad')?.value === 'si'" class="mb-3 row">
         <label for="ingresosCopropiedad" class="col-sm-2 col-form-label">Ingresos en copropiedad</label>
         <div class="col-sm-6">
-          <input type="number" step="0.01" formControlName="ingresosCopropiedad" class="form-control" />
+          <input type="number" step="0.01"  min="0"   onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="ingresosCopropiedad" class="form-control" />
         </div>
       </div>
   
@@ -27,7 +27,7 @@
       <div class="mb-3 row">
         <label for="ingresosPeriodo" class="col-sm-2 col-form-label">Ingresos del periodo</label>
         <div class="col-sm-6">
-          <input type="number" step="0.01" formControlName="ingresosPeriodo" (input)="calcularISR()" class="form-control" />
+          <input type="number" step="0.01"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="ingresosPeriodo" (input)="calcularISR()" class="form-control" />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Son los ingresos que obtuviste con tu actividad del regimen durante el mes activo')">Información</button>
@@ -38,7 +38,7 @@
       <div class="mb-3 row">
         <label for="totalIngresos" class="col-sm-2 col-form-label">Total de ingresos</label>
         <div class="col-sm-6">
-          <input type="number" formControlName="totalIngresos" class="form-control" readonly />
+          <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="totalIngresos" class="form-control" readonly />
         </div>
       </div>
   
@@ -46,7 +46,7 @@
       <div class="mb-3 row">
         <label for="totalIngresosAcumulables" class="col-sm-2 col-form-label">Total de ingresos acumulables</label>
         <div class="col-sm-6">
-          <input type="number" formControlName="totalIngresosAcumulables" class="form-control" readonly />
+          <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="totalIngresosAcumulables" class="form-control" readonly />
         </div>
       </div>
   
@@ -54,7 +54,7 @@
       <div class="mb-3 row">
         <label for="comprasPeriodo" class="col-sm-2 col-form-label">Compras y gastos del periodo</label>
         <div class="col-sm-6">
-          <input type="number" step="0.01" formControlName="comprasPeriodo" (input)="calcularISR()" class="form-control" />
+          <input type="number" step="0.01"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="comprasPeriodo" (input)="calcularISR()" class="form-control" />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el total de compras y gastos del periodo correspondientes al comprendido desde el inicio del ejercicio y hasta el último día del mes a que se refiere el pago')">Información</button>
@@ -65,7 +65,7 @@
       <div class="mb-3 row">
         <label for="totalComprasGastos" class="col-sm-2 col-form-label">Total de compras y gastos</label>
         <div class="col-sm-6">
-          <input type="number" step="0.01" formControlName="totalComprasGastos" class="form-control" (input)="calcularISR()" />
+          <input type="number" step="0.01"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="totalComprasGastos" class="form-control" (input)="calcularISR()" />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el total de la suma de las declaraciones pasadas ya declaradas de lo que va del ejercicio')">Información</button>
@@ -79,7 +79,7 @@
       <div class="mb-3 row">
         <label for="baseGravable" class="col-sm-2 col-form-label">Base gravable del pago provisional</label>
         <div class="col-sm-6">
-          <input type="number" formControlName="baseGravable" class="form-control" readonly />
+          <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="baseGravable" class="form-control" readonly />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es la base que se usara para aplicar las tarifas y sacar el impuesto previo al pago')">Información</button>
@@ -90,7 +90,7 @@
       <div class="mb-3 row">
         <label for="isrCausado" class="col-sm-2 col-form-label">ISR causado</label>
         <div class="col-sm-6">
-          <input type="number" formControlName="isrCausado" class="form-control" readonly />
+          <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="isrCausado" class="form-control" readonly />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Es el impuesto previo a ciertas reducciones para el pago')">Información</button>
@@ -101,7 +101,7 @@
       <div class="mb-3 row">
         <label for="pagosAnteriores" class="col-sm-2 col-form-label">Pagos provisionales de periodos anteriores</label>
         <div class="col-sm-6">
-          <input type="number" step="0.01" formControlName="pagosAnteriores" class="form-control" />
+          <input type="number" step="0.01"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="pagosAnteriores" class="form-control" />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Captura lo que has pagado de ISR de los periodos anteriores hasta el actual')">Información</button>
@@ -112,7 +112,7 @@
       <div class="mb-3 row">
         <label for="isrRetenidoPeriodo" class="col-sm-2 col-form-label">ISR retenido del periodo</label>
         <div class="col-sm-6">
-          <input type="number" step="0.01" formControlName="isrRetenidoPeriodo" class="form-control" />
+          <input type="number" step="0.01"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="isrRetenidoPeriodo" class="form-control" />
         </div>
         <div class="col-sm-2">
           <button class="btn btn-info btn-sm w-100" (click)="openDialog('Este monto es el ISR retenido por personas morales')">Información</button>
@@ -123,7 +123,7 @@
       <div class="mb-3 row">
         <label for="isrACargo" class="col-sm-2 col-form-label">ISR a cargo</label>
         <div class="col-sm-6">
-          <input type="number" formControlName="isrACargo" class="form-control" readonly />
+          <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="isrACargo" class="form-control" readonly />
         </div>
       </div>
   
