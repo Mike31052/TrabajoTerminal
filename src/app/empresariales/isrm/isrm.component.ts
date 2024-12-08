@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
+import { IsrmService } from '../services/isrm.service';
 
 @Component({
   selector: 'app-isrm',
@@ -12,7 +13,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 export class IsrmComponent {
   isrmForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog, private router: Router) {
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private router: Router, private IsrmService: IsrmService ) {
     this.isrmForm = this.fb.group({
       copropiedad: ['no', Validators.required],
       ingresosCopropiedad: [{ value: 0, disabled: true }],
@@ -70,8 +71,11 @@ export class IsrmComponent {
       isrACargo: isrACargo
     });
 
-    // Navegamos a `pagom` y pasamos el valor de `isrACargo`
-    this.router.navigate(['/pagom', { isrACargo }]);
+    // Actualizar el valor en el servicio
+    this.IsrmService.setactualizarisrm(isrACargo);
+
+    // Navegar a `determinacionm`
+    this.router.navigate(['/determinacionm']);
   }
 
   toggleCopropiedad(event: any) {
@@ -100,5 +104,10 @@ export class IsrmComponent {
     this.dialog.open(InfoDialogComponent, {
       data: { message }
     });
+  }
+
+  isracargodet() {
+    const monto = parseFloat((<HTMLInputElement>document.getElementById('isrACargo')).value);
+    this.IsrmService.setactualizarisrm(monto);
   }
 }

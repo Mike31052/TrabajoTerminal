@@ -7,7 +7,7 @@
         
         <div>
           <label for="montoPorDeducir" class="form-label">Monto total por deducir</label>
-          <input type="number" class="form-control" id="montoPorDeducir" value="310" />
+          <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" class="form-control" id="montoPorDeducir" value="310" />
         </div>
         <button class="btn btn-primary mt-4" (click)="actualizarMontoPorDeducir()">Actualizar</button>
 

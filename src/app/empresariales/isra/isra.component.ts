@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { Deducciones2Service } from '../services/deducciones2.service';
+import { IsraService } from '../services/isra.service';
 
 @Component({
   selector: 'app-isra',
@@ -15,6 +16,7 @@ export class IsraComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private israService: IsraService,
     private dialog: MatDialog,
     private router: Router,
     private deduccionesservice2: Deducciones2Service
@@ -145,4 +147,16 @@ export class IsraComponent implements OnInit {
       data: { message }
     });
   }
+
+  
+  isracargodeta() {
+    const isrCobrar = this.israForm.get('isrACargoanual')?.value;
+    if (isrCobrar !== undefined && isrCobrar !== null) {
+      this.israService.setactualizarisra(isrCobrar);  // Enviar el valor al servicio
+    } else {
+      console.error('El valor de ISR a cobrar no es válido');
+    }
+  }
+
+
 }
