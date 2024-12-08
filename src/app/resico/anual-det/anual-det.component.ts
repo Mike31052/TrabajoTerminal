@@ -1,5 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AnualTransferService } from '../../shared/anual-transfer/anual-transfer.service';
 
 @Component({
   selector: 'app-anual-det',
@@ -9,7 +10,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class AnualDetComponent {
   private dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private transferService: AnualTransferService) {}
 
   openModal(templateRef: TemplateRef<any>): void {
     this.dialogRef = this.dialog.open(templateRef);
@@ -53,6 +54,22 @@ export class AnualDetComponent {
 
     // Calcular impuesto a cargo
     this.impuestoACargo = this.isrCausado - this.pagosMensuales - this.isrRetenido;
+
+    // Actualizar el impuesto a cargo en el servicio
+    this.transferService.updateImpuestoACargo(this.impuestoACargo);
+  }
+
+  ngOnInit(): void {
+    // Escuchar el valor de ISR retenido desde el servicio
+    this.transferService.isrRetenido$.subscribe((value) => {
+      this.isrRetenido = value;
+      this.calcularISR(); // Recalcular ISR al cambiar ISR retenido
+    });
+    // Escuchar el valor de "Ingresos gravados" desde el servicio
+    this.transferService.ingresosGravados$.subscribe((value) => {
+      this.baseGravable = value; // Actualizar la base gravable
+      this.calcularISR(); // Recalcular el ISR
+    });
   }
 
 }

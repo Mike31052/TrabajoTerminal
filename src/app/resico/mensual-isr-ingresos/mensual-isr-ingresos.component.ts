@@ -1,5 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MensualIsrTransferService } from '../../shared/mensual-isr-transfer/mensual-isr-transfer.service';
 
 @Component({
   selector: 'app-mensual-isr-ingresos',
@@ -9,7 +10,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class MensualISRIngresosComponent {
   private dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private transferService: MensualIsrTransferService 
+  ) {}
 
   openModal(templateRef: TemplateRef<any>): void {
     this.dialogRef = this.dialog.open(templateRef);
@@ -35,6 +37,9 @@ export class MensualISRIngresosComponent {
       - this.descuentosDevoluciones 
       - this.ingresosADisminuir 
       + this.ingresosAdicionales;
+
+      // Actualizar el valor en el servicio sin afectar la lógica existente
+      this.transferService.updateIngresosPercibidos(this.totalIngresosPercibidos);
   }
 
 }
