@@ -1,31 +1,36 @@
 <app-header [title]="'Empresarial y Profesional'"></app-header>
 
 <app-body>
-<!--
   <h1 style="text-align: center; font-size: 3rem;">Ejercicios previamente guardados</h1>
 
   <table class="table">
     <thead>
       <tr>
         <th>ID Registro</th>
-        <th>Ingresos Acumulables</th>
-        <th>Deducciones Personales</th>
-        <th>Base Gravable</th>
-        <th>ISR Retenido</th>
-        <th>ISR Resultante</th>
+        <th>Tipo declaración</th>
+        <th>ISR</th>
+        <th>IVA</th>
+        <th>Monto deducible</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="!empresarialBD.length && !loading">
+      <tr *ngIf="!(empresarialBD?.length) && !loading">
         <td colspan="6" class="text-center">No se encontraron registros</td>
-      </tr>
+      </tr>      
       <tr *ngFor="let empresarial of empresarialBD">
         <td>{{ empresarial.id_registro }}</td>
-        <td>{{ empresarial.ingresos_acumulables }}</td>
-        <td>{{ empresarial.deducciones_personales }}</td>
-        <td>{{ empresarial.base_gravable }}</td>
-        <td>{{ empresarial.isr_retenido }}</td>
-        <td>{{ empresarial.isr_resultante }}</td>
+        <td>
+          {{ empresarial.tipo_dec === 'A' ? 'Declaración anual' : empresarial.tipo_dec === 'M' ? 'Declaración mensual' : 'Otro' }}
+        </td>
+        <td>
+          {{ empresarial.tipo_dec === 'A' ? empresarial.isr_final_a : empresarial.tipo_dec === 'M' ? empresarial.isr_final_m : 'Otro' }}
+        </td>
+        <!-- <td>
+          {{ empresarial.tipo_dec === 'A' ? empresarial.iva_final_a : empresarial.tipo_dec === 'M' ? empresarial.iva_final_m : 'Otro' }}
+        </td> -->
+        <td>
+          {{ empresarial.tipo_dec === 'A' ? empresarial.monto_deducir_a : empresarial.tipo_dec === 'M' ? empresarial.monto_deducir_m : 'Otro' }}
+        </td>
       </tr>
       <tr *ngIf="loading">
         <td colspan="6" class="text-center">Cargando registros...</td>
@@ -38,9 +43,9 @@
       <button class="btn btn-primary me-2" [routerLink]="'/Inicio'">Volver al inicio</button>
     </div>
     <div class="col-sm-6 text-end">
-      <button class="btn btn-success" [routerLink]="'/sueldos-y-salarios/ejercicio'">Ir al ejercicio</button>
+      <button class="btn btn-success" [routerLink]="'/edatos'">Ir al ejercicio</button>
     </div>
-  </div>-->
+  </div>
   
 </app-body>
 

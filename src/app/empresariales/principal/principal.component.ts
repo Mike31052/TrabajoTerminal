@@ -24,11 +24,11 @@ export class PrincipalComponent implements OnInit{
     this.userTO = this.userService.getUsuario();
     if (this.userTO.id) {
       this.userId = this.userTO.id;
-      this.fetchSueldos();
+      this.fetchEmpresarial();
     }
   }
 
-  fetchSueldos(): void {
+  fetchEmpresarial(): void {
     this.loading = true;
     this.empresarialService.getEmpresarial(this.userId).subscribe(
       (response) => {

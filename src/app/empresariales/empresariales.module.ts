@@ -22,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Elimina es
 import { PrincipalModule } from '../principal/principal.module';
 import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
 import { PrincipalComponent } from './principal/principal.component';
+import { EmpresarialService } from '../core/services/empresarial.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -50,8 +52,9 @@ import { PrincipalComponent } from './principal/principal.component';
     MatDialogModule,
     PrincipalModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],providers: [
-    
+    EmpresarialService
   ]
 })
 export class EmpresarialesModule { }

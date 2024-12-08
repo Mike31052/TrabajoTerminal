@@ -37,7 +37,7 @@ export class HeaderComponent {
       }else if(this.userTO.regimen == 'SC'){
         this.router.navigate(['/escoger-declaracion']);
       }else if(this.userTO.regimen == 'EP'){
-        this.router.navigate(['/edatos']);
+        this.router.navigate(['/empresarial']);
       }
     }else{
       alert('Primero confirma a que regimen perteneces');
