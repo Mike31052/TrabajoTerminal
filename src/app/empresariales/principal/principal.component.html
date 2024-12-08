@@ -25,9 +25,9 @@
         <td>
           {{ empresarial.tipo_dec === 'A' ? empresarial.isr_final_a : empresarial.tipo_dec === 'M' ? empresarial.isr_final_m : 'Otro' }}
         </td>
-        <!-- <td>
-          {{ empresarial.tipo_dec === 'A' ? empresarial.iva_final_a : empresarial.tipo_dec === 'M' ? empresarial.iva_final_m : 'Otro' }}
-        </td> -->
+         <td>
+          {{ empresarial.tipo_dec === 'A' ? '' : empresarial.tipo_dec === 'M' ? empresarial.iva_final_m : 'Otro' }}
+        </td>
         <td>
           {{ empresarial.tipo_dec === 'A' ? empresarial.monto_deducir_a : empresarial.tipo_dec === 'M' ? empresarial.monto_deducir_m : 'Otro' }}
         </td>

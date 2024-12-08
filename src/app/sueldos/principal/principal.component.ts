@@ -3,6 +3,7 @@ import { SueldosBD } from '../../shared/models/sueldosDB.model';
 import { SueldosHttpService } from '../../core/services/sueldos-http.service';
 import { Usuario } from '../../shared/models/usuario.model';
 import { UserSesionService } from '../../core/services/user-sesion.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-principal',
@@ -15,7 +16,13 @@ export class PrincipalComponent implements OnInit {
   userId: string = '';
   loading: boolean = false;
 
+  showModal = false;
+  modalTitle = 'Sueldos, Salarios y Asimilados';
+  videoSrc = '';
+  videoNumber: number = 0;
+
   constructor(
+    private dialog: MatDialog,
     private sueldosHttpService: SueldosHttpService,
     private userService: UserSesionService
   ) {}
@@ -41,4 +48,17 @@ export class PrincipalComponent implements OnInit {
       }
     );
   }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  onBackdropClick(event: MouseEvent) {
+    this.closeModal();
+  }
+  
 }

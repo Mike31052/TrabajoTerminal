@@ -21,11 +21,11 @@
       </tr>
       <tr *ngFor="let sueldo of sueldosBD">
         <td>{{ sueldo.id_registro }}</td>
-        <td>{{ sueldo.ingresos_acumulables }}</td>
-        <td>{{ sueldo.deducciones_personales }}</td>
-        <td>{{ sueldo.base_gravable }}</td>
-        <td>{{ sueldo.isr_retenido }}</td>
-        <td>{{ sueldo.isr_resultante }}</td>
+        <td>${{ sueldo.ingresos_acumulables }}</td>
+        <td>${{ sueldo.deducciones_personales }}</td>
+        <td>${{ sueldo.base_gravable }}</td>
+        <td>${{ sueldo.isr_retenido }}</td>
+        <td>${{ sueldo.isr_resultante }} {{ sueldo.isCargo ? 'A cargo' : 'A favor' }}</td>
       </tr>
       <tr *ngIf="loading">
         <td colspan="6" class="text-center">Cargando registros...</td>
@@ -34,10 +34,13 @@
   </table>
 
   <div class="row">
-    <div class="col-sm-6 text-end">
+    <div class="col-sm-4 text-center">
+      <button class="btn btn-primary me-2" (click)="openModal()">Ver video</button>
+    </div>
+    <div class="col-sm-4 text-center">
       <button class="btn btn-primary me-2" [routerLink]="'/Inicio'">Volver al inicio</button>
     </div>
-    <div class="col-sm-6 text-end">
+    <div class="col-sm-4 text-center">
       <button class="btn btn-success" [routerLink]="'/sueldos-y-salarios/ejercicio'">Ir al ejercicio</button>
     </div>
   </div>
@@ -45,3 +48,13 @@
 </app-body>
 
 <app-footer></app-footer>
+
+
+<!-- Modal -->
+<div id="videoModal" class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h3>{{ modalTitle }}</h3>
+    <iframe width="100%" height="700px" src="https://www.youtube.com/embed/uCCL0ydQCt8?si=_1rMxxwAt3H9b7Zc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</div>

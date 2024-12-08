@@ -1,6 +1,6 @@
 export class EmpresarialBD {  
     id_registro?: number;
-    id_usuario?: string;
+    idUsuario?: string;
 
     isr_final_a?: number;
     isr_final_m?: number;

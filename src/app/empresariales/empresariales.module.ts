@@ -22,13 +22,9 @@ import { IvamComponent } from './ivam/ivam.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Elimina esta línea
 import { PrincipalModule } from '../principal/principal.module';
 import { PrincipalComponent } from './principal/principal.component';
-<<<<<<< HEAD
 import { EmpresarialService } from '../core/services/empresarial.service';
 import { HttpClientModule } from '@angular/common/http';
-=======
 import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
->>>>>>> 29f493992466eccf6f8d831a29d38c4c404c111e
-
 
 
 
@@ -46,7 +42,8 @@ import { SafeUrlPipe } from './safe-url.pipe'; // Importar el Pipe
     EmpanualComponent,
     PrincipalComponent,
     DeterminacionmComponent, 
-    DeterminacionaComponent
+    DeterminacionaComponent,
+    PrincipalComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { SueldosBD } from '../../shared/models/sueldosDB.model';
 import { SueldosHttpService } from '../../core/services/sueldos-http.service';
 import { Usuario } from '../../shared/models/usuario.model';
 import { UserSesionService } from '../../core/services/user-sesion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-determinacion',
@@ -49,7 +50,8 @@ export class DeterminacionComponent {
   constructor(private dialog: MatDialog,
     private sueldosService: SueldosService,
     private sueldosHttpService: SueldosHttpService,
-    private userService: UserSesionService){}
+    private userService: UserSesionService,
+    private router: Router){}
 
   ngOnInit(){
     this.actualizarValores();
@@ -107,11 +109,13 @@ export class DeterminacionComponent {
       this.sueldosBD.deducciones_personales = this.deduccionesPersonales;
       this.sueldosBD.isr_resultante = this.isrFinal;
       this.sueldosBD.isr_retenido = this.isrRetenido;
-        this.sueldosBD.id_usuario = this.userTO.id;
+      this.sueldosBD.id_usuario = this.userTO.id;
+      this.sueldosBD.isCargo = this.validacion;
       this.sueldosHttpService.addRegistro(this.sueldosBD).subscribe(
         (response) => {
           if(response.success){
             alert('Tu registro se ha creado exitosamente.');
+            this.router.navigate(['/sueldos-y-salarios']);
           }else{
             alert('No se pudo guardar el registro. Hubo un errror');
           }

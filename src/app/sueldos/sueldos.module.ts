@@ -22,6 +22,7 @@ import { AddDeduccionComponent } from './add-deduccion/add-deduccion.component';
 import { SueldosHttpService } from '../core/services/sueldos-http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PrincipalComponent } from './principal/principal.component';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PrincipalComponent } from './principal/principal.component';
     AddIngresoAsimiladoComponent,
     AddIngresoSueldoComponent,
     AddDeduccionComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    SafeUrlPipe
   ],
   imports: [
     CommonModule,

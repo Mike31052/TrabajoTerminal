@@ -6,5 +6,6 @@ export class SueldosBD {
     base_gravable?: number;
     isr_retenido?: number;
     isr_resultante?: number;
+    isCargo?: boolean;
   }
   
