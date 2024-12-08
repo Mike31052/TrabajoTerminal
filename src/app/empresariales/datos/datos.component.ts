@@ -25,7 +25,7 @@ export class DatosComponent {
 
    // URLs de videos de YouTube usando el formato de incrustación
    videoPaths: string[] = [
-    'https://www.youtube.com/embed/r9y9oxVdmAU'
+    'https://www.youtube.com/embed/tR58syx-hQA'
   ];
 
   // Títulos específicos para cada video
