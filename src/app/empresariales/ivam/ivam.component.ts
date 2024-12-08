@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { DeduccionesService } from '../services/deducciones.service'; // Asegúrate de que la ruta sea correcta
+import { IvamService } from '../services/ivam.service';
 
 @Component({
   selector: 'app-ivam',
@@ -13,7 +14,7 @@ export class IvamComponent implements OnInit {
   ivamForm: FormGroup;
   
 
-  constructor(private fb: FormBuilder, private deduccionesService: DeduccionesService,  private dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private deduccionesService: DeduccionesService,  private dialog: MatDialog, private ivamService: IvamService) {
     this.ivamForm = this.fb.group({
       actividades16: [0],
       ivaCobrado16: [{ value: 0, disabled: true }],
@@ -31,6 +32,8 @@ export class IvamComponent implements OnInit {
       this.ivamForm.get('ivaAcreditable')?.setValue(montoDeduccion);
     });
   }
+
+  
 
   calcularIVA(): void {
     const actividades16 = this.ivamForm.get('actividades16')?.value || 0;
@@ -52,5 +55,14 @@ export class IvamComponent implements OnInit {
     this.dialog.open(InfoDialogComponent, {
       data: { message }
     });
+  }
+
+  actualizariva() {
+    const ivaCobrar = this.ivamForm.get('ivaCobrar')?.value;
+    if (ivaCobrar !== undefined && ivaCobrar !== null) {
+      this.ivamService.setactualizarivam(ivaCobrar);  // Enviar el valor al servicio
+    } else {
+      console.error('El valor de IVA a cobrar no es válido');
+    }
   }
 }

@@ -1,0 +1,36 @@
+<form [formGroup]="determinacionForm" >
+    <div class="container mt-4">
+      <h2 class="mb-4">Determinacion</h2>
+
+<!-- ISR determinacion mensual -->
+<div class="mb-3 row">
+    <label for="isrdet" class="col-sm-2 col-form-label">ISR a cargo mensual</label>
+    <div class="col-sm-6">
+      <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="isrdet" class="form-control" readonly />
+    </div>
+  </div>
+
+  <!-- IVA determinacion mensual -->
+<div class="mb-3 row">
+    <label for="ivadet" class="col-sm-2 col-form-label">IVA a cargo mensual</label>
+    <div class="col-sm-6">
+      <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="ivadet" class="form-control" readonly />
+    </div>
+  </div>
+
+
+   <!-- Deducciones determinacion mensual -->
+<div class="mb-3 row">
+    <label for="deduccionm" class="col-sm-2 col-form-label">Deducciones mensuales</label>
+    <div class="col-sm-6">
+      <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="deduccionm" class="form-control" readonly />
+    </div>
+  </div>
+  
+
+  <div class="mb-3 text-center">
+    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+  </div>
+</div>
+
+</form>

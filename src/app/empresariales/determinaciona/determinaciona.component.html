@@ -1,0 +1,28 @@
+<form [formGroup]="determinacionanualForm" >
+    <div class="container mt-4">
+      <h2 class="mb-4">Determinacion</h2>
+
+<!-- ISR determinacion mensual -->
+<div class="mb-3 row">
+    <label for="isrdeta" class="col-sm-2 col-form-label">ISR a cargo anual</label>
+    <div class="col-sm-6">
+      <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="isrdeta" class="form-control" readonly />
+    </div>
+  </div>
+
+
+   <!-- Deducciones determinacion mensual -->
+<div class="mb-3 row">
+    <label for="deducciona" class="col-sm-2 col-form-label">Deducciones anuales</label>
+    <div class="col-sm-6">
+      <input type="number"  min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46" formControlName="deducciona" class="form-control" readonly />
+    </div>
+  </div>
+  
+
+  <div class="mb-3 text-center">
+    <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+  </div>
+</div>
+
+</form>

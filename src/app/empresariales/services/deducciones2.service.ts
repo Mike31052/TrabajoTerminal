@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class Deducciones2Service {
   private montoTotalPorDeducirSource = new BehaviorSubject<number>(0);
-  private montoTotalPorDeduciranualSource = new BehaviorSubject<number>(0);
 
   constructor() { }
 
