@@ -1,5 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MensualIvaTransferService } from '../../shared/mensual-iva-transfer/mensual-iva-transfer.service';
 
 @Component({
   selector: 'app-mensual-iva-det',
@@ -31,13 +32,19 @@ export class MensualIvaDetComponent {
 
     // Calcula Impuesto a cargo
     this.impuestoCargo = this.cantidadCargo - this.saldoFavor;
+
+    // Actualiza el valor en el servicio
+    this.transferService.updateImpuestoCargo(this.impuestoCargo);
   }
 
 
   //Para el modal
   private dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private transferService: MensualIvaTransferService
+  ) {}
 
   openModal(templateRef: TemplateRef<any>): void {
     this.dialogRef = this.dialog.open(templateRef);
@@ -49,4 +56,6 @@ export class MensualIvaDetComponent {
     }
   }
 
+
+  //para transferir
 }

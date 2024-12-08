@@ -1,5 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MensualIsrTransferService } from '../../shared/mensual-isr-transfer/mensual-isr-transfer.service';
 
 @Component({
   selector: 'app-mensual-isr-det',
@@ -36,11 +37,18 @@ export class MensualIsrDetComponent {
     // Calcular impuesto mensual y a cargo
     this.impuestoMensual = (this.baseGravable * this.tasaAplicable) / 100;
     this.impuestoACargo = this.impuestoMensual - this.isrRetenido;
+
+    // Actualizar el valor en el servicio
+    this.transferService.updateImpuestoCargo(this.impuestoACargo);
   }
 
   // Método para actualizar ISR retenido
   onIsrRetenidoChange(): void {
     this.impuestoACargo = this.impuestoMensual - this.isrRetenido;
+    this.transferService.updateIsrRetenido(this.isrRetenido);
+
+    // Actualizar el valor en el servicio
+    this.transferService.updateImpuestoCargo(this.impuestoACargo);
   }
 
   //Para el modal
@@ -48,7 +56,7 @@ export class MensualIsrDetComponent {
   
   private dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private transferService: MensualIsrTransferService) {}
 
   openModal(templateRef: TemplateRef<any>): void {
     this.dialogRef = this.dialog.open(templateRef);
@@ -60,4 +68,14 @@ export class MensualIsrDetComponent {
     }
   }
 
+  ngOnInit(): void {
+    // Escuchar el valor de "Total de ingresos percibidos por la actividad"
+    this.transferService.ingresosPercibidos$.subscribe((value) => {
+      this.totalIngresos = value;
+      this.onTotalIngresosChange();
+      this.transferService.updateIsrRetenido(this.isrRetenido);
+    });
+  }
+
+  
 }

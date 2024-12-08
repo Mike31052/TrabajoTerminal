@@ -41,7 +41,7 @@
                 <mat-label>Total de ingresos efectivamente cobrados</mat-label>
                 <input matInput type="number" [value]="totalIngresosEfectivamenteCobrados" disabled/>
             </mat-form-field>
-            <button (click)="openModal(modal12)">Detalles</button>
+            <!--<button (click)="openModal(modal12)">Detalles</button>-->
         </div>
         
         <div class="input-container">
@@ -106,7 +106,7 @@
                 <mat-label>Total de pagos mensuales</mat-label>
                 <input matInput value="54966" disabled/>
             </mat-form-field>
-            <button (click)="openModal(modal13)">Detalles</button>
+            <!--<button (click)="openModal(modal13)">Detalles</button>-->
         </div>
     </mat-expansion-panel>
 
@@ -119,7 +119,7 @@
             <label>ISR retenido por personas morales<span class="material-icons" (click)="openModal(modal11)">help_outline</span></label>
             <mat-form-field appearance="outline">
                 <mat-label>ISR retenido por personas morales</mat-label>
-                <input matInput placeholder="Ingrese una cantidad" type="number" min="0" />
+                <input matInput [(ngModel)]="isrRetenido" (ngModelChange)="actualizarIsrRetenido()" type="number" min="0" />
             </mat-form-field>
         </div>
     </mat-expansion-panel>
@@ -127,7 +127,7 @@
 
   </mat-accordion>
   <br>
-  <button>Continuar</button>
+  <!--<button>Continuar</button>-->
   
   <!-- Modal 1 Informacion sobre situacion fiscal-->
 <ng-template #modal1>
@@ -220,9 +220,9 @@
     </div>
   </ng-template>
 
-  <!-- Modal 8 Ingresos - ingresos grabados-->
+  <!-- Modal 8 Ingresos - ingresos gravados-->
   <ng-template #modal8>
-    <h1 mat-dialog-title>Ingresos grabados</h1>
+    <h1 mat-dialog-title>Ingresos gravados</h1>
     <div mat-dialog-content>
       <p>Total de los ingresos gravados de acuerdo a lo declarado.</p>
     </div>

@@ -3,7 +3,7 @@
 
     <div class="form-group">
         <label>A cargo<span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
-        <input type="number" [(ngModel)]="aCargo" (input)="actualizarValores()" onkeypress="return event.key !== '-'" min="0">
+        <input type="number" [(ngModel)]="aCargo" readonly disabled>
     </div>
 
     <div class="form-group">
@@ -40,7 +40,6 @@
             <input type="number" [value]="cantidadAPagar" readonly disabled>
         </div>
     </div>
-    <button>Finalizar</button>
 
     <!--Modal 1-->
     <ng-template #modal1>

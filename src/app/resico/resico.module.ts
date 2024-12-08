@@ -7,6 +7,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 
+//servicios
+import { MensualIvaTransferService } from '../shared/mensual-iva-transfer/mensual-iva-transfer.service';
+import { MensualIsrTransferService } from '../shared/mensual-isr-transfer/mensual-isr-transfer.service';
+import { AnualTransferService } from '../shared/anual-transfer/anual-transfer.service';
+
 
 // Importa el componente
 import { MensualResicoComponent } from './mensual-resico/mensual-resico.component'; 
@@ -28,6 +33,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AnuaDetalleIngresoEfectivamenteComponent } from './anua-detalle-ingreso-efectivamente/anua-detalle-ingreso-efectivamente.component';
 import { AnualDetallePagosMensualesComponent } from './anual-detalle-pagos-mensuales/anual-detalle-pagos-mensuales.component';
+import { DatosAnualComponent } from './datos-anual/datos-anual.component';
+import { DatosMensualIvaComponent } from './datos-mensual-iva/datos-mensual-iva.component';
+import { DatosMensualIsrComponent } from './datos-mensual-isr/datos-mensual-isr.component';
 
 
 // Agrega una ruta si necesitas navegación
@@ -66,6 +74,9 @@ const routes: Routes = [
     AnualPagoComponent,
     AnuaDetalleIngresoEfectivamenteComponent,
     AnualDetallePagosMensualesComponent,
+    DatosAnualComponent,
+    DatosMensualIvaComponent,
+    DatosMensualIsrComponent,
   ],
   imports: [
     CommonModule,
@@ -82,7 +93,12 @@ const routes: Routes = [
   exports: [
     RouterModule,
     AnualIngresosComponent,
-  ]
+  ],
+  providers:[
+    MensualIvaTransferService,
+    MensualIsrTransferService,
+    AnualTransferService,
+  ],
 })
 export class ResicoModule {
   
