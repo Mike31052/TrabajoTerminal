@@ -5,10 +5,11 @@
 
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title>Presenta tu declaracion mensual</mat-panel-title>
+              <mat-panel-title>Presenta tu declaración mensual</mat-panel-title>
             </mat-expansion-panel-header>
-      
+              <!--
               <div>
+                <p><b>Los datos presentados corresponden a:</b></p>
                 <form>
                     <label class="texto_formulario">Selecciona el ejercicio</label><input type="number" value="2024" max="2025">
                     <br>
@@ -29,30 +30,77 @@
                       <option value="Diciembre">Diciembre</option>
                     </select>
                 </form>
-            
+                
+                <br>
+                  <div class="input-container">
+                    <label style="margin: 20px;">Cantidad a pagar (IVA)</label>
+                    <mat-form-field >
+                    <mat-label>Cantidad a pagar</mat-label>
+                    <input matInput type="number" [(ngModel)]="cantidadAPagarIVA" disabled/>
+                  </mat-form-field>
+                  </div>
+                <br>
+                
+                <br>
+                  <div class="input-container">
+                    <label style="margin: 20px;">Cantidad a pagar (ISR)</label>
+                    <mat-form-field >
+                    <mat-label>Cantidad a pagar</mat-label>
+                    <input matInput type="number" [(ngModel)]="cantidadAPagarISR" disabled/>
+                  </mat-form-field>
+                  </div>
+                <br>
+                
+                <br>
+                  <div class="input-container">
+                    <label style="margin: 20px;">ISR retenido por personas morales</label>
+                    <mat-form-field >
+                    <mat-label>Cantidad a pagar</mat-label>
+                    <input matInput type="number" [(ngModel)]="isrRetenido" disabled/>
+                  </mat-form-field>
+                  </div>
+                <br>
+
+
+
                 <div class="button-container">
                     <button class="custom-button" routerLink="/mensual-resico">IRS simplificado de confianza</button>
                     <button class="custom-button" routerLink="/mensual-iva-resico">IVA simplificado de confianza</button>
+                    <button class="custom-button">Finalizar declaración mensual</button>
                 </div>
             </div>
-            
+            -->
+            <button class="custom-button" routerLink="/mensual-resico">Comenzar declaración mensual</button>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>
-              <mat-panel-title>Presenta tu declaracion anual</mat-panel-title>
+              <mat-panel-title>Presenta tu declaración anual</mat-panel-title>
             </mat-expansion-panel-header>
-      
+              <!--
               <div>
+                <p><b>Los datos presentados corresponden a:</b></p>
                 <form>
                     <label class="texto_formulario">Selecciona el ejercicio</label><input type="number" value="2023" max="2023">
                 </form>
+                <br>
+                <div class="input-container">
+                    <label style="margin: 20px;">Cantidad a pagar (anual)</label>
+                        <mat-form-field >
+                            <mat-label>Cantidad a pagar</mat-label>
+                            <input matInput type="number" readonly disabled/>
+                        </mat-form-field>
+                </div>
+                <br>
             
                 <div class="button-container">
-                    <button class="custom-button" routerLink="/anual-resico">Presenta tu declaracion anual</button>
+                    <button class="custom-button" routerLink="/anual-resico">Presenta tu declaración anual</button>
+                    <button class="custom-button">Finalizar declaración anual</button>
                 </div>
               </div>
-            
+            -->
+            <button class="custom-button" routerLink="/anual-resico">Comenzar declaración anual</button>
+
           </mat-expansion-panel>
 
     </mat-accordion>
