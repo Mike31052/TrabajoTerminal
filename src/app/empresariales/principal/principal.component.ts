@@ -32,11 +32,12 @@ export class PrincipalComponent implements OnInit{
     this.loading = true;
     this.empresarialService.getEmpresarial(this.userId).subscribe(
       (response) => {
-        this.empresarialBD = response;
+        this.empresarialBD = response || [];
         this.loading = false;
       },
       (error) => {
         alert('No se pudo obtener los registros. Hubo un error');
+        this.empresarialBD = [];
         this.loading = false;
       }
     );
