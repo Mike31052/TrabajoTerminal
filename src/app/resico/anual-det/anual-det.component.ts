@@ -27,7 +27,7 @@ export class AnualDetComponent {
   tasaAplicable: number = 0;
   isrCausado: number = 0;
   //Esto se debe cambiar para que sea igual al que esta anual-ingresos
-  pagosMensuales: number = 54966;
+  pagosMensuales: number = 30000;
   isrRetenido: number = 0;
   impuestoACargo: number = 0;
 

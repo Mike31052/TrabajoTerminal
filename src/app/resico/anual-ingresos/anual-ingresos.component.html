@@ -1,5 +1,6 @@
-
-
+<br>
+<button (click)="openModal(modal14)">Ver video tutorial</button>
+    <br><br>
 <mat-accordion>
     <!-- Sección de Información sobre situación fiscal-->
     <mat-expansion-panel>
@@ -48,21 +49,21 @@
             <label>Descuentos, devoluciones y bonificaciones (-)<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
             <mat-form-field appearance="outline">
                 <mat-label>Descuentos, devoluciones y bonificaciones</mat-label>
-                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="descuentosDevolucionesBonificaciones" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '-'"/>
+                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="descuentosDevolucionesBonificaciones" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '.' && event.key !== '-'"/>
             </mat-form-field>
         </div>
         <div class="input-container">
             <label>Ingresos a disminuir (-)<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
             <mat-form-field appearance="outline">
                 <mat-label>Ingresos a disminuir</mat-label>
-                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="ingresosADisminuir" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '-'"/>
+                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="ingresosADisminuir" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '.' && event.key !== '-'"/>
             </mat-form-field>
         </div>
         <div class="input-container">
             <label>Ingresos adicionales (+) <span class="material-icons" (click)="openModal(modal6)">help_outline</span></label>
             <mat-form-field appearance="outline">
                 <mat-label>Ingresos adicionales</mat-label>
-                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="ingresosAdicionales" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '-'"/>
+                <input matInput placeholder="Igrese la cantidad" type="number" [(ngModel)]="ingresosAdicionales" min="0" (ngModelChange)="calcularTotal()" onkeypress="return event.key !== '.' && event.key !== '-'"/>
             </mat-form-field>
         </div>
         <div class="input-container">
@@ -104,7 +105,7 @@
             <label>Pagos mensuales<span class="material-icons" (click)="openModal(modal10)">help_outline</span></label>
             <mat-form-field appearance="outline">
                 <mat-label>Total de pagos mensuales</mat-label>
-                <input matInput value="54966" disabled/>
+                <input matInput value="30000" disabled/>
             </mat-form-field>
             <!--<button (click)="openModal(modal13)">Detalles</button>-->
         </div>
@@ -119,7 +120,7 @@
             <label>ISR retenido por personas morales<span class="material-icons" (click)="openModal(modal11)">help_outline</span></label>
             <mat-form-field appearance="outline">
                 <mat-label>ISR retenido por personas morales</mat-label>
-                <input matInput [(ngModel)]="isrRetenido" (ngModelChange)="actualizarIsrRetenido()" type="number" min="0" />
+                <input matInput [(ngModel)]="isrRetenido" (ngModelChange)="actualizarIsrRetenido()" type="number" min="0" onkeypress="return event.key !== '.' && event.key !== '-'"/>
             </mat-form-field>
         </div>
     </mat-expansion-panel>
@@ -280,6 +281,17 @@
     <h1 mat-dialog-title>Total de ingresos efectivamente cobrados</h1>
     <div mat-dialog-content>
       <app-anual-detalle-pagos-mensuales></app-anual-detalle-pagos-mensuales>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeModal()">Cerrar</button>
+    </div>
+  </ng-template>
+
+  <!-- Modal 14 Turorial-->
+  <ng-template #modal14>
+    <h1 mat-dialog-title>Tutorial para el llenado de la declaración anual</h1>
+    <div mat-dialog-content>
+      <iframe width="500" height="500" src="https://www.youtube.com/embed/KMg6be85dww?si=LC8pbNEaVg_pjway" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <div mat-dialog-actions>
       <button mat-button (click)="closeModal()">Cerrar</button>
