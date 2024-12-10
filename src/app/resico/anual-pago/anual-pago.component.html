@@ -1,5 +1,4 @@
 
-
 <mat-accordion>
 
     <mat-expansion-panel>
@@ -24,7 +23,7 @@
                 <label>Compensaciones o estímulos ficales <span class="material-icons" (click)="openModal(modal3)">help_outline</span></label>
                     <mat-form-field appearance="outline">
                         <mat-label>Compensaciones o estímulos ficales</mat-label>
-                        <input matInput [(ngModel)]="compensaciones" (ngModelChange)="calcularValores()" type="number" min="0" onkeypress="return event.key !== '-'"/>
+                        <input matInput [(ngModel)]="compensaciones" (ngModelChange)="calcularValores()" type="number" min="0" onkeypress="return event.key !== '.' && event.key !== '-'"/>
                     </mat-form-field>
           </div>
           <div class="input-container">
@@ -44,6 +43,8 @@
         </mat-expansion-panel>
 
 </mat-accordion>
+<br>
+<button routerLink="/Inicio">Finalizar</button>
 
 <!-- Modal 1 Pago de ISR - A cargo-->
 <ng-template #modal1>

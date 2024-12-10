@@ -1,6 +1,4 @@
 <br>
-
-
     <div class="form-group">
         <label>A cargo <span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
         <input type="number" [(ngModel)]="aCargo" (input)="actualizarValores()" min="0" onkeypress="return event.key !== '-'">
@@ -28,11 +26,13 @@
     </div>
 
     <div class="form-group">
-        <label>Cantidad a pagar<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
+        <label>Cantidad a pagar ISR<span class="material-icons" (click)="openModal(modal4)">help_outline</span></label>
         <div>
             <input type="number" [value]="cantidadAPagar" readonly>
         </div>
     </div>
+
+    <button routerLink="/mensual-iva-resico">Continuar</button>
 
     <!-- Modal 1-->
   <ng-template #modal1>

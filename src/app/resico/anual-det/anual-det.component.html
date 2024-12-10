@@ -1,5 +1,4 @@
 
-
 <mat-accordion>
 
     <mat-expansion-panel>
@@ -35,10 +34,10 @@
                     </mat-form-field>
           </div>
           <div class="input-container">
-                <label>ISR retenido (-)<span class="material-icons" (click)="openModal(modal5)">help_outline</span></label>
+                <label>ISR retenido (-)<!--<span class="material-icons" (click)="openModal(modal5)">help_outline</span>--></label>
                     <mat-form-field appearance="outline">
                         <mat-label>ISR retenido</mat-label>
-                        <input matInput [(ngModel)]="isrRetenido" (ngModelChange)="calcularISR()" onkeypress="return event.key !== '-'"/>
+                        <input matInput [(ngModel)]="isrRetenido" (ngModelChange)="calcularISR()" onkeypress="return event.key !== '.' && event.key !== '-'"/>
                     </mat-form-field>
           </div>
           <div class="input-container">

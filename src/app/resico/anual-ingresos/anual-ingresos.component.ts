@@ -24,7 +24,7 @@ export class AnualIngresosComponent {
   
 //Parte del calculo 
 
-  totalIngresosEfectivamenteCobrados: number = 1490102; // Ejemplo prellenado
+  totalIngresosEfectivamenteCobrados: number = 1490000; // Ejemplo prellenado
   descuentosDevolucionesBonificaciones: number = 0;
   ingresosADisminuir: number = 0;
   ingresosAdicionales: number = 0;

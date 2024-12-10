@@ -8,9 +8,11 @@
         </select>
     </div>
 -->
+    <button (click)="openModal(modal6)">Ver video tutorial</button>
+    <br><br>
     <div class="form-group">
         <label>Total de ingresos efectivamente cobrados <span class="material-icons" (click)="openModal(modal1)">help_outline</span></label>
-        <input type="number" min="0" [(ngModel)]="totalIngresosCobrados" (input)="calcularTotalIngresos()" onkeypress="return event.key !== '-'">
+        <input type="number" min="0" max="291666" [(ngModel)]="totalIngresosCobrados" (input)="calcularTotalIngresos()" onkeypress="return event.key !== '-'">
     </div>
 
     <div class="form-group">
@@ -50,7 +52,7 @@
   <ng-template #modal1>
     <h1 mat-dialog-title>Total de ingresos efectivamente cobrados</h1>
     <div mat-dialog-content>
-      <p>Se refiere a los ingresos que fueron facturados (amparados por comprobantes fiscales), este campo viene prellenado por defecto y al dar clic en el botón “Detalle” se pueden ver los ingresos facturados de cada mes. <b>Esta cantidad esta establecida a modo de ejemplo</b></p>
+      <p>Se refiere a los ingresos que fueron facturados (amparados por comprobantes fiscales), este campo viene prellenado por defecto.</p>
     </div>
     <div mat-dialog-actions>
       <button mat-button (click)="closeModal()">Cerrar</button>
@@ -105,3 +107,14 @@
       <button mat-button (click)="closeModal()">Cerrar</button>
     </div>
   </ng-template>
+
+    <!-- Modal 6 Ingresos - Total de ingresos percibidos por la actividad-->
+    <ng-template #modal6>
+      <h1 mat-dialog-title>Tutorial para el llenado de declaración mensual de ISR</h1>
+      <div mat-dialog-content>
+        <iframe width="500" height="500" src="https://www.youtube.com/embed/u0tJZSlg_80?si=h4bdj54wx0Lxu7SA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button (click)="closeModal()">Cerrar</button>
+      </div>
+    </ng-template>

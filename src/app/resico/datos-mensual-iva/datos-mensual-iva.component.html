@@ -1,10 +1,34 @@
 <br>
 <div class="input-container">
-    <label style="margin: 20px;">Cantidad a pagar</label>
+    <label style="margin: 20px;">Cantidad a pagar IVA</label>
         <mat-form-field >
             <mat-label>Cantidad a pagar</mat-label>
             <input matInput type="number" [value]="cantidadAPagar" readonly disabled/>
         </mat-form-field>
 </div>
 <br>
-<button>Finalizar</button>
+<div>
+    <p><b>Los datos presentados en ambas declaraciones mensuales (IVA e ISR) corresponden a:</b></p>
+    <form>
+        <label class="texto_formulario">Selecciona el ejercicio</label><input type="number" value="2024" max="2025">
+        <br>
+        <label class="texto_formulario" for="opciones">Selecciona el periodo</label>
+
+        <select id="opciones" name="opciones">
+          <option value="Enero">Enero</option>
+          <option value="Febrero">Febrero</option>
+          <option value="Marzo">Marzo</option>
+          <option value="Abril">Abril</option>
+          <option value="Mayo">Mayo</option>
+          <option value="Junio">Junio</option>
+          <option value="Julio">Julio</option>
+          <option value="Agosto">Agosto</option>
+          <option value="Septiembre">Septiembre</option>
+          <option value="Octubre">Octubre</option>
+          <option value="Noviembre">Noviembre</option>
+          <option value="Diciembre">Diciembre</option>
+        </select>
+    </form>
+    <br>
+
+<button>Finalizar declaración mensual</button>
