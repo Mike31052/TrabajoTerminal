@@ -39,11 +39,12 @@ export class PrincipalComponent implements OnInit {
     this.loading = true;
     this.sueldosHttpService.getSueldos(this.userId).subscribe(
       (response) => {
-        this.sueldosBD = response;
+        this.sueldosBD = response || [];
         this.loading = false;
       },
       (error) => {
         alert('No se pudo obtener los registros. Hubo un error');
+        this.sueldosBD = [];
         this.loading = false;
       }
     );
