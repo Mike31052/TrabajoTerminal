@@ -43,15 +43,18 @@ export class DeterminacionmComponent implements OnInit {
     // Obtener el monto ISR desde el servicio
     this.isrmservice.getactualizarisrm().subscribe((montoISR) => {
       this.determinacionForm.get('isrdet')?.setValue(montoISR);
+      this.montoISR = montoISR;
     });
   
     // Obtener el monto IVA desde el servicio
     this.ivamservice.getactualizarivam().subscribe((montoIVA) => {
       this.determinacionForm.get('ivadet')?.setValue(montoIVA);
+      this.montoIVA = montoIVA;
     });
 
     this.deduccionesService.getMontoTotalADeducir().subscribe((montoDeduccion) => {
       this.determinacionForm.get('deduccionm')?.setValue(montoDeduccion);
+      this.montoDeduccion = montoDeduccion;
     });
   }
 
