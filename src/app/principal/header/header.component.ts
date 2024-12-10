@@ -35,7 +35,7 @@ export class HeaderComponent {
       if(this.userTO.regimen == 'SS'){
         this.router.navigate(['/sueldos-y-salarios']);
       }else if(this.userTO.regimen == 'SC'){
-        this.router.navigate(['/escoger-declaracion']);
+        this.router.navigate(['/resico']);
       }else if(this.userTO.regimen == 'EP'){
         this.router.navigate(['/empresarial']);
       }

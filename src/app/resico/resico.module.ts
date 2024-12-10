@@ -36,6 +36,9 @@ import { AnualDetallePagosMensualesComponent } from './anual-detalle-pagos-mensu
 import { DatosAnualComponent } from './datos-anual/datos-anual.component';
 import { DatosMensualIvaComponent } from './datos-mensual-iva/datos-mensual-iva.component';
 import { DatosMensualIsrComponent } from './datos-mensual-isr/datos-mensual-isr.component';
+import { ResicoHttpService } from '../core/services/resico-http.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PrincipalComponent } from './principal/principal.component';
 
 
 // Agrega una ruta si necesitas navegación
@@ -53,8 +56,8 @@ const routes: Routes = [
   { path: 'anual-det', component: AnualDetComponent},
   { path: 'anual-pago', component: AnualPagoComponent},
   { path: 'anual-detalle-ingreso-efectivamente', component: AnuaDetalleIngresoEfectivamenteComponent},
-  { path: 'anual-detalle-pagos-mensuales', component: AnualDetallePagosMensualesComponent}
-
+  { path: 'anual-detalle-pagos-mensuales', component: AnualDetallePagosMensualesComponent},
+  { path: 'resico', component: PrincipalComponent}
 ];
 
 @NgModule({
@@ -77,6 +80,7 @@ const routes: Routes = [
     DatosAnualComponent,
     DatosMensualIvaComponent,
     DatosMensualIsrComponent,
+    PrincipalComponent
   ],
   imports: [
     CommonModule,
@@ -89,6 +93,7 @@ const routes: Routes = [
     MatInputModule,
     MatDialogModule,
     FormsModule,
+    HttpClientModule
   ],
   exports: [
     RouterModule,
@@ -98,6 +103,7 @@ const routes: Routes = [
     MensualIvaTransferService,
     MensualIsrTransferService,
     AnualTransferService,
+    ResicoHttpService
   ],
 })
 export class ResicoModule {

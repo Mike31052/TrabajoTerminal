@@ -1,0 +1,43 @@
+<app-header [title]="'Resico'"></app-header>
+
+<app-body>
+
+  <h1 style="text-align: center; font-size: 3rem;">Ejercicios previamente guardados</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID Registro</th>
+        <th>Periodo</th>
+        <th>Ejercicio</th>
+        <th>Cantidad a pagar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!resicoBD.length && !loading">
+        <td colspan="6" class="text-center">No se encontraron registros</td>
+      </tr>
+      <tr *ngFor="let resico of resicoBD">
+        <td>{{ resico.id_registro }}</td>
+        <td>{{ resico.mes }}</td>
+        <td>{{ resico.year }}</td>
+        <td>${{ resico.cantidadPagar }}</td>
+      </tr>
+      <tr *ngIf="loading">
+        <td colspan="6" class="text-center">Cargando registros...</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <button class="btn btn-primary me-2" [routerLink]="'/Inicio'">Volver al inicio</button>
+    </div>
+    <div class="col-sm-4 text-center">
+      <button class="btn btn-success" [routerLink]="'/escoger-declaracion'">Ir al ejercicio</button>
+    </div>
+  </div>
+  
+</app-body>
+
+<app-footer></app-footer>

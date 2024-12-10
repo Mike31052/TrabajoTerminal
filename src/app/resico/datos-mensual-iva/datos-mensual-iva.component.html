@@ -1,4 +1,3 @@
-<br>
 <div class="input-container">
     <label style="margin: 20px;">Cantidad a pagar IVA</label>
         <mat-form-field >
@@ -10,11 +9,11 @@
 <div>
     <p><b>Los datos presentados en ambas declaraciones mensuales (IVA e ISR) corresponden a:</b></p>
     <form>
-        <label class="texto_formulario">Selecciona el ejercicio</label><input type="number" value="2024" max="2025">
+        <label class="texto_formulario">Selecciona el ejercicio</label>
+        <input type="number" [(ngModel)]="year" name="year" value="2024" max="2025">
         <br>
         <label class="texto_formulario" for="opciones">Selecciona el periodo</label>
-
-        <select id="opciones" name="opciones">
+        <select id="opciones" name="opciones" [(ngModel)]="mes">
           <option value="Enero">Enero</option>
           <option value="Febrero">Febrero</option>
           <option value="Marzo">Marzo</option>
@@ -31,4 +30,5 @@
     </form>
     <br>
 
-<button>Finalizar declaración mensual</button>
+    <button (click)="save()">Finalizar declaración mensual</button>
+</div>
